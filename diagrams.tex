@@ -749,17 +749,17 @@ We remark that given a diagram $\dX$ with effective homology, these computations
 
 \subsection{Eilenberg--MacLane spaces and diagrams}\label{s:emlspaces}
 
-Given a group $\pi$ and an integer $\thedim \geq 0$ an Eilenberg--MacLane space $\Kpin$ is a space satisfying
+Given a group $\pi $ and an integer $\thedim \geq 0$ an Eilenberg--MacLane diagram $\Kpin$ is a diagram of simplicial sets satisfying
 \[
-\pi_i (\Kpin) = 
+\pi_\thedimm (\Kpin)= 
 \left\{
 	\begin{array}{ll}
-		\pi & \mbox{for } i = \thedim,\\
+		\pi & \mbox{for } \thedimm = \thedim,\\
 		0 & \mbox{else}.
 	\end{array}
 \right.
 \]
-However, in this text the symbol $\Kpin$ will always denote the following concrete simplicial model (for details we refer to~\cite[page 101]{may})
+In this text the symbol $\Kpin$ will always denote the following concrete simplicial model (for details we refer to~\cite[page 101]{may})
 \[
 \Kpin_q = Z^\thedim (\stdsimp{q}; \pi),
 \] 
@@ -784,12 +784,12 @@ Analogously, we define the diagram $\Engen$ of spaces $E(\dpi(i), \thedim)$.
 
 %For Bredon cohomology and diagrams of simplicial sets (see Definition~\ref{def:Bredon}), a similar thing holds as well:  Morphisms of pairs $(\dX,A) \to \Engen$ correspond to cochains  $C^\thedim _\icat (\dX,A; \dpi)$ and morphisms $(\dX, A) \to \dK(\dpi, \thedim)$ correspond  to cocycles $Z^\thedim _\icat (\dX,A; \dpi)$. If the diagram $\dX$ is further cofibrant (and $\dK(\dpi, \thedim)$ is fibrant but this is always true for our model), the set of homotopy classes of maps of diagrams $[\dX, \dK(\dpi, \thedimm)]^A_\icat$ corresponds to the elements in $H^\thedimm _\icat (\dX,A; \dpi)$.
 
-According to results developed mainly by  Sergeraert, his students and coworkers (see e.g P.~Real's thesis~\cite{real2}),  $\Engen$ and $\Kpin$ have effective homology when $\thedim\geq 0$ and $\pi$ is a finitely generated abelian group. A strenghtening of these results was provided in~\cite{polypost}, where the authors present constructions that are polynomial. 
+%According to results developed mainly by  Sergeraert, his students and coworkers (see e.g P.~Real's thesis~\cite{real2}),  $\Engen$ and $\Kpin$ have effective homology when $\thedim\geq 0$ and $\pi$ is a finitely generated abelian group. A strenghtening of these results was provided in~\cite{polypost}, where the authors present constructions that are polynomial. 
 
-We will use the obvious implication of these results: given $\dpi \: \icat \to \Ab$ a finite diagram of finitely generated abelian groups and $\thedim \geq 1$, the Eilenberg--MacLane space $\dK(\dpi,\thedim)$ and the classifying space $\Engen$ have pointwise effective homology.
+%We will use the obvious implication of these results: given $\dpi \: \icat \to \Ab$ a finite diagram of finitely generated abelian groups and $\thedim \geq 1$, the Eilenberg--MacLane space $\dK(\dpi,\thedim)$ and the classifying space $\Engen$ have pointwise effective homology.
 
 
-In the following sections, we summarize various technical results regarding Eilenberg-MacLane simplicial sets and diagrams. Proofs are mostly omitted as they can be seen as generalizations of results from~\cite{polypost}. Full version with proofs can be found in~\cite{filak-thesis}.
+%In the following sections, we summarize various technical results regarding Eilenberg-MacLane simplicial sets and diagrams. Proofs are mostly omitted as they can be seen as generalizations of results from~\cite{polypost}. Full version with proofs can be found in~\cite{filak-thesis}.
 
 
 \begin{Def}\label{def:pointw-effective}
