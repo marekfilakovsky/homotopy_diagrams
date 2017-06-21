@@ -1,0 +1,378 @@
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{stmaryrd}
+\usepackage[all]{xy}
+\SelectTips{cm}{10}
+%\input xy
+%\xyoption{all}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{ushort}
+\usepackage{url}
+
+%\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+%\DeclareMathSymbol{\bbzero}{\mathord}{bbold}{`0}
+%\DeclareMathSymbol{\bbone}{\mathord}{bbold}{`1}
+
+%remarks
+
+\usepackage{ifthen}
+\usepackage[strict]{changepage}
+\usepackage{mparhack}
+
+\newcommand{\marrow}{\checkoddpage\marginpar{\ifoddpage$\boldsymbol\longleftarrow$\else$\boldsymbol\longrightarrow$\fi}}
+\newcommand{\lukas}[1]{\vskip 5pt\textsf{*** (LUKAS) \marrow #1\vskip 5pt}}
+\newcommand{\marek}[1]{{\color{orange}\vskip 1pt\textsf{*** (MAREK) \marrow #1\vskip 5pt}}}
+%comma in maths
+
+\newcommand{\comma}{{},\,}
+\newcommand{\col}{\!:\:\!}
+\newcommand{\loc}{\!\::\!}
+
+%letters
+
+\newcommand{\mrd}{\mathrm d}
+
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbB}{\mathbb B}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbD}{\mathbb D}
+\newcommand{\bbE}{\mathbb E}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbG}{\mathbb G}
+\newcommand{\bbH}{\mathbb H}
+\newcommand{\bbI}{\mathbb I}
+\newcommand{\bbk}{\Bbbk}
+\newcommand{\bbK}{\mathbb K}
+\newcommand{\bbL}{\mathbb L}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbT}{\mathbb T}
+\newcommand{\bbV}{\mathbb V}
+\newcommand{\bbZ}{\mathbb Z}
+
+\newcommand{\mcA}{\mathcal A}
+\newcommand{\mcB}{\mathcal B}
+\newcommand{\mcC}{\mathcal C}
+\newcommand{\mcD}{\mathcal D}
+\newcommand{\mcE}{\mathcal E}
+\newcommand{\mcF}{\mathcal F}
+\newcommand{\mcG}{\mathcal G}
+\newcommand{\mcH}{\mathcal H}
+\newcommand{\mcI}{\mathcal I}
+\newcommand{\mcJ}{\mathcal J}
+\newcommand{\mcK}{\mathcal K}
+\newcommand{\mcL}{\mathcal L}
+\newcommand{\mcM}{\mathcal M}
+\newcommand{\mcN}{\mathcal N}
+\newcommand{\mcO}{\mathcal O}
+\newcommand{\mcP}{\mathcal P}
+\newcommand{\mcQ}{\mathcal Q}
+\newcommand{\mcR}{\mathcal R}
+\newcommand{\mcS}{\mathcal S}
+\newcommand{\mcT}{\mathcal T}
+\newcommand{\mcU}{\mathcal U}
+\newcommand{\mcV}{\mathcal V}
+\newcommand{\mcW}{\mathcal W}
+\newcommand{\mcX}{\mathcal X}
+\newcommand{\mcY}{\mathcal Y}
+\newcommand{\mcZ}{\mathcal Z}
+
+\newcommand{\mfA}{\mathfrak A}
+\newcommand{\mfN}{\mathfrak N}
+\newcommand{\mfS}{\mathfrak S}
+\newcommand{\mfT}{\mathfrak T}
+\newcommand{\mfX}{\mathfrak X}
+\newcommand{\mfY}{\mathfrak Y}
+
+\newcommand{\mfg}{\mathfrak g}
+\newcommand{\mfh}{\mathfrak h}
+\newcommand{\mfk}{\mathfrak k}
+\newcommand{\mfm}{\mathfrak m}
+\newcommand{\mfn}{\mathfrak n}
+\newcommand{\mfM}{\mathfrak M}
+
+\newcommand{\mrP}{\mathrm P}
+
+\newcommand{\mri}{\mathrm i}
+
+\newcommand{\scE}{\textsc{E}}
+\newcommand{\scM}{\textsc{M}}
+\newcommand{\scU}{\textsc{U}}
+\newcommand{\scV}{\textsc{V}}
+\newcommand{\scS}{\textsc{S}}
+
+\newcommand{\sfB}{\mathsf B}
+\newcommand{\sfC}{\mathsf C}
+\newcommand{\sfF}{\mathsf F}
+\newcommand{\sfI}{\mathsf I}
+\newcommand{\sfW}{\mathsf W}
+
+%categories
+
+\newcommand{\Ab}{\mathsf{Ab}}
+\newcommand{\AffRmod}{\mathsf{Aff}\textrm{-}\mcR\textrm{-}\mathsf{mod}}
+\newcommand{\Alg}{\mathsf{Alg}}
+\newcommand{\Amod}{\mcA\textrm{-}\mathsf{mod}}
+\newcommand{\Bmod}{\mcB\textrm{-}\mathsf{mod}}
+\newcommand{\cosimp}{\mathsf{c}}
+\newcommand{\Cat}{\mathsf{Cat}}
+\newcommand{\CAT}{\mathsf{CAT}}
+\newcommand{\CGHaus}{\mathsf{CGHaus}}
+\newcommand{\Ch}{\mathsf{Ch}}
+\newcommand{\ConvTop}{\mathsf{ConvTop}}
+\newcommand{\Diag}{\mathsf{Diag}}
+\newcommand{\End}{\mathsf{End}}
+\newcommand{\EqRel}{\mathsf{EqRel}}
+\newcommand{\Fun}{\mathsf{Fun}}
+\newcommand{\GAb}{\mathsf{GAb}}
+\newcommand{\Gp}{\mathsf{Gp}}
+\newcommand{\Graph}{\mathsf{Gr}}
+\newcommand{\Ind}{\mathsf{Ind}}
+\newcommand{\LCTVS}{\mathsf{LCTVS}}
+\newcommand{\Mfld}{\mathsf{Mfld}}
+\newcommand{\ob}{\mathop\mathsf{ob}\nolimits}
+\newcommand{\Rmod}{\mcR\textrm{-}\mathsf{mod}}
+\newcommand{\simp}{\mathsf{s}}
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\sAb}{\simp\Ab}
+\newcommand{\sCat}{\simp\Cat}
+\newcommand{\sSet}{\simp\Set}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Tree}{\mathsf{Tree}}
+\newcommand{\TVS}{\mathsf{TVS}}
+\newcommand{\VGraph}{\mcV\textrm{-}\Graph}
+\newcommand{\VCat}{\mcV\textrm{-}\Cat}
+
+\newcommand{\Aut}{\mathop\mathsf{Aut}\nolimits}
+\newcommand{\Bilin}{\mathop\mathsf{Bilin}\nolimits}
+\newcommand{\cod}{\mathop\mathsf{cod}\nolimits}
+\newcommand{\Der}{\mathop\mathsf{Der}\nolimits}
+\newcommand{\dom}{\mathop\mathsf{dom}\nolimits}
+\newcommand{\Fam}{\mathop\mathsf{Fam}\nolimits}
+\newcommand{\Fib}{\mathop\mathsf{Fib}\nolimits}
+\newcommand{\GA}{\mathop\mathrm{GA}\nolimits}
+\newcommand{\GL}{\mathop\mathrm{GL}\nolimits}
+\newcommand{\Hfib}{\mathop{\mcH\textrm{-}\mathsf{fib}}\nolimits}
+\newcommand{\Ho}{\mathop\mathrm{Ho}\nolimits}
+\renewcommand{\hom}{\mathop\mathsf{hom}\nolimits}
+\newcommand{\iso}{\mathop\mathsf{iso}\nolimits}
+\newcommand{\map}{\mathop\mathsf{map}\nolimits}
+\newcommand{\mor}{\mathop\mathsf{mor}\nolimits}
+\renewcommand{\O}{\mathop\mathrm{{}O}\nolimits}
+\newcommand{\obj}{\mathop\mathsf{obj}\nolimits}
+\newcommand{\PGL}{\mathop\mathrm{PGL}\nolimits}
+\newcommand{\Rep}{\mathop\mathsf{Rep}\nolimits}
+\newcommand{\SL}{\mathop\mathrm{SL}\nolimits}
+\newcommand{\SO}{\mathop\mathrm{SO}\nolimits}
+\newcommand{\Sp}{\mathop\mathrm{Sp}\nolimits}
+\newcommand{\Spin}{\mathop\mathrm{Spin}\nolimits}
+\newcommand{\src}{\mathop\mathrm{src}\nolimits}
+\newcommand{\SU}{\mathop\mathrm{SU}\nolimits}
+\newcommand{\Sub}{\mathop\mathsf{Sub}\nolimits}
+\newcommand{\tar}{\mathop\mathrm{tar}\nolimits}
+\newcommand{\U}{\mathop\mathrm{{}U}\nolimits}
+
+\newcommand{\op}{\mathrm{op}}
+
+\newcommand{\ga}{\mathop\mathfrak{ga}\nolimits}
+\newcommand{\gl}{\mathop\mathfrak{gl}\nolimits}
+\renewcommand{\o}{\mathop\mathfrak{o}\nolimits}
+\newcommand{\so}{\mathop\mathfrak{so}\nolimits}
+
+%arrows
+
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\LRa}{\Leftrightarrow}
+\newcommand{\Da}{\Downarrow}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\da}{\downarrow}
+\newcommand{\ua}{\uparrow}
+\newcommand{\hra}{\hookrightarrow}
+\newcommand{\xlra}[1]{\xrightarrow{\ #1f\ }}
+\newcommand{\xlla}[1]{\xleftarrow{\ #1\ }}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lla}{\longleftarrow}
+\newcommand{\lRa}{\Longrightarrow}
+\newcommand{\lLa}{\Longleftarrow}
+\newcommand{\lmt}{\longmapsto}
+\newcommand{\dra}{\xymatrix@1{\ar@{-->}[r]&}}
+
+\newdir{c}{{}*!/-5pt/@^{(}}
+\newdir{d}{{}*!/-5pt/@_{(}}
+\newdir{ >}{{}*!/-5pt/@{>}}
+\newdir{s}{{}*!/+10pt/@{}}
+\newdir{|>}{{}*!/2pt/@{|}*@{>}}
+
+\newcommand{\cof}[1][]{\mathbin{\:\!\!\xymatrix@1@C=15pt{{}\ar@{ >->}[r]^{#1} & {}}}}
+\newcommand{\fib}[1][]{\mathbin{\:\!\!\xymatrix@1@C=15pt{{}\ar@{->>}[r]^{#1} & {}}}}
+\newcommand{\embed}[1][]{\mathbin{\:\!\!\xymatrix@1@C=15pt{{}\ar@{c->}[r]^{#1} & {}}}}
+\newcommand{\rla}[1][]{\mathbin{\:\!\!\xymatrix@1@C=15pt{{}\ar@<2pt>[r]^{#1} & {}\ar@<2pt>[l]}}}
+\newcommand{\semiar}[1]{\save[];#1**{}?<>(.25)*{}="a"**\dir{-},[];#1**{}?<>(.75);"a"**\dir{.};\ar#1 \restore}
+
+%\newcommand{\pullback}{\ar@{}[rd]|(.3){\scalebox{1.5}{$\displaystyle\lrcorner$}}}
+%\newcommand{\pb}[1]{\ar@{}[#1]|(.3){\scalebox{1.5}{$\displaystyle\lrcorner$}}}
+%\newcommand{\transversepullback}{\ar@{}[rd]|(.3){\scalebox{1.5}{$\displaystyle\lrcorner$}}\ar@{}[rd]|(.25){\pitchfork}}
+%\newcommand{\tpb}[1]{\ar@{}[#1]|(.3){\scalebox{1.5}{$\displaystyle\lrcorner$}}\ar@{}[rd]|(.25){\pitchfork}}
+%\newcommand{\pushout}{\ar@{}[lu]|(.3){\scalebox{1.5}{$\displaystyle\ulcorner$}}}
+
+\newcommand{\pbscale}{.25}
+\newcommand{\pboffset}{.5}
+
+\newcommand{\stdpbsize}{15pt}
+\newcommand{\stdpboffset}{.5}
+
+\newcommand{\tpbsize}{15pt}
+\newcommand{\tpboffset}{.5}
+
+\newcommand{\hpbsize}{15pt}
+\newcommand{\hpboffset}{.5}
+
+\newcommand{\xycorner}[3]{\save [];#2**{}?(\pbscale)="a",[];#1**{}?(\pbscale);"a"**{}?(\pboffset);"a"**\dir{-},[];#3**{}?(\pbscale);"a"**{}?(\pboffset);"a"**\dir{-} \restore}
+\newcommand{\xystdcorner}[3]{\save #2="a";#1;"a"**{}?(\stdpboffset);"a"**\dir{-};#3;"a"**{}?(\stdpboffset);"a"**\dir{-} \restore}
+%\newcommand{\xytcorner}[3]{\save [];#2**{}?(\tpbscale)="a",[];#1**{}?(\tpbscale);"a"**{}?(\tpboffset);"a"**\dir{-},[];#3**{}?(\tpbscale);"a"**{}?(\tpboffset);"a"**\dir{-};[]**{}?(.3)*{\scriptstyle\pitchfork} \restore}
+\newcommand{\xytcorner}[3]{\save #2="a";#1;"a"**{}?(\hpboffset);"a"**\dir{-};#3;"a"**{}?(\hpboffset);"a"**\dir{-};[]**{}?(.3)*{\scriptstyle\pitchfork} \restore}
+%\newcommand{\xyhcorner}[3]{\save [];#2**{}?(\hpbscale)="a",[];#1**{}?(\hpbscale);"a"**{}?(\hpboffset);"a"**\dir{-},[];#3**{}?(\hpbscale);"a"**{}?(\hpboffset);"a"**\dir{-};[]**{}?(.3)*{\scriptstyle h} \restore}
+\newcommand{\xyhcorner}[3]{\save #2="a";#1;"a"**{}?(\hpboffset);"a"**\dir{-};#3;"a"**{}?(\hpboffset);"a"**\dir{-};[]**{}?(.3)*{\scriptstyle h} \restore}
+\newcommand{\xymcHcorner}[3]{\save #2="a";#1;"a"**{}?(\hpboffset);"a"**\dir{-};#3;"a"**{}?(\hpboffset);"a"**\dir{-};[]**{}?(.3)*{\scriptstyle\mcH} \restore}
+\newcommand{\corner}[3]{\xycorner{[#1]}{[#2]}{[#3]}}
+\newcommand{\stdcorner}[3]{\xystdcorner{[#1]}{[#2]}{[#3]}}
+\newcommand{\tcorner}[3]{\xytcorner{[#1]}{[#2]}{[#3]}}
+\newcommand{\hcorner}[3]{\xyhcorner{[#1]}{[#2]}{[#3]}}
+\newcommand{\pb}[1][{1}]{\xycorner{[r]**{}?(#1)}{[dr]**{}?(#1)}{[d]**{}?(#1)}}
+\newcommand{\po}[1][{1}]{\xycorner{[l]**{}?(#1)}{[ul]**{}?(#1)}{[u]**{}?(#1)}}
+\newcommand{\stdpb}{\xystdcorner{[]+<\stdpbsize,0pt>}{[]+<\stdpbsize,-\stdpbsize>}{[]+<0pt,-\stdpbsize>}}
+\newcommand{\stdpo}{\xystdcorner{[]+<-\stdpbsize,0pt>}{[]+<-\stdpbsize,\stdpbsize>}{[]+<0pt,\stdpbsize>}}
+%\newcommand{\hpo}[1][{1}]{\xyhcorner{[l]**{}?(#1)}{[ul]**{}?(#1)}{[u]**{}?(#1)}}
+\newcommand{\tpb}{\xytcorner{[]+<\hpbsize,0pt>}{[]+<\hpbsize,-\hpbsize>}{[]+<0pt,-\hpbsize>}}
+\newcommand{\mcHpb}{\xymcHcorner{[]+<\hpbsize,0pt>}{[]+<\hpbsize,-\hpbsize>}{[]+<0pt,-\hpbsize>}}
+\newcommand{\hpb}{\xyhcorner{[]+<\hpbsize,0pt>}{[]+<\hpbsize,-\hpbsize>}{[]+<0pt,-\hpbsize>}}
+\newcommand{\hpo}{\xyhcorner{[]+<-\hpbsize,0pt>}{[]+<-\hpbsize,\hpbsize>}{[]+<0pt,\hpbsize>}}
+
+\newcommand{\xymatrixc}[2][]{\xy *!C\xybox{\xymatrix#1{#2}}\endxy}
+
+%various things
+
+\newcommand{\ad}{\mathop\mathrm{ad}\nolimits}
+\newcommand{\Ad}{\mathop\mathrm{Ad}\nolimits}
+\newcommand{\Ann}{\mathop\mathrm{Ann}\nolimits}
+\newcommand{\Cech}{\v Cech }
+\newcommand{\ch}{\mathop\mathrm{ch}\nolimits}
+\newcommand{\Charts}{\mathop\mathrm{Charts}\nolimits}
+\newcommand{\codim}{\mathop\mathrm{codim}\nolimits}
+\newcommand{\coker}{\mathop\mathrm{coker}\nolimits}
+\newcommand{\colim}{\mathop\mathrm{colim}}
+\newcommand{\cone}{\mathop\mathrm{cone}\nolimits}
+\newcommand{\conj}{\mathop\mathrm{conj}\nolimits}
+\newcommand{\const}{\mathop\mathrm{cst}\nolimits}
+\newcommand{\cor}{\mathop\mathrm{cor}\nolimits}
+\newcommand{\Cov}{\mathop\mathrm{Cov}\nolimits}
+\newcommand{\cyl}{\mathop\mathrm{cyl}\nolimits}
+\newcommand{\diag}{\mathop\mathrm{diag}\nolimits}
+\newcommand{\dirsp}{\mathop\mathrm{dir}\nolimits}
+\newcommand{\epsilonnbhd}{\textrm{$\varepsilon$-nbhd}}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\Diff}{\mathop\mathrm{Diff}\nolimits}
+\newcommand{\ef}{{\mathop\mathrm{ef}\nolimits}}
+\newcommand{\ev}{\mathop\mathrm{ev}\nolimits}
+\newcommand{\Ex}{\mathop\mathrm{Ex}\nolimits}
+\newcommand{\ext}{\mathop\mathrm{ext}\nolimits}
+\newcommand{\Ext}{\mathop\mathrm{Ext}\nolimits}
+\newcommand{\Face}{\mathop\mathrm{Face}\nolimits}
+%\newcommand{\fib}{\mathop\mathrm{fib}\nolimits}
+\newcommand{\fsol}{\mathop\mathrm{fsol}\nolimits}
+\newcommand{\Fl}{\mathop\mathrm{Fl}\nolimits}
+\newcommand{\germ}{\mathop\mathrm{germ}\nolimits}
+\newcommand{\Gr}{\mathop\mathrm{Gr}\nolimits}
+\newcommand{\grad}{\mathop\mathrm{grad}\nolimits}
+\newcommand{\hf}{\mathop\mathrm{hf}\nolimits}
+\newcommand{\hocolim}{\mathop\mathrm{hocolim}}
+\newcommand{\hofib}{\mathop\mathrm{hofib}\nolimits}
+\newcommand{\hoLan}{\mathop\mathrm{hoLan}\nolimits}
+\newcommand{\holim}{\mathop\mathrm{holim}}
+\newcommand{\Hom}{\mathop\mathrm{Hom}\nolimits}
+\newcommand{\hor}{\mathrm{hor}}
+\newcommand{\id}{\mathop\mathrm{id}\nolimits}
+\newcommand{\Id}{\mathop\mathrm{Id}\nolimits}
+\newcommand{\im}{\mathop\mathrm{im}\nolimits}
+\newcommand{\imm}{\mathop\mathrm{imm}\nolimits}
+\newcommand{\inner}{\mathop\mathrm{int}\nolimits}
+\newcommand{\inv}{\mathop\mathrm{inv}\nolimits}
+\newcommand{\interior}{\mathop\mathrm{int}\nolimits}
+\newcommand{\Lan}{\mathop\mathrm{Lan}\nolimits}
+\newcommand{\lax}{\mathop\mathrm{lax}\nolimits}
+\newcommand{\Lie}{\mathop\mathrm{Lie}\nolimits}
+\newcommand{\Lin}{\mathop\mathrm{Lin}\nolimits}
+\newcommand{\lspan}{\mathop\mathrm{span}\nolimits}
+\newcommand{\Mat}{\mathop\mathrm{Mat}\nolimits}
+\newcommand{\Nbhd}{\mathop\mathrm{Nbhd}\nolimits}
+\newcommand{\Op}{\mathop\mathrm{Op}\nolimits}
+\newcommand{\pcm}{\mathop\mathrm{pcm}\nolimits}
+\newcommand{\pl}{\wp\ell}
+\newcommand{\pr}{\mathop\mathrm{pr}\nolimits}
+%\newcommand{\Pre}{\mathsf{Pr}}
+%\newcommand{\PreSheaf}[2]{\mathop\mathrm{{#2}^{\Op({#1})^{op}}}}
+\newcommand{\Pt}{\mathop\mathrm{Pt}\nolimits}
+%\newcommand{\Sh}{\mathsf{Sh}}
+\newcommand{\sd}{\mathop\mathrm{sd}\nolimits}
+\newcommand{\Sh}{\mathop\mathrm{Sh}\nolimits}
+\newcommand{\sign}{\mathop\mathrm{sign}\nolimits}
+\newcommand{\sk}{\mathop\mathrm{sk}\nolimits}
+\newcommand{\sol}{\mathop\mathrm{sol}\nolimits}
+\newcommand{\SP}{\mathop\mathrm{SP}\nolimits}
+\newcommand{\spec}{\mathop\mathrm{sp}\nolimits}
+\newcommand{\st}{\mathop\mathrm{st}\nolimits}
+\newcommand{\St}{\mathop\mathrm{St}\nolimits}
+\newcommand{\sub}{\subseteq}
+\newcommand{\supp}{\mathop\mathrm{supp}\nolimits}
+\newcommand{\sym}{\mathop\mathrm{sym}\nolimits}
+\newcommand{\SurHom}{\mathop\mathrm{SurHom}\nolimits}
+\newcommand{\res}{\mathop\mathrm{res}\nolimits}
+\newcommand{\Res}{\mathop\mathrm{Res}\nolimits}
+%\newcommand{\tensor}[1]{\underset{#1}{\otimes}}
+\newcommand{\tensor}[1]{\otimes_{#1}}
+\newcommand{\Th}{\mathop\mathrm{Th}\nolimits}
+\newcommand{\Tor}{\mathop\mathrm{Tor}\nolimits}
+\newcommand{\Tot}{\mathop\mathrm{Tot}\nolimits}
+\newcommand{\tow}{\mathop\mathbf{tow}\nolimits}
+\newcommand{\tr}{\mathop\mathrm{tr}\nolimits}
+\newcommand{\vol}{\mathop\mathrm{vol}\nolimits}
+\newcommand{\Vol}{\mathop\mathrm{Vol}\nolimits}
+\newcommand{\wspec}{\mathop\mathrm{wsp}\nolimits}
+
+%constructions
+
+\newlength{\hlp}
+
+\newcommand{\der}[2][{}]{\tfrac{\mrd #1}{\mrd{#2}}}
+\newcommand{\derat}[2]{\left.\tfrac{\mrd}{\mrd #1}\right|_{#2}}
+\newcommand{\parderbig}[2][{}]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\parder}[2][{}]{\tfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\parvec}[1]{\partial{#1}}
+\newcommand{\parderat}[3][{}]{\left.\tfrac{\partial{#1}}{\partial #2}\right|_{#3}}
+\newcommand{\lcrbox}[3]{\rightbox{#1}{\leftbox{#2}{#3}}}
+
+%\newcommand{\leftbox}[2]{\settowidth{\hlp}{$#1$}\makebox[\hlp][l]{${#1}{#2}$}}
+%\newcommand{\rightbox}[2]{\settowidth{\hlp}{$#2$}\makebox[\hlp][r]{${#1}{#2}$}}
+
+\newcommand{\leftbox}[2]{{}\phantom{#1} \save []+L*+<.5pc>!!<0pt,\the\fontdimen22\textfont2>!L{#1#2} \restore}
+\newcommand{\rightbox}[2]{{}\phantom{#2} \save []+R*+<.5pc>!!<0pt,\the\fontdimen22\textfont2>!R{#1#2} \restore}
+
+\newcommand{\dtsubseteq}{\rotatebox{90}{$\subseteq$}}
+\newcommand{\tdsubseteq}{\rotatebox{-90}{$\subseteq$}}
+\newcommand{\tdcong}{\rotatebox{-90}{$\cong$}}
+
+%some useful global settings
+
+\entrymodifiers={+!!<0pt,\the\fontdimen22\textfont2>}
+%-- this makes all the xy-matrices look better (meaning the centre of the objects in the matrix are computed as in TeX)

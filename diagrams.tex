@@ -1,0 +1,2379 @@
+\documentclass[12pt,a4wide]{article}
+\input{"i.tex"}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{calc}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\SelectTips{cm}{10}
+\usepackage{graphics}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{ushort}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage{mathtools}
+\newcommand\bmmax{2}
+\usepackage{bm}
+
+\usepackage{url}
+\usepackage{rotating}
+\usepackage{titlesec} 
+\titleformat{\subsection}[runin]{\bfseries}{\thesubsection}{1ex}{}[.]
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Informal statement}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{obs}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{slemma}{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem*{sproposition}{Proposition}
+\newtheorem{ap}[thm]{Appendix}
+\newtheorem{con}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem*{sdefinition}{Definition}
+\newtheorem{convention}[thm]{Convention}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{ex}[thm]{Example}
+\newtheorem*{example}{Example}
+\newtheorem*{examples}{Examples}
+
+%ukradeno z ASlepu
+%\newcommand{\bbZ}{\mathbb Z}
+%\newcommand{\bbN}{\mathbb N}
+%\newcommand{\mcA}{\mathcal A}
+%\newcommand{\mcB}{\mathcal B}
+%\newcommand{\mcC}{\mathcal C}
+%\newcommand{\mcI}{\mathcal I}
+%\newcommand{\mcS}{\mathcal S}
+\newcommand{\cCat}{\mathcal C}
+\newcommand{\C}{\mathcal C}
+\newcommand{\conn}{\mathop{\mathsf{conn}}}
+%\newcommand{\dim}{\mathop{\mathsf{dim}}}
+%\newcommand{\col}{\!:\:\!}
+\newcommand{\msc}{\mathsf{C}_2}
+
+\DeclareSymbolFont{symbolsC}{U}{pxsyc}{m}{n}
+\DeclareMathSymbol{\coloneqq}{\mathrel}{symbolsC}{"42}
+
+\newcommand\otherdim{\ell}
+%\newcommand{\cof}[1][]{\xymatrix@1@C=15pt{{}\ar@{>->}[r]^{#1} & {}}}
+%\newcommand{\fib}[1][]{\xymatrix@1@C=15pt{{}\ar@{->>}[r]^{#1} & {}}}
+%\newcommand{\id}{\mathop\mathrm{id}\nolimits}
+%\newcommand{\Id}{\mathop\mathrm{Id}\nolimits}
+%\newcommand{\ef}{\mathrm{ef}}
+%\newcommand{\im}{\mathop\mathrm{im}\nolimits}
+\newcommand{\Ker}{\mathop\mathrm{Ker}\nolimits}
+%\newcommand{\coker}{\mathop\mathrm{Coker}\nolimits}
+\newcommand{\defeq}{\stackrel{\mathrm{def}}{=}}
+\newcommand{\fibre}{\mathop\mathrm{fib}\nolimits}
+%\newcommand{\op}{\mathsf{op}}
+\newcommand{\cofr}{\mathrm{cof}}
+\newcommand{\fibr}{\mathrm{fib}}
+\newcommand{\pt}{ \mathrm{\bf pt}}
+%\newcommand{\Hom}{\mathsf{Hom}}
+%\newcommand{\ev}{\mathop\mathrm{ev}\nolimits}
+\newcommand{\dev}{\mathop\mathrm{{ev}}\nolimits}
+%\newcommand{\dev}{\mathop\mathrm{{\bf ev}}\nolimits}
+%\newcommand{\cone}{\mathop\mathrm{cone}\nolimits}
+\newcommand{\repl}{\mathop\mathrm{repl}}
+
+
+
+
+
+\newcommand{\heading}[1]{\vspace{1ex}\par\noindent{\bf\boldmath #1}}
+\newcommand{\subh}[1]{\vspace{1ex}\par\noindent{\emph{#1}}}
+
+
+\newcommand{\sect}[1]{\POS[l]+R*!!<0pt,\the\fontdimen22\textfont2>{\vphantom{|}}="a";[]+L*!!<0pt,\the\fontdimen22\textfont2>{\vphantom{|}} \ar@<-5pt>@/_2pt/"a"_-{#1}}
+
+\DeclareMathAlphabet{\mathsfsl}{OT1}{cmss}{m}{sl}
+
+%\def\N{\mathbb N}
+%\newcommand{\bbZ}{\mathbb Z}
+%\def\Z{\mathbb Z}
+%\def\Z2{\mathbb Z_2}
+%\def\R{\mathbb R}
+\def\RP{\mathbb RP}
+\def\XYAB{[X,Y]^A _B}
+\newcommand{\bdry}{d}
+\newcommand{\ZG}{{\bbZ G}}
+\newcommand{\dist}{\operatorname{dist}}
+%categories
+
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\OgsSet}{[{\mathcal{O}_G ^\mathsf{op}},{\mathsf{sSet}}]}
+\newcommand{\Bas}{\sfsl{Bas}}
+\newcommand{\GsSet}{[G,\mathsf{sSet}]}
+\newcommand{\Ocat}{\mathcal{O}}
+
+\def\catI{mathcal{I}}
+\def\D{\Delta}
+\def\S{\mathcal{S}}
+\def\T{\mathcal{T}}
+\def\L{\Lambda}
+\def\I{\Delta^1}
+\def\d{\delta}
+%\def\Ker{\mathrm{Ker}\,}
+
+\newcommand{\Pst}[1]{P(#1)}
+\newcommand{\Pnewst}{\Pst{\then}}
+\newcommand{\Poldst}{\Pst{\then-1}}
+\newcommand{\Pist}{\Pst{i}}
+\newcommand{\Polder}{P_m}
+\newcommand{\Polderst}{\Pst{m}}
+\newcommand{\Pzerost}{\Pst{0}}
+\renewcommand{\Pi}{P_i}
+\newcommand{\Pimo}{P_{i-1}}
+\newcommand{\Pm}{P_{m}}
+\newcommand{\Pmmo}{P_{m-1}}
+\newcommand{\Yst}[1]{Y(#1)}
+\newcommand{\Ynewst}{\Yst{\then}}
+\newcommand{\Ynnewst}{\Yst{\then+1}}
+\newcommand{\Yoldst}{\Yst{\then-1}}
+\newcommand{\Yolderst}{\Yst{m}}
+\newcommand{\Yzerost}{\Yst{0}}
+\newcommand{\towercompmap}[2]{#1(#2)}
+
+\newcommand{\Engen}{WK(\pi,\then)}
+\newcommand{\Kngen}{\overline WK(\pi,\then)}
+\newcommand{\Kpin}{K(\pi,\then)}
+
+\DeclareMathOperator\MCyltemp{{Cyl}}
+\newcommand{\MCyl}[1]{\MCyltemp{({#1})}}
+
+%\DeclareMathOperator\MCone{Cone}
+%\DeclareMathOperator\dCone{{Cone}}
+
+
+\newcommand{\varphist}[1]{\towercompmap{\varphi}{#1}}
+\newcommand{\varphin}{\towercompmap{\varphi}{\then}}
+\newcommand{\varphinnewst}{\towercompmap{\varphi}{\then+1}}
+\newcommand{\varphinmo}{\towercompmap{\varphi}{\then-1}}
+\newcommand{\varphii}{\towercompmap{\varphi}{\thei}}
+\newcommand{\varphiimo}{\towercompmap{\varphi}{\thei-1}}
+\newcommand{\varphim}{\towercompmap{\varphi}{\them}}
+\newcommand{\varphimmo}{\towercompmap{\varphi}{\them-1}}
+\newcommand{\ellnmo}{\ell_{n-1}}
+\newcommand{\elln}{\ell_n}
+
+\newcommand{\KnstY}{\overline WK(\pi_\then(Y),\then)}
+\newcommand{\EnstY}{WK(\pi_\then(Y),\then)}
+\newcommand{\Knst}{\overline WK(\pi_\then,\then)}
+\newcommand{\Enst}{WK(\pi_\then,\then)}
+\newcommand{\Lnst}{K(\pi_\then,\then)}
+\newcommand{\deltanst}{{\delta_{n*}}}
+\newcommand{\face}[1]{\operatorname{face}_{#1}}
+
+\newcommand{\Lm}{{K_m}}
+
+\newcommand{\Hopf}{H-}
+%constructions
+
+
+\newcommand{\vertex}[1]{#1}
+
+\newcommand{\them}{m}
+\newcommand{\then}{n}
+\newcommand{\thep}{p}
+\newcommand{\theq}{q}
+\newcommand{\theconn}{{d}}
+\newcommand{\thedim}{{n}}
+\newcommand{\theotherdim}{{m}}
+\newcommand{\thedimm}{{k}}
+\newcommand{\thedimmm}{{j}}
+\newcommand{\stdsimp}[1]{\Delta^{#1}}
+\newcommand{\horn}[2]{%
+\mbox{$\xy
+<0pt,-\the\fontdimen22\textfont2>;p+<.1em,0em>:
+{\ar@{-}(0,0.1);(3,7)},
+{\ar@{-}(3,7);(6,0.1)},
+{\ar@{-}(3.2,7);(6.2,0.1)},
+{\ar@{-}(3.4,7);(6.4,0.1)}
+\endxy\;\!{}^{#1}_{#2}$}}
+
+\newcommand{\Pnew}{{P_\thedim}}
+\newcommand{\Pold}{{P_{\thedim-1}}}
+\newcommand{\Poldd}{{P_{\thedim-2}}}
+%\newcommand{\tPnew}{{\widetilde P_\thedim}}
+%\newcommand{\tPold}{{\widetilde P_{\thedim-1}}}
+\newcommand{\ptn}{\pt_n}
+\newcommand{\ptnmo}{\pt_{n-1}}
+\newcommand{\pin}{{\pi_\thedim}}
+\newcommand{\onew}{{o}}%{{o_\thedim}}
+\newcommand{\oold}{{o}}%{{o_{\thedim-1}}}
+
+\newcommand{\Kn}{{K_{\thedim+1}}}
+\newcommand{\En}{{E_\thedim}}
+\newcommand{\Ln}{{L_\thedim}}
+\newcommand{\Li}{{L_\thedimm}}
+
+\newcommand{\kn}{{k_\thedim}}
+\newcommand{\knp}{{k_\thedim'}}
+\newcommand{\kip}{{k_\thedimm'}}
+\newcommand{\knst}{{k_{\thedim*}}}
+\newcommand{\knstt}{{k_{\thedim-1*}}}
+
+\newcommand{\pn}{{p_\thedim}}
+\newcommand{\pnst}{{p_{\thedim*}}}
+\newcommand{\pvst}{{p_{\thedim-1*}}}
+
+\newcommand{\qn}{{q_\thedim}}
+\newcommand{\qnst}{{q_{\thedim*}}}
+
+\newcommand{\jn}{{j}}
+\newcommand{\jnst}{{j_*}}
+
+\newcommand{\kno}{{\kn\oold}}
+\newcommand{\qno}{{\qn\onew}}
+
+%\newcommand{\fn}{{f_\thedim}}
+%\newcommand{\varphin}{{\varphi_\thedim}}
+%\newcommand{\tvarphin}{{\widetilde\varphi_\thedim}}
+%\newcommand{\varphinst}{{\varphi_{\thedim*}}}
+\renewcommand\:{\colon}
+
+\def\df{\partial_\tau ^{F \ot B}}
+\def\dg{\partial_\tau ^{G \ot B}}
+\def\bo{\partial} %hranice
+
+\def\bD{\bar{\Delta}}
+\def\bW{\bar{W}}
+\def\t{\tau}
+\def\ot{\otimes}
+\def\oth{\mathbin{{\otimes}_\t}}
+\def\dif{\partial ^{F \ot B}}
+\def\dig{\partial ^{G \ot B}}
+
+
+\def\f{\widetilde{f}}
+\def\h{\widetilde{h}}
+\let\krouzek\r
+\def\r{\rho}
+\def\s{\sigma}
+\def\a{\alpha}
+\def\y{\gamma}
+
+\def\cb{C_* (B)}
+\def\ce{C_* (E)}
+\def\cg{C_* (G)}
+\def\cf{C_* (F)}
+
+\def\EML{\mathrm{EML}}
+\def\AW{\mathrm{AW}}
+\def\SH{\mathrm{SH}}
+
+\def\ep{\varepsilon}
+\def\di{\partial}
+\def\co{\circ}
+%boldfacesymbols for diagrams =>dB dE, dY
+%\newcommand{\dY}{{\bm{Y}}}
+%\newcommand{\dX}{\bm{X}}
+%\newcommand{\dA}{\bm{A}}
+%\newcommand{\dB}{\bm{B}}
+%\newcommand{\dM}{\bm{M}}
+%\newcommand{\dT}{\bm{T}}
+%\newcommand{\dS}{\bm{S}}
+%\newcommand{\dpi}{\bm{\pi}}
+%\newcommand{\drho}{\bm{\rho}}
+%\newcommand{\dalpha}{\bm{\alpha}}
+%\newcommand{\dP}{\bm{P}}
+%\newcommand{\dQ}{\bm{Q}}
+%\newcommand{\dK}{\bm{K}}
+%\newcommand{\dE}{\bm{E}}
+%\newcommand{\dC}{\bm{C}}
+%\newcommand{\dD}{\bm{D}}
+%\newcommand{\dF}{\bm{F}}
+%\newcommand{\dG}{\bm{G}}
+%\newcommand{\dZ}{\bm{Z}}
+%\newcommand{\dH}{\bm{H}}
+
+\newcommand{\dY}{Y}
+\newcommand{\dX}{X}
+\newcommand{\dA}{A}
+\newcommand{\dB}{B}
+\newcommand{\dM}{M}
+\newcommand{\dT}{T}
+\newcommand{\dS}{S}
+\newcommand{\dpi}{\pi}
+\newcommand{\drho}{\rho}
+\newcommand{\dalpha}{\alpha}
+\newcommand{\dP}{P}
+\newcommand{\dQ}{Q}
+\newcommand{\dK}{K}
+\newcommand{\dE}{E}
+\newcommand{\dC}{{C}}
+\newcommand{\dD}{D}
+\newcommand{\dF}{\bm{F}}
+\newcommand{\dG}{\bm{G}}
+\newcommand{\dZ}{Z}
+\newcommand{\dH}{H}
+
+%\newcommand{\holan}[1]{{#1} ^{\mathbb{L}} _{!}}
+\newcommand{\holan}{\mathsf{hoLan}}
+\newcommand{\lan}{\mathsf{Lan}}
+\newcommand{\ccat}{\mathcal C}
+\newcommand{\dcat}{\mathcal D}
+\newcommand{\icat}{\mathcal I}
+\newcommand{\jcat}{\mathcal J}
+\newcommand{\kcat}{\mathcal K}
+\newcommand{\og}{\mathcal{O}_G}
+\newcommand{\Cyl}{\mathsf{Cyl} \,}
+
+
+%ukradeno z Polypostu
+%%% MACROS: SPECIAL SETS AND MAPS
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbbm{N}}
+\newcommand{\Q}{\mathbbm{Q}}
+\newcommand{\R}{\mathbbm{R}}
+%\def\C{\mathbbm{C}}
+
+\newcommand{\RR}{\mathcal{R}}
+\renewcommand{\SS}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\renewcommand{\AA}{\mathcal{A}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\YY}{\mathcal{Y}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\MM}{\mathcal{M}}
+
+
+
+\newcommand{\FSC}{\mathcal{FSC}}
+\newcommand{\FSS}{\mathcal{FSS}}
+\newcommand{\EEC}{\mathcal{EC}}
+\newcommand{\EC}{\mathit{EC}}
+\newcommand{\dEC}{\mathit{\textbf{EC}}}
+\newcommand{\EtC}{\widetilde{\mathit{EC}}}
+\newcommand{\EZ}{\mathit{EZ}^M}
+\newcommand{\EF}{\mathit{EF}}
+\newcommand{\ET}{\mathit{ET}}
+\newcommand{\EB}{\mathit{EB}}
+\newcommand{\EA}{\mathit{EA}}
+\newcommand{\EM}{\mathit{EM}}
+\newcommand{\tEM}{\widetilde{\EC}^M}
+\DeclareMathOperator{\Barr}{Bar}
+\newcommand{\AB}{\mathrm{Ab}}
+
+\newcommand\diff{d}
+\newcommand\makevec[1]{{\bf #1}}
+\def \aa {\makevec{a}}
+\def \bb {\makevec{b}}
+\def \cc {\makevec{c}}
+\def \dd {\makevec{d}}
+\def \xx {\makevec{x}}
+\def \yy {\makevec{y}}
+\def \ww {\makevec{w}}
+\def \zz {\makevec{z}}
+\def \mm {\makevec{m}}
+\newcommand\cobo{\delta}
+\newcommand{\Ydm}{Y^\thedim}
+\newcommand{\Ydmm}{Y^\thedimm}
+\newcommand{\Ydmmm}{Y^\thedimmm}
+\newcommand\kkk{{\mathbf{k}}}
+\newcommand\Redu{\Rightarrow\!\!\!\!\Rightarrow}
+\newcommand\reduP{\stackrel{{\scriptscriptstyle \rm P~\,}}{\redu}}%{\redu_{\rm P}}
+\newcommand\lredu{\Leftarrow\!\!\!\!\Leftarrow}
+\newcommand{\steq}{\Leftarrow\!\!\!\!\Leftarrow\!\!\!\!\Rightarrow\!\!\!\!\Rightarrow}
+\newcommand{\steqP}{\stackrel{{\scriptscriptstyle \rm \,P}}{\steq}}
+\newcommand{\acts}{\mathbin{\:\!\!\xymatrix@1@C=15pt{{} & {\phantom{|}} \ar@(ul,dl)[]_-{}}\!}}
+\newcommand{\fnmo}{{f_{n-1}}}
+\newcommand{\on}{{o_n}}
+\newcommand{\onmo}{{o_{n-1}}}
+\newcommand{\deltan}{{\delta_n}}
+\newcommand{\ndg}{\mathrm{nd}}
+\newcommand{\can}{\mathrm{can}}
+%\newcommand{\cofr}{\mathrm{cof}}
+%\newcommand{\fibr}{\mathrm{fib}}
+\newcommand{\cylr}{\mathrm{cyl}}
+\newcommand{\add}{\operatorname{add}}
+\renewcommand{\inv}{\operatorname{inv}}
+%\newcommand{\pt}{\operatorname{pt}}
+\newcommand{\qt}{\operatorname{qt}}
+\newcommand{\Prd}{\operatorname{Prd}}
+\newcommand{\Wdg}{\operatorname{Wdg}}
+\newcommand{\fst}{\operatorname{fst}}
+\newcommand{\snd}{\operatorname{snd}}
+\newcommand{\incl}{\operatorname{in}}
+\newcommand{\pair}{\operatorname{pair}}
+%\newcommand{\conn}{\operatorname{conn}}
+\newcommand{\radd}{\operatorname{radd}}
+\newcommand{\mrh}{\mathrm{h}}
+
+\DeclareMathOperator{\size}{{\sf size}}
+\DeclareMathOperator{\enc}{{\sf enc}}
+\DeclareMathOperator{\fibb}{fib}
+%\DeclareMathOperator\MCyl{{\bf Cyl}}
+%\DeclareMathOperator\MCone{Cone}
+%\DeclareMathOperator\dCone{{\bf Cone}}
+%\DeclareMathOperator\MCyl{{Cyl}}
+\DeclareMathOperator\MCone{Cone}
+\DeclareMathOperator\dCone{{Cone}}
+\newcommand\MCo{M} % the mapping cone notation
+
+\newcommand{\Hsp}{M}
+\newcommand{\Hsptwo}{N}
+\newcommand{\bp}{\operatorname{bp}}
+\newcommand{\bptwo}{\operatorname{bq}}
+
+\newcommand{\oleftbox}[2]{\settowidth{\hlp}{$#1$}\makebox[\hlp][l]{${#1}{#2}$}}
+\newcommand{\orightbox}[2]{\settowidth{\hlp}{$#2$}\makebox[\hlp][r]{${#1}{#2}$}}
+
+%ukradeno z Are two maps homotopic?
+\newcommand{\sfP}{\mathsfsl{P}}
+\newcommand{\Gen}[2]{\mathsfsl{Gen}_{#1,#2}}
+\newcommand{\Gpfe}[2]{G_{#1,#2}^\mathrm{fe}}
+\newcommand{\Gpse}[2]{G_{#1,#2}^\mathrm{se}}
+\newcommand{\Map}{\mathsfsl{Map}}
+\newcommand{\MPS}{\mathsfsl{MPS}}
+\newcommand{\Pair}{\mathsfsl{Pair}}
+\newcommand{\PMPS}{\mathsfsl{PMPS}}
+\newcommand{\SSet}{\mathsfsl{SSet}}
+\newcommand{\PairPMPS}{\mathsfsl{PairPMPS}}
+
+
+\newcommand{\fn}{{f_\thedim}}
+%\newcommand{\varphin}{{\varphi_\thedim}}
+\newcommand{\tvarphin}{{\widetilde\varphi_\thedim}}
+\newcommand{\varphinst}{{\varphi_{\thedim*}}}
+\newcommand{\alphan}{{\alpha_\thedim}}
+\newcommand{\psin}{{\psi_\thedim}}
+
+\newcommand{\clnull}[1]{\ref{cl:null}${}_{#1}$}
+\newcommand{\clgen}[1]{\ref{cl:gen}${}_{#1}$}
+\newcommand{\clpoly}[1]{\ref{cl:poly}${}_{#1}$}
+
+\newdir{c}{{}*!/-5pt/@^{(}}
+\newdir{d}{{}*!/-5pt/@_{(}}
+\newdir{ >}{{}*!/-5pt/@{>}}
+\newdir{s}{{}*!/+10pt/@{}}
+\newdir{|>}{{}*!/2pt/@{|}*@{>}}
+
+%symboly k polynomialite
+\newcommand{\cla}[1]{\mathcal{#1}}
+\newcommand{\sfsl}[1]{\mathsfsl{#1}}
+\newcommand{\clm}{\bf \xymatrix@1@C=15pt{{}\ar@{~>}[r] & {}}}
+%\newcommand{\clm}{\mapsto}
+%\newcommand{\sfP}{\sfsl{P}}
+\newcommand{\alg}{\mathsfsl{Alg}}
+
+
+
+
+\begin{document}
+\author{M.\ Filakovsk\'{y}, L.\ Vok\v{r}\'{i}nek}
+\title{Computing homotopy classes in diagrams}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+Let $X,A,Y$ be finite diagrams of simplicial set, i.e. functors $\icat \to \sSet$, where $\icat$ is a finite category (category with finitely many objects and arrows).
+
+Our aim is to compute the set $[X, Y]^A$ of homotopy classes of maps $\ell \colon X \to Y$ extending a given map $f \colon A \to Y$ in the so-called stable range $\dim X \leq 2 \cdot \conn Y$, where
+\[\dim X = \max \{ \dim X(i) \mid i \in \mcI \}, \qquad \conn Y = \min \{ \conn Y(i) \mid i \in \mcI \}\]
+(maximal dimension and minimal connectivity)\footnote{The category of diagrams  $[\icat, \sSet]$ is assumed with the projective model structure.}. 
+
+\begin{remark}\label{rem:pointwise}
+It is also possible to treat both the dimension and the connectivity as collections of numbers indexed by the objects of $\mcI$ and our first approach indeed works even if the stability condition is interpreted pointwise. As a further remark, it is even possible to define $\dim X(i)$ as the maximal dimension of a cell at $i$ -- in this way, we may have $\dim X(i) = -\infty$ even if $X(i)$ is non-empty.
+\end{remark}
+
+{\color{red}
+\begin{enumerate}
+\item Add motivation and application(s) of our result - computation of stable htopy groups of spheres.
+\item Section methods should be expanded to provide some insight into Postnikov towers.
+\item Add overall plan of this paper - subdivide it into sections 
+\end{enumerate}
+}
+
+\begin{itemize}
+\item Start with the main theorem - prove the semi- effectivity of $[X, P_n]$ and do all the details later.
+\item Some great motivation about the ``towers'' as a concept.
+\end{itemize}
+
+\section{Methods}
+
+By computing $[X,Y]^A$ we mean the computation of an abelian group structure on this set. To compute this group, we first approximate (and replace) $Y$ by an appropriate stage of the Postnikov tower for $Y$. The algorithmic construction of Postnikov tower for a ($1$-connected) diagram $Y$ can be seen as a generalization of the constructions presented in \cite{cmk,polypost, aslep}. Roughly speaking, we inductively construct diagrams $\Pnewst$, $\thedim\geq 0$ called \emph{Postnikov stages} such that $\Pnewst$ reflect the homotopy $\thedim$-type of $Y$. 
+
+In section~\ref{sec:representations}, we show that our original problem of computing $[X,Y]^A$ can be, in case $\dim X \leq \thedim$ restated as a computation of $[X, \Pnewst]^A$.  
+The methods for the computation of the Postnikov tower are summed up in section~\ref{sec:effective} and the algorithm itself is presented in section~\ref{sec:postnikov-proof} and its correctness is proven in section~\ref{sec:correctness}.
+
+{\color{red}rewrite first two paragraphs so they reflect the reality of what we do}
+
+ We then  employ a general ``exact sequence'' that relates the sets of homotopy classes of maps into consecutive stages of a Postnikov tower. In the stable situation, it happens to be an exact sequence of abelian heaps -- abelian groups without a definite choice of zero; thus, after choosing zeros, we make this sequence into an exact sequence of abelian groups. It is then possible to compute the terms of this exact sequence by induction, in fact in two stages: first on a  local or ``semi-effective'' level, where we are only able to compute the group operations, and then on a global ``fully effective'' level, where generators and relations are also computed.
+
+
+\heading{Representations of sets and morphisms} 
+
+In the computation of $[X, Y]^A$, we will need to work with homotopy classes of maps and use them as inputs and outputs of algorithms. On the mathematical level, these will be represented by actual maps, although generally between objects different from the original $X$ and $Y$. If $X$ is finite, such a map can be prescribed by a table of its values, i.e.\ by a finite amount of data; however, we will also meet situations with $X$ infinite and then such a map will in general be represented by an algorithm computing values on any given element of the domain so that, in this case, not only is every homotopy class represented by multiple maps, but also every map is represented by multiple algorithms.
+
+Precise details will not be important for most of our discussion, it is however important that we will be working with sets $A$ that are provided with a surjective map $\mcA \to A$, denoted $\alpha \mapsto [\alpha]$, in such a way that elements of $\mcA$ have a specific representation in a computer (for definitness, we might say that elements of $\mcA$ are actual bit strings, but we will not need to dig into such details). Although it is customary to assume that such sets are computable (i.e.\ there exists an algorithm deciding whether a given bit string belongs to $\mcA$), this does not hold for some of our examples (e.g.\ the above mentioned case of algorithms) and, for this reason, this will not be required. We will say that the set $A$ has a \emph{semi-effective} representation. A mapping $f \colon A \to B$ between semi-effectively represented sets is said to be \emph{computable} if there is given an algorithm that computes a mapping $\varphi \colon \mcA \to \mcB$ that represents $f$, i.e.\ such that $f([\alpha]) = [\varphi(\alpha)]$.
+
+We will also need semi-effective representations for algebraic structures, i.e.\ sets equipped with collections of operations. Such a mathematical structure has \emph{semi-effective} representation if it has a semi-effective representation as a set and if all the operations are computable mappings. As a very important example, a \emph{semi-effective group} is a group (that we will write additively), whose underlying set is semi-effectively represented and whose zero, addition and inverse are computable mappings.
+
+\heading{Simplicial sets}
+As we intend to present algorithms that compute with simplicial sets, we need an ``algorithmic'' and ``computable'' version of these objects:
+
+Given a simplicial set $X$, $X^\ndg$ will further denote the set of its nondegenerate simplices. A simplicial set $X$ is \emph{finite} if  $X^\ndg$ is finite. Recall that any simplex $x\in X$ can be uniquely described as a sequence $x =  s_{i_1} \cdots s_{i_t} y$, where $s_{i_k}$ are the degeneracy operators and $y\in X^\ndg$. 
+
+To give a complete description of a finite simpliocial set $X$, it is enough to describe how the faces of the nondegenerate simplices are glued together. These relations can be given in many ways, for example, they can all be described in a form $d_{j} x = s_{i_1} \cdots s_{i_t} y$, where  $x, y \in X^\ndg$ and $d_j$ is the face operator. Because there is only finitely many nondegenerate simplices, the list of all relations as above is also finite. 
+
+In conclusion, a complete description of a simplicial set $X$ can be obtained by a  finite table of its nondegenerate simplices $X^\ndg$ together with their dimensions and a finite table specifying the relations between the simplices.
+
+A simplicial map $f \: X \to Y$ between finite simplicial sets can be represented by a finite table that lists the images of the nondegenerate simplices of $X$.
+
+In case where the simplicial set is no longer finite, or we simply do not have any overall information about this simplicial set, we utilize the following concept, where we focus on a local description of a simplicial set only: 
+
+\begin{Def}
+Let $X$ be a simplicial set. We say that $X$ is \emph{locally effective} 
+if we are given a specified encoding of the simplices of $X$ and a collection of algorithms computing the face and degeneracy operations on any simplex of $X$. 
+\end{Def}
+
+One can further define a stronger notion of ``fully effective'' simplicial set as a locally effective simplicial set $X$ and an algorithm that outputs a full list of it nondegenerate elements in a given dimension and an algorithm that for a given element $x \in X$ computes its unique representation as $x =  s_{I} y$, $y\in X^\ndg$. Clearly any finite simplicial set is fully effective, but the stronger definition is unnecessary for our purposes.
+
+For maps of locally effective simplicial sets, we say that a map $f\: X \to Y$ is \emph{computable} if there is an algorithm that for any simplex $x\in X$ outputs the encoding of $f(x)$.
+
+
+%As a special case, we remark that any finite simplicial set represented by a finite table as described above can be seen as a locally effective simplicial set. Any simplex of $X$ is encoded by a list of degeneracies applied to one nondegenerate simplex $s_{i_1} \cdots s_{i_t} x \mapsto ({i_1}, \cdots, {i_t}, \mathrm{enc}(x))$.
+
+
+\heading{Diagrams of simplicial sets}
+In this section, we deal with the category $\sSet^ \icat$, i.e. a category of functors (or diagrams) $\icat \to \sSet$ for some fixed category $\icat$, which we assume to be finite. 
+
+We say a diagram $X \in \sSet^ \icat$ is \emph{locally effective}, if each $X(i)$ is locally effective simplicial set for any $i\in \icat$ and maps $X(f)$ are computable maps for any $f\in \icat(i,j)$. A map $f\: X \to Y$ between locally effective diagrams is \emph{computable} if each map $f(i)\; X(i) \to Y(i)$ is computable for all $i \in \icat$.
+
+\begin{Def}\label{d:cellulardiagrams}
+Let $A\subseteq X$ be diagrams of simplicial sets. 
+We call the pair $(X,A)$ \emph{cellular} if there exists an indexing set $J$ such that any $k$--simplex $e \in (X\setminus A) (i)_k$ can be uniquely described as
+\[
+e = f_\alpha (e _\alpha)
+\]
+where $\alpha \in J$,$ i_\alpha \in \icat$, $f_\alpha \in \icat(i_\alpha, i)$,  $e _\alpha \in X(i_\alpha)_k$.
+
+A cellular pair $(X,A)$ is called \emph{semi-effective}  if both $X,A$ are locally effective diagrams and there exists an algorithm that given $e$ as above outputs the unique description. 
+
+(\emph{relative -effective})
+Finally, a pair $(X,A)$ is \emph{fully effective} if $J$ is finite and there exists an algorithm that outputs the full list of elements $\{e_\alpha \mid \alpha \in J\}$.
+\end{Def}
+
+\heading{Model structure}
+We now describe the model category structure, known as the \emph{projective model structure}, first introduced in \cite{bous}, on a category $\sSet^\icat$, by describing the classes of weak equivalences, fibrations and cofibrations:
+
+We say that the map of diagrams $g \: Y \to B$ is a \emph{weak equivalence} if it is a weak equivalence pointwise, i.e. $G(i)\:  Y(i) \to B(i) $ induces isomorphism on the homotopy groups for all $i$. Similarly, $g \: Y \to B$ is a fibration if it is a (Kan) fibration pointwise.  A diagram $\dY$ is called \emph{fibrant} if the unique map to $\pt $ is a fibration. Here, we interpret $\pt$ as constant diagram on a basepoint $* = \stdsimp{0}$.
+
+We say that a map of diagrams $f\:A \to X$ is a \emph{cofibration} if it has the so--called \emph{left lifting property} with respect to maps that are both weak equivalences and fibrations, i.e. if for every commutative diagram
+\[
+\xymatrix{
+A \ar[rr] \ar[d]_f && Y \ar[d]^g\\
+X \ar[rr] \ar@{.>}[urr] && B 
+}
+\]
+where, $X,Y,A,B \in [\icat, \sSet]$ and $g$ is both a weak equivalence and a fibration, there exists a lift (a dotted arrow) in the diagram. One can see that if $f$ is an inclusion and $(X,A)$ a cellular pair then $f$ is a cofibration.
+
+We will further make use of \emph{fibrant and cofibrant replacements}: A \emph{fibrant replacement} of a diagram $X$ is a fibrant diagram $\dX^\fibr$ together with a weak equivalence $X \to \dX^\fibr$. Dually a \emph{cofibrant replacement} of a diagram $X$ is a cofibrant diagram $\dX^\cofr$ together with a weak equivalence $X^\cofr \to \dX$. As is standard in homotopy theory, one defines the set homotopy class of maps as $[\dX,\dY] = [\dX^\cofr, \dY^\mathsf{fib}]$.
+
+We remark that a fibrant and cofibrant replacements always exist and that they are not unique. In this paper by cofibrant replacement we refer to the Bousfield-Kan model of a cofibrant replacement, that is introduced in detail in section~\ref{sec:effective}.
+\heading{Homotopy and homology}
+
+%The model structures (in particular the projective one) on the diagrams of CW complexes and therefore, in essence, for diagrams of simplicial sets have been described in \cite{alaska}[section VI] or \cite{dwykan}. 
+
+
+%We now define the version of Bredon cohomology and homology \cite{bredon} for diagrams of simplicial sets and we describe the homotopy groups of a diagram. All these definitions can be seen as generalizations of the same notions given for $G$--simplicial sets. Details can be seen \cite{alaska}[sections I, II and VI].
+
+We aim to define homotopy groups of diagrams $\dX \: \icat \to \sSet$ in such a way they can be seen as functors $\dpi_\thedimm (-)\:\sSet^\icat \to \Grp^\icat$. To do so, we will assume that $\dX(i)$ are simply connected and thus  $\pi_\thedimm (\dX(i))$ do not depend on  basepoints.
+To define homotopy groups for diagrams of simplicial sets that are not simply connected, basepoints have to be introduced, possibly as a subdiagram  $\pt$ of $\dX$. However in this situation, $\dpi_k$  in general does not appear as a  functor $\sSet^\icat \to \Grp^\icat$. 
+
+\begin{Def}
+Let  $\dX \colon \icat \to \sSet$ be a diagram of simply connected simplicial sets. We define the $\thedimm$-th  homotopy group $\dpi_\thedimm (\dX) $ of $\dX$ as a diagram $\icat \to \Set$ satisfying
+\[
+\dpi_\thedimm (\dX) (i) = \pi_\thedimm (\dX(i)), \qquad i\in \icat
+\]
+and the maps in the diagram $\dpi_* (\dX)$ are given as follows: for any $f\: i\to j$, $i,j \in \icat$ we have 
+\[
+\dpi_* (\dX) (f) = \dX(f)_* \:  \pi_* (\dX(i)) \to  \pi_* (\dX(j)).
+\]
+\end{Def}
+Later in the text, we will work with relative homotopy groups for a pair $(\dX, \dA)$. Here $\dA$ is a subdiagram of $\dX$, i.e for any $i\in \icat$ we have $\dA (i) \subseteq \dX (i)$ and for arbitrary $f\: i \to j$ we have $\dA(f) = \dX(f)|_{\dA}$. Given that both $\dX$ and $\dA$ are $1$-connected, the homotopy group $\dpi_*(\dX, \dA)$ appears as a functor $\mathrm{Pair}( \sSet^\icat) \to \Grp^\icat$.
+
+\begin{Def}
+For a diagram $\dX\: \icat \to \sSet$, we define a diagram of chain complexes $\dC_*(\dX)$ by setting $\dC_*(\dX)(i) = C_*(\dX(i))$. Similarly, we define the homology groups $\dH_* (\dX)$ of $\dC_*(\dX)$ as diagrams of abelian groups.
+\end{Def}
+There is another version of homology (and cohomology), namely the \emph{Bredon cohomology and homology}. It was originally defined for $G$--simplicial sets (
+%or, in effect for $\OgsSet$, 
+see \cite{bredon}), but it can be easily generalized to any diagrams of simplicial sets:
+\begin{Def}\label{def:Bredon}
+Let $\dX \colon \icat \to \sSet$ be a diagram of simplicial sets and let $\drho\colon \icat \to \Ab$ be a diagram of abelian groups. 
+
+We define the cochain complex $C^* _\icat (\dX;\drho) \coloneqq$ $\Hom(\dC_*( \dX), \drho)$. Its $n$-th cohomology group $H^n _\icat (\dX; \drho)$ is called the $n$-th cohomology group of $\dX$ with coefficients in $\drho$.
+\end{Def}
+We remark that $C^* _\icat(\dX;\drho)$ is not a diagram, but a chain complex only. In the literature \cite{alaska, bredon} the diagrams $\drho$ are sometimes called \emph{coefficient systems}.
+
+\section{Effective homological algebra I}\label{sec:effective_first}
+\subsection{Effective abelian groups}\label{sec:effabgrp}
+We have previously defined simplicial sets with effective homology in an abstract way essentially as a black box with which we can perform certain computations.
+
+We will now describe the abstract computational (\emph{effective}) model for finitely generated abelian groups first introduced in \cite{cmk}. The model enables us to compute kernels, cokernels and extensions in an algorithmic way.
+The main object of interest in this section is a notion of \emph{fully effective} abelian group.
+\begin{Def}\label{def:fullyefab}
+A \emph{semi-effective} group $A$ consists of 
+\begin{itemize}
+\item a set of representatives $\mathcal{A}$. The element of $A$ represented by an $\alpha \in \mathcal{A}$ is denoted $[\alpha]$,
+\item algorithms that provide us with a representative for neutral element, sum of two elements and inverse. In more detail we can compute $0\in \mathcal{A}$ such that $[0] = e$, given any $\alpha, \beta \in \mathcal{A}$ we compute $\gamma \in \mathcal{A}$ such that $[\gamma] = [\alpha] + [\beta]$ and for any $\alpha \in \mcA$ we can compute $\beta \in \mcA$ such that $[\beta] = - [\alpha]$,
+\end{itemize}
+We call a homomorphism $f \colon A \to B$ of fully effective abelian groups  \emph{computable homomorphism} if there is a computable mapping of sets $\phi \colon \mathcal{A} \to \mathcal{B}$ such that $f([\alpha] = [\phi(\alpha)])$.
+\end{Def}
+
+\begin{definition}
+We call a semi-effective abelian group $A$ \emph{fully effective} if there is given an isomorphism $A\cong\bbZ/q_1\oplus\cdots\oplus\bbZ/q_r$, computable together with its inverse. In detail, this consists of
+\begin{itemize}
+\item
+an algorithm that outputs a finite list of generators $a_1,\ldots,a_r$ of $A$ (given by representatives) and their orders $q_1,\ldots,q_r\in\{2,3,\ldots\}\cup\{0\}$ (where $q_i=0$ gives $\bbZ/q_i=\bbZ$),
+\item
+an algorithm that, given $\alpha\in\mcA$, computes integers $z_1,\ldots,z_r$ so that $[\alpha]=\sum_{i=1}^rz_i a_i$; each coefficient $z_i$ is unique within $\bbZ/q_i$.
+\end{itemize}
+\end{definition}
+
+The proofs of the following lemmas are not difficult; they are given in \cite{CKMSVW11}.
+
+\begin{lemma}[kernel and cokernel]\label{l:ker_coker}
+Let $f\col A\to B$ be a computable homomorphism
+of fully effective abelian groups.
+Then both $\ker(f)$ and $\coker(f)$ can be represented as fully effective abelian groups.
+\end{lemma}
+
+\begin{lemma}[short exact sequence]\label{l:ses}
+Let $A$, $B$, $C$ be abelian groups, represented by $\mcA$, $\mcB$, $\mcC$, respectively, with $A$, $C$ fully effective and $B$ semi-effective, and let
+\[\xymatrix{0 \ar[r]& A \ar[r]^{f} & B \ar[r]^{g} & C \ar[r]&0}\]
+be a short exact sequence with $f$, $g$ computable. Assume, moreover, that the following computable maps are given:
+\begin{itemize}
+\item
+$\sigma \colon \mcC \to \mcB$ such that $g([\sigma(\gamma)])=[\gamma]$ for all $\gamma \in \mcC$,
+\item
+$\rho \colon \mcB \to \mcA$, defined only on representatives of $\im f$, such that $f([\rho(\beta)])=[\beta]$.
+\end{itemize}
+Then an algorithm outputs a fully effective representation of~$B$.
+\end{lemma}
+
+We remark that we \emph{do not} require  $[\sigma(\gamma)]$ to depend only on $[\gamma]$ -- it might well depend on the representative $\gamma$.
+
+\begin{lemma}[computing preimage]\label{l:preimage}
+Let $f \colon A \to B$ be a computable homomorphism of fully effective abelian groups. Then there is an algorithm that, given $b \in B$, decides whether it lies in $\im f$. If it does, it computes a preimage $a \in f^{-1}(b)$.
+\end{lemma}
+
+\begin{proof}
+Compute the images $f(a_1), \ldots, f(a_r)$ of the generators of $A$. Next, decide if the equation
+\[x_1 f(a_1) + \cdots + x_r f(a_r) = b\]
+has a solution (this is done by translating to the direct sum of cyclic groups and solving there using the standard methods). If a solution exists, output $a = x_1 a_1 + \cdots + x_r a_r$.
+\end{proof}
+
+The next result will be utilized in further proofs:
+\begin{lem}\label{lem:minihom}
+Let $A,B$ be fully effective abelian groups. Then $\Hom (A,B)$ and  $A \ot B$ are fully effective abelian groups.
+\end{lem}
+\begin{proof}
+Suppose that $a_1, \ldots, a_\thedimm$ are the generators of $A$ and $b_1, \ldots, b_\thedim$ are the generators of $B$. Let $q_1, \ldots, q_\thedimm$, $p_1, \ldots, p_\thedim$ be the numbers denoting the orders as in the Definition~\ref{def:fullyefab}. 
+Then we can identify $\Hom (A,B)$ with an abelian group, with generators $x_{i,j}$,  $1\leq i\leq \thedimm, 1\leq j \leq \thedim$ and numbers $r_{i,j} \in \mathbb{N} \cup \{ 0\}$ when we identify $\mathbb{Z}/1$ with the trivial group such that
+\[
+r_{i,j} =
+\left\{
+	\begin{array}{ll}  
+		\mbox{gcd}(q_i, p_j) & \mbox{if } q_i, p_j >0, \\
+		p_j  & \mbox{if } q_i = 0\\
+		1 & \mbox{if } q_i > 0, p_j = 0.
+		\end{array}
+\right.
+\]
+By removing the trivial groups (generators $x_{i,j}$ where $r_{i,j} = 1$) from our description of $\Hom (A,B)$, we obtain a structure of a fully effective abelian group on $\Hom (A,B)$.
+
+For the tensor product, we remark that the generators are 
+\[
+\{a_i \ot b_j | 1 \leq  i\leq \thedimm, 1 \leq  j\leq \thedim \}
+\]
+and order of the generator is $\mathrm{gcd}(q_i, p_j)$.
+\end{proof}
+Let $\icat$ be a finite category and let $\dpi \colon \icat \to \Ab$ be a diagram such that every $\dpi(i)$ is fully effective abelian and every morphism is a computable homomorphism. We then call $\dpi$ a \emph{diagram of fully effective abelian groups}. As a consequence of the previous lemma, we get
+\begin{lem}\label{lem:hom}
+Let $\icat$ be a finite category and let $\dpi, \drho \colon \icat \to \Ab$ be diagrams of fully effective abelian groups. Then $\Hom(\dpi, \drho)$ is a fully effective abelian group.
+\end{lem}
+\begin{proof}
+Notice that each $\Hom(\dpi(i), \drho (i')) $ is a fully effective abelian group by  Lemma~\ref{lem:minihom} and that $\Hom(\dpi, \drho) \leq \prod_{i\in \icat} \Hom(\dpi(i), \drho (i))$. We define a ho\-mo\-mor\-phi\-sm
+\[
+F\colon  \prod_{i\in \icat} \Hom(\dpi(i), \drho (i)) \to  \prod_{f\colon i\to i'}\Hom(\dpi(i), \drho (i'))
+\]
+for any $g \in \prod_{i\in \icat} \Hom(\dpi(i), \drho (i)) $ as follows:
+\[
+F(g) =   (\drho(f)g(i) - g(i')\dpi(f))_{f\colon i\to i'}.
+\]
+Then the desired $\Hom(\dpi, \drho)$ is equal to $\Ker F$. As $\icat$ is a finite category, both  $ \prod_{i\in \icat} \Hom(\dpi(i), \drho (i))$ and $\prod_{f\colon i\to i'}\Hom(\dpi(i), \drho (i'))$ are fully effective abelian groups. Because $F$ is computable, Lemma \ref{l:ker_coker} gives us that $\Ker F$ is fully effective.
+\end{proof}
+From the perspective of category theory, the previous lemma can be seen as a special case of a computation of the end of functor $G\: \icat^\op \times \icat \to \Ab$, where $G(i,j)\coloneqq \Hom(\dpi(i),\drho(j))$.  Formally, one writes $\int_{i\in \icat} G(i,i) = \int_{i\in \icat} \Hom(\dpi(i),\drho(i)) = \Hom(\dpi,\drho)$, see e.g. chapter V in \cite{alaska}.
+
+Dually, to the end (or $\Hom$) there is a construction known as a coend (or tensor product): This time one of the diagrams of groups, say $\drho$ is contravariant, so 
+$ \drho \: \icat^\op \to \Ab$. We define 
+\begin{equation}\label{eq:coend}
+\int^{i\in \icat} \dpi(i) \otimes \drho(i) = \dpi \otimes_\icat \drho =\sum_{i\in \icat, i'\in \icat} \dpi(i) \otimes \drho(i') / \sim
+\end{equation}
+where $\sim$ is given by ${(f_* a, b)} \sim {(a, f^* b)}$, where $f\:i \to i'$ is any arrow in $\icat$, $a \in \dpi(i), b\in \drho(i')$. We deduce the following result:
+
+\begin{lem}\label{lem:tens}
+Let $\icat$ be a finite category and let $\dpi \: \icat \to \Ab$ and $ \drho \: \icat^\op \to \Ab$ be diagrams of fully effective abelian groups. Then $\dpi \otimes_\icat \drho$ is a fully effective abelian group.
+\end{lem}
+\begin{proof}
+The proof is similar to the proof of Lemma \ref{lem:hom}. We first need to show that tensor product of two fully effective abelian group is fully effective, but that is due to Lemma~\ref{lem:minihom}. We define morphism
+\[
+F \: \sum_{f\colon i\to i'} {\dpi(i) \ot \drho (i')} \to \sum_{ i \in \icat} \dpi(i) \ot \drho (i)
+\]
+by $F( (a \ot b)_f) = f_* a \ot b - a \ot f^*b $ for some $a \in \dpi(i), b \in  \drho(i')$. Because $\coker F = \dpi \otimes_\icat \drho $ we can use Lemma~\ref{l:ker_coker} to obtain the result.
+\end{proof}
+
+We remark that given a diagram $\dX$ with effective homology, these computations can be utilized to compute the chain complexes $C^\icat _* (\dX, \dpi)$, $C_\icat ^* (\dX, \dpi)$ and further the Bredon homology and cohomology groups.
+
+\subsection{Eilenberg--MacLane spaces and diagrams}\label{s:emlspaces}
+
+Given a group $\pi$ and an integer $\thedim \geq 0$ an Eilenberg--MacLane space $\Kpin$ is a space satisfying
+\[
+\pi_i (\Kpin) = 
+\left\{
+	\begin{array}{ll}
+		\pi & \mbox{for } i = \thedim,\\
+		0 & \mbox{else}.
+	\end{array}
+\right.
+\]
+However, in this text the symbol $\Kpin$ will always denote the following concrete simplicial model (for details we refer to~\cite[page 101]{may})
+\[
+\Kpin_q = Z^\thedim (\stdsimp{q}; \pi),
+\] 
+where $\stdsimp{q} \in \sSet$ is the standard $q$--simplex and $Z^\thedimm$ denotes the cocycles. Similarly, we define the contractible space $E(\pi, \thedim) = \Engen$ by the formula
+\[
+E(\pi, \thedim)_q = C^\thedimm (\stdsimp{q}; \pi) .
+\]
+Given a $q$--simplex $\s \in E(\pi, \thedim)_q$, the coboundary operator $\delta\: C^\thedim (\stdsimp{q}; \pi) \to C^{\thedim+1} (\stdsimp{q}; \pi)$ produces a $q$--simplex $\delta \s$ of $K(\pi, \thedim+1)$. 
+
+As the spaces $ E(\pi, \thedim)$ and $K(\pi, \thedim+1)$ can be seen as a result of the so-called $W$ and $\overline W$ constructions applied on $\Kpin$, for details see \cite{may}, we will frequently denote $E(\pi, \thedim) = \Engen$ and $K(\pi, \thedim+1) = \Kngen$.
+
+Abusing the notation for the coboundary operator, we get a simplicial map 
+\[ \delta \colon  \Engen \to \Kngen\] 
+that is, according to \cite[Theorem 23.10]{may}, a Kan fibration with with fibre $\Kpin$.
+
+Using these models, we define diagrams of Eilenberg--MacLane spaces $\Kpin\:\icat \to \sSet$ for $\dpi\: \icat \to \Ab$ by setting $\Kpin(i) = K(\dpi(i), \thedim)$. The maps in the diagram $\dK(\dpi, \thedim)$ are induced by the homomorphisms in $\dpi$.
+Analogously, we define the diagram $\Engen$ of spaces $E(\dpi(i), \thedim)$.
+
+%Simplicial sets $K(\pi, \thedim), \Engen$ defined above have the property that relative simplicial maps $(X,A) \to K(\pi, \thedim)$, where $A$ is mapped to zero, correspond to relative cocycles $Z^\thedim (X, A; \pi)$ and similarly simplicial maps $X \to \Engen$ correspond to relative cochains $C^\thedim (X,A; \pi)$. 
+
+%This enables us to represent simplicial maps by cochains and cocycles. We further remark that given a simplicial set $X$ the set of homotopy classes of maps $[X, K(\pi, \thedim)]^A$ corresponds to the elements of the group $H^\thedim (X,A; \pi)$. 
+
+%For Bredon cohomology and diagrams of simplicial sets (see Definition~\ref{def:Bredon}), a similar thing holds as well:  Morphisms of pairs $(\dX,A) \to \Engen$ correspond to cochains  $C^\thedim _\icat (\dX,A; \dpi)$ and morphisms $(\dX, A) \to \dK(\dpi, \thedim)$ correspond  to cocycles $Z^\thedim _\icat (\dX,A; \dpi)$. If the diagram $\dX$ is further cofibrant (and $\dK(\dpi, \thedim)$ is fibrant but this is always true for our model), the set of homotopy classes of maps of diagrams $[\dX, \dK(\dpi, \thedimm)]^A_\icat$ corresponds to the elements in $H^\thedimm _\icat (\dX,A; \dpi)$.
+
+According to results developed mainly by  Sergeraert, his students and coworkers (see e.g P.~Real's thesis~\cite{real2}),  $\Engen$ and $\Kpin$ have effective homology when $\thedim\geq 0$ and $\pi$ is a finitely generated abelian group. A strenghtening of these results was provided in~\cite{polypost}, where the authors present constructions that are polynomial. 
+
+We will use the obvious implication of these results: given $\dpi \: \icat \to \Ab$ a finite diagram of finitely generated abelian groups and $\thedim \geq 1$, the Eilenberg--MacLane space $\dK(\dpi,\thedim)$ and the classifying space $\Engen$ have pointwise effective homology.
+
+
+In the following sections, we summarize various technical results regarding Eilenberg-MacLane simplicial sets and diagrams. Proofs are mostly omitted as they can be seen as generalizations of results from~\cite{polypost}. Full version with proofs can be found in~\cite{filak-thesis}.
+
+
+\begin{Def}\label{def:pointw-effective}
+\begin{itemize}
+\item We call a chain complex $C_*$ \emph{locally effective} if the elements $c\in C_*$ have finite (agreed upon) encoding and there are algorithms computing the addition, zero, inverse and differential for the elements of $C_*$. 
+
+\item We call a diagram $\dC \colon\icat \to \Ch_+$ of nonnegatively graded chain complexes \emph{locally effective} if $\dC (i)$ is locally effective for every $i \in \icat$ and if $\dC(f)$ is a computable morphism for every morphism $f$ in the category $\icat$.
+
+\item We call a diagram of simplicial sets $\dX \: \icat \to \sSet$ \emph{locally effective} if $\dX (i)$ is locally effective simplicial set for every $i \in \icat$ and if $\dX(f)$ is a computable morphism for every morphism $f$ in the category $\icat$.
+\end{itemize}
+\end{Def}
+
+\begin{Def}
+Let $\dC\colon \icat \to \Ch_{+}$. We say $\dC$ is \emph{cellular} if there exists an indexing set $A$ and for every $\alpha \in A$ there is \item $i_\alpha \in \icat$ and a chain $c_\alpha \in \dC(i_\alpha)$
+such that the set
+\[
+\{f_{\alpha*} c_\alpha \mid \alpha \in A, f_{\alpha} \in  \icat(i_\alpha, i) \}
+\]
+forms a basis for each $C(i)$, i.e.
+\begin{equation*}%\label{eq:cell}
+\dC = \bigoplus\limits_{\alpha, c_\alpha} \bbZ \icat(i_\alpha, -),
+\end{equation*}
+where $\bbZ \icat(i_\alpha, i)$ is the free abelian group generated by the set of all maps $f\: i_\alpha \to i$.
+
+
+We call a locally effective diagram $\dC$ \emph{effective} if it is cellular  and there is an algorithm that generates for given $n$ a finite list of all basis elements $c_\alpha \in \dC (i_\alpha)_n$ and an algorithm computing \eqref{eq:cell} for every input $c \in \dC(i)$.
+\end{Def}
+
+
+We can formulate the cellularity also in a different way: given an element $c \in \dC (i)$ there is a unique description of $c$ as 
+\begin{equation}\label{eq:cell}
+c= \sum\limits_{\alpha, f_{\alpha}\: i_\alpha \to i} k_{f_{\alpha}} f_{\alpha*} (c_\alpha)
+\end{equation}
+where  $k_{f_\alpha} \in \mathbb{Z}$.
+
+\section{Representation of homotopy classes}\label{sec:representations}
+
+\heading{Representing homotopy classes of maps to Postnikov stages}
+
+Let $A \to X$ be cellular. We are interested in the set of homotopy classes $[X,\Pnewst]^A$ and, clearly, every map $X \to \Pnewst$ under $A$ represents such a homotopy class. However, since $\Pnewst$ is not fibrant, we cannot expect this to be the general case. A slight modification, employing iterated cofibrant replacements of $X$, will represent all homotopy classes. We will organize these cofibrant replacements into a tower.
+
+\newcommand{\thei}{i}
+\newcommand{\cofrst}[1]{#1{}^{\cofr}}
+\newcommand{\fibrst}[1]{#1{}^{\fibr}}
+%\newcommand{\susp}[2]{s^{#2}#1}
+\newcommand{\susp}[2]{#1[#2]}
+\newcommand{\towercomp}[2]{#1(#2)}
+\newcommand{\Tzero}{\towercomp{T}{0}}
+\newcommand{\Tn}{\towercomp{T}{\then}}
+\newcommand{\Tnmo}{\towercomp{T}{\then-1}}
+\newcommand{\Tnmoc}{\cofrst{\towercomp{T}{\then-1}}}
+\newcommand{\Ti}{\towercomp{T}{\thei}}
+\newcommand{\Timo}{\towercomp{T}{\thei-1}}
+\newcommand{\Timoc}{\cofrst{\towercomp{T}{\thei-1}}}
+\newcommand{\Tm}{\towercomp{T}{\them}}
+\newcommand{\Tmmo}{\towercomp{T}{\them-1}}
+\newcommand{\Tmmoc}{\cofrst{\towercomp{T}{\them-1}}}
+\newcommand{\Szero}{\towercomp{S}{0}}
+\newcommand{\Sn}{\towercomp{S}{\then}}
+\newcommand{\Snmo}{\towercomp{S}{\then-1}}
+\newcommand{\Snmoc}{\cofrst{\towercomp{S}{\then-1}}}
+\newcommand{\Si}{\towercomp{S}{\thei}}
+\newcommand{\Simo}{\towercomp{S}{\thei-1}}
+\newcommand{\Simoc}{\cofrst{\towercomp{S}{\thei-1}}}
+\newcommand{\Sm}{\towercomp{S}{\them}}
+\newcommand{\Smmo}{\towercomp{S}{\them-1}}
+\newcommand{\Smmoc}{\cofrst{\towercomp{S}{\them-1}}}
+\newcommand{\Rzero}{\towercomp{R}{0}}
+\newcommand{\Rn}{\towercomp{R}{\then}}
+\newcommand{\Rnmo}{\towercomp{R}{\then-1}}
+\newcommand{\Rnmoc}{\cofrst{\towercomp{R}{\then-1}}}
+\newcommand{\trunc}[2]{\operatorname{tr}_{#2} #1}
+
+\begin{sdefinition}
+A \emph{tower}\footnote{%
+	The compositions $\Tm \to \Tmmoc \to \Tmmo$ give a tower in the usual sense, i.e.\ a collection of objects $\Tm$ and maps $\Tm \to \Tmmo$. However, since our version of a tower is central to the paper, we decided to use the simple term ``tower'' for it. We believe that this should not cause any confusion.
+} $T$ is a collection of diagrams $\Tm$, for $\them \geq 0$, together with maps $\Tm \to \Tmmoc$. A \emph{map of towers} $\varphi \colon S \to T$ is a collection of maps $\varphim \colon \Sm \to \Tm$ for which the square
+\[\xymatrix@C=4pc{
+\Sm \ar[r]^-{\varphim} \ar[d] & \Tm \ar[d] \\
+\Smmoc \ar[r]_-{\cofrst{\varphimmo}} & \Tmmoc
+}\]
+commmutes for all $\them$.
+
+We say that a tower $T$ is \emph{$\then$-truncated}, if the structure maps $\Tm \to \Tmmoc$ are the identity maps for $\them > \then$. The \emph{$\then$-truncation} $\trunc{T}{\then}$ of a tower $T$ is the tower that agrees with $T$ up to degree $\then$ and is $\then$-truncated.
+\end{sdefinition}
+
+\begin{example}
+The main example of a tower is the Postnikov tower $P$ with components $\towercomp{P}{\them}$. We define $\Pnew = \trunc{P}{\then}$.
+\end{example}
+
+We will only work with $\then$-truncated towers, where $\then = \dim X$. Clearly, a map between $\then$-truncated towers is the same as the map between the restricted towers $\towercomp{T}{\them}$, $\them \leq \then$. For this reason, it will be possible to represent towers and maps between them in a computer.
+
+We remark, that there is a model structure on the category of towers in which the Postnikov tower and its truncations $\Pnew$ are fibrant and thus, unlike in the situation of the stages $\Pnewst$, homotopy classes will be represented by actual maps to $\Pnew$. We will not elaborate on the model structure, but will proceed now to prove the representability of homotopy classes by actual maps in Theorem~\ref{t:representing_homotopy_classes}.
+
+\begin{lemma}\label{l:maps_to_n_truncated}
+%A map $\varphi \colon S \to T$ to an $\then$-truncated tower $T$ is equivalent to a map between the restricted towers up to dimension $\then$.
+%
+A map $\varphi \colon S \to T$ from a 0-truncated tower $S$ to an $\then$-truncated tower $T$ is determined uniquely by the component $\towercompmap{\varphi}{\then}$. However, not every such map $\towercompmap{\varphi}{\then}$ determines a map of towers.
+\end{lemma}
+
+\begin{proof}
+The components $\varphim$ with $\them > \then$ are determined from $\varphin$ by the $\then$-truncatedness of $T$, while the components $\varphim$ with $\them < \then$ by the 0-truncatedness\footnote{
+	More generally, we may assume that $S$ is $\then$-cotruncated, i.e.\ the structure maps $\towercomp{S}{\them} \to \cofrst{\towercomp{S}{\them-1}}$ are the identity maps for $\them \leq \then$.
+} of $S$ and from the cofibrant replacement functor $\cofrst{(\ )}$ being faithful.
+\end{proof}
+
+For a diagram $Z$, the 0-truncated tower $T$ with $\Tzero = Z$ will be denoted also by $Z$, i.e.\ we will interpret diagrams as 0-truncated towers; thus, $\towercomp{T}{\them}$ is the $\them$-fold cofibrant replacement of $Z$.
+
+%For each diagram $X$, there is an \emph{identity tower}, obtained by letting $X_0 = X$ and $X_n = (X_{n-1})^\cofr$, i.e.\ all the structure maps are the identities. From now on, we will interpret the diagrams $A$ and $X$ as the corresponding identity towers and the Postnikov stages $\Pnew$ as the truncations $P_{\leq \then}$ of the Postnikov tower.
+
+%For the later use, we will need the following technical condition. We call a map of towers $X \to P$, with codomain the Postnikov tower, \emph{special} if each $X_i \to P_i$ is a cofibrant replacement of some $X_{i-1} \to P_i'$.
+
+For the following theorem, consider the set of maps of towers $X \to \Pnew$ under $A$, where $A$ and $X$ are interpreted as 0-truncated towers. We define $[X, \Pnew]^A$ to be the quotient of this set by the homotopy relation with respect to the cylinder $\Delta^1 \times X$ (again a 0-truncated tower associated with $\Delta^1 \times X$).
+
+\begin{theorem}\label{t:representing_homotopy_classes}
+Associating to a map of towers $\varphi$ its $\then$-th component $\towercompmap{\varphi}{\then}$ induces an isomorphism
+\[[X, \Pnew]^{A} \xra\cong [\towercomp{X}{n}, \Pnewst]^{\towercomp{A}{n}} \xla\cong [X, \Pnewst]^A\]
+on the sets of homotopy classes.
+
+More precisely, given a homotopy class in $[X, \Pnewst]^A$ and a representative of its image in $[X, \Poldst]^A$ by a map of towers $X \to \Pold$ under $A$, there exists a lift $X \to \Pnew$, again a map of towers under $A$, that represents the original homotopy class.
+\end{theorem}
+
+\begin{proof}
+As usual, it is sufficient to prove the existence part, since the uniqueness is simply the existence of a homotopy.
+
+Firstly, we will construct special fibrant replacements of the Postnikov stages, $\Pnewst'$ of $\cofrst{\Pnewst}$ and $\fibrst{\Pnewst}$ of $\Pnewst$, fitting into the commutative diagram
+\[\xymatrix{
+\Pnewst \ar[r]^-\sim \ar[d] & \fibrst{\Pnewst} \ar[d] \\
+\cofrst{\Poldst} \ar@{ >->}[r]^-\sim \ar[d] & \Poldst' \ar[d] \\
+\Poldst \ar[r]_-\sim & \fibrst{\Poldst}
+}\]
+Proceeding inductively, we let $\Pzerost \xra{\sim} \fibrst{\Pzerost}$ be a fibrant replacement of $\Pzerost$, e.g.\ we can take the identity. In the inductive step, factor the composition $\cofrst{\Poldst} \xra\sim \Poldst \xra\sim \fibrst{\Poldst}$ into a trivial cofibration followed by a (necessarily trivial) fibration,
+\[\cofrst{\Poldst} \cof[\sim] \Poldst' \fib \fibrst{\Poldst}.\]
+This ensures that $\Poldst'$ is indeed fibrant, since it admits a fibration to a fibrant $\fibrst{\Poldst}$. Using that $\Knst$ is fibrant, we obtain a factorization of the Postnikov invariant $\kn$,
+\[\kn \colon \cofrst{\Poldst} \cof[\sim] \Poldst' \to \Knst.\]
+Now we take the pullbacks $\fibrst{\Pnewst}$ and $\Pnewst$ of the Eilenberg--MacLane fibration along the above factorization of the Postnikov invariant $\kn$:
+\[\xymatrix{
+	%\cofrst{\Pnewst} \ar@{ >->}[r]^-\sim \ar[d]_\sim & \Pnewst' \ar@{->>}[d] \\
+	\Pnewst \ar[r]^-\sim \ar@{->>}[d] \pb & \fibrst{\Pnewst} \ar[r] \ar@{->>}[d] \pb & \Enst \ar@{->>}[d] \\
+	\cofrst{\Poldst} \ar@{ >->}[r]^-\sim & \Poldst' \ar[r] & \Knst
+}\]
+This ensures that $\fibrst{\Pnewst}$ is indeed fibrant, since it admits a fibration to a fibrant $\Poldst'$.
+
+%In the inductive step, using that $\Ki$ is fibrant, we obtain a factorization
+%\[\ki \colon (P_{i-1})^\cofr \cof[\sim] P_{i-1}' \to \Ki\]
+%of the Postnikov invariant $\ki$. Now we take the pullbacks $(P_i)^\fibr$ and $P_i$ of the Eilenberg--MacLane fibration along the above factorization of the Postnikov invariant $\ki$,
+%\[\xymatrix{
+	%(P_i)^\cofr \ar@{ >->}[r]^-\sim \ar[d]_\sim & P_i' \ar@{->>}[d] \\
+	%P_i \ar[r]^-\sim \ar@{->>}[d] \pb & (P_i)^\fibr \ar[r] \ar@{->>}[d] \pb & \Ei \ar@{->>}[d] \\
+	%(P_{i-1})^\cofr \ar@{ >->}[r]^-\sim & P_{i-1}' \ar[r] & \Ki
+%}\]
+%and
+%
+%factor the composition $(P_i)^\cofr \to P_i \to (P_i)^\fibr$ into a trivial cofibration followed by a (necessarily trivial) fibration
+%\[(P_i)^\cofr \cof[\sim] P_i' \fib (P_i)^\fibr.\]
+%This ensures that both $P_i'$ and $(P_i)^\fibr$ are indeed fibrant, since they admit fibrations to a fibrant $P_{i-1}'$.
+
+We are now ready to prove the proposition. Let a homotopy class in $[X,\Pnewst]^A$ be represented by a map $\towercompmap{\psi}{\then} \colon \towercomp{X}{n} \to \fibrst{\Pnewst}$ under $\towercomp{A}{n}$. Let the image of this homotopy class in $[X,\Poldst]^A$ be represented by a map of towers $\varphi \colon X \to \Pold$ under $A$ and consider the cofibrant replacement of its top component:
+\[\towercomp{X}{n} = \cofrst{\towercomp{X}{n-1}} \xlra{\cofrst{\varphinmo}} \cofrst{\Poldst}.\]
+Then the outer square in
+\[\xymatrix{
+	\towercomp{X}{n} \ar@/^1pc/[drr]^-{\towercompmap{\psi}{\then}} \ar@/_1pc/[ddr]_-{\cofrst{\varphinmo}} \ar@{-->}[dr] \\
+	& \Pnewst \ar[r] \ar[d] \pb & \fibrst{\Pnewst} \ar@{->>}[d] \\
+	& \cofrst{\Poldst} \ar[r] & \Poldst'
+}\]
+commutes up to homotopy under $\towercomp{A}{n}$, which enables us to replace the map $\towercompmap{\psi}{\then}$ by a map, homotopic under $\towercomp{A}{n}$, for which this square commutes strictly. Thus, it induces a map $\towercompmap{\varphi}{\then} \colon \towercomp{X}{n} \to \Pnewst$ under $\towercomp{A}{n}$, and, together with the given $\varphim$, $\them < \then$, a map of towers $X \to \Pnew$, as desired.
+\end{proof}
+
+
+\newcommand{\An}{\towercomp{A}{\then}}
+\newcommand{\Xn}{\towercomp{X}{\then}}
+\newcommand{\Yn}{\towercomp{Y}{\then}}
+\newcommand{\Zn}{\towercomp{Z}{\then}}
+\newcommand{\Anmo}{\towercomp{A}{\then-1}}
+\newcommand{\Xnmo}{\towercomp{X}{\then-1}}
+\newcommand{\Ynmo}{\towercomp{Y}{\then-1}}
+\newcommand{\Znmo}{\towercomp{Z}{\then-1}}
+\newcommand{\Azero}{\towercomp{A}{0}}
+\newcommand{\Xzero}{\towercomp{X}{0}}
+\newcommand{\Yzero}{\towercomp{Y}{0}}
+\newcommand{\Zzero}{\towercomp{Z}{0}}
+
+\heading{Representing Eilenberg--MacLane diagrams}
+
+We denote by $\pt$ the terminal diagram and also the corresponding 0-truncated tower $\pt$. For a diagram $Z$ and an integer $\then$, we define a tower $\susp{Z}{\then}$ by requiring it to agree with $\pt$ up to degree $\then-1$, have the structure map
+\[\xymatrix@=1pc{
+\towercomp{\susp{Z}{\then}}{\then} \ar[rrr] \ar@{=}[d]_-{\mathrm{def}} & & & (\towercomp{\susp{Z}{\then}}{\then-1})^\cofr \ar@{=}[d] \\
+\towercomp{\pt}{\then} \times Z \ar[rr]^-{\pr_l} & & \towercomp{\pt}{\then} \ar@{=}[r] & (\towercomp{\pt}{\then-1})^\cofr
+}\]
+and be $\then$-truncated. It has the following universal property: maps of towers $T \to \susp{Z}{\then}$ are in bijection with maps $\towercomp{T}{\then} \to Z$.
+
+We define the following towers
+\[\Ln = \susp{\Lnst}{\then}, \quad
+\En = \susp{\Enst}{\then}, \quad
+\Kn = \susp{\Knst}{\then}.\]
+Then, since in our basic pullback square
+\[\xymatrix{
+\Pnewst \ar[r]^-{\qn} \ar[d]_-{\pn} \pb & \Enst \ar[d]^-{\deltan} \\
+\cofrst{\Poldst} \ar[r]_-{\kn} & \Knst
+}\]
+the map on the left is $\towercomp{\Pnew}{\then} \to \towercomp{\Pold}{\then}$, this square is translated to a square of towers
+\[\xymatrix{
+\Pnew \ar[r]^-{\qn} \ar[d]_-{\pn} & \En \ar[d]^-{\deltan} \\
+\Pold \ar[r]_-{\kn} & \Kn
+}\]
+in which we use the same symbols to denote the maps.
+
+\heading{Representing homotopy classes of maps to Eilenberg--MacLane diagrams}
+
+In the computation, we will also need to treat homotopy classes in $[X, \Lnst]^A$. If $A \to X$ is cellular then every such homotopy class is represented by an actual map $X \to \Lnst$, since $\Lnst$ is fibrant. To fit into the above context, we will however represent these homotopy classes by maps $\Xn \to \Lnst$ under $\An$, i.e.\ by maps of towers $X \to \Ln$ under $A$. Similarly, homotopy classes in $[X, \Knst]^A$ and $[X, \Enst]^A$ will be represented by maps of towers $X \to \Kn$ and $X \to \En$ under $A$, respectively.
+
+\heading{Products}
+
+We will make use of the products in the category of towers. To construct $R = S \times T$, with projections $p$ and $q$, we start with $\Rzero = \Szero \times \Tzero$ and then proceed to define $\Rn$ as the pullback
+\[\xymatrix{
+\Rn \ar[rrr]^-{(\towercompmap{p}{n}, \towercompmap{q}{n})} \ar[d] \pb & & & \Sn \times \Tn \ar[d] \\
+\cofrst{\Rnmo} \ar[rrr]_-{(\cofrst{\towercompmap{p}{n-1}}, \cofrst{\towercompmap{q}{n-1}})} & & & \cofrst{\Snmo} \times \cofrst{\Tnmo}
+}\]
+Similarly to the products, the terminal tower is $\pt$.
+%\textbf{(Remark: if $S$ and $T$ are fibrant, i.e.\ the 0-stages fibrant and all structure maps fibrations, then the above square is a homotopy pullback and $(\towercompmap{p}{n}, \towercompmap{q}{n})$ is a weak equivalence. This implies later that all stages of an H-context for towers are H-contexts for the stages.)}
+
+An important example of the product is $\Pnew \times \Ln$, whose components are easily seen to be $\towercomp{(\Pnew \times \Ln)}{\them} = \towercomp{P}{\them}$ for $\them < \then$, since $\towercomp{\Ln}{\then} = \towercomp{\pt}{\them}$ for $\them < \then$ and $\pt$ is terminal, and $\towercomp{(\Pnew \times \Ln)}{\then} \cong \Pnewst \times \Lnst$. Thus, the action of $\Lnst$ on $\Pnewst$, fibrewise over $\cofrst\Poldst$, translates to an action of $\Ln$ on $\Pnew$, fibrewise over $\Pold$.
+
+\heading{Limits and colimits}
+
+The above construction of products can be easily generalized to limits (the products on the right of the square are replaced by limits). Colimits are much easier -- they are performed pointwise, i.e.\ each stage of the colimit is a colimit of the corresponding diagram of stages. This follows at once from the fact that the cofibrant replacement preserves colimits -- in fact, it is itself given as a (weighted) colimit.
+
+\section{Obstruction theory}
+
+We will now describe (effective) obstruction theory for diagrams: in order to lift a homotopy class in $[X, \Pold]^A$ to a homotopy class in $[X,\Pnew]^A$, we represent the original homotopy class by a map of towers $X \to \Pold$ under $A$ so that we get, according to Theorem~\ref{t:representing_homotopy_classes}, to the following equivalent situation.
+
+\begin{proposition} \label{prop:lift_ext_one_stage}
+There is an algorithm that, given a pair of diagrams $(X,A)$ with effective homology and a commutative square of towers
+\[\xymatrix@C=30pt{
+A \ar[r] \ar@{ >->}[d] & \Pnew \ar@{->>}[d]^\deltan \\
+X  \ar[r] \ar@{-->}[ru] & \Pold
+}\]
+decides whether an indicated lift exists. If it does, it computes one. If $H^{n+1}(X,A;\pi)=0$, then such a lift is guaranteed to exist.
+\end{proposition}
+
+Let us remark that although our main result, Theorem~\ref{thm:???},
+assumes $X$ finite, we will be using the proposition
+for infinite diagrams~$X$ and then the effective homology
+assumption for $(X,A)$ is important.
+
+\begin{proof}
+Taking the components at $\then$, we obtain the following lifting problem
+\[\xymatrix{
+	\An \ar[r] \ar[d] & \Pnewst \ar[r] \ar[d] \pb & \Enst \ar[d] \\
+	\Xn \ar[r] \ar@{-->}[ur] & \cofrst{\Poldst} \ar[r] & \Knst
+}\]
+that is equivalent to the original by Lemma~\ref{l:maps_to_n_truncated}, since $\Pnew$ and $\Pold$ are $\then$-truncated. The indicated lift is then further equivalent to a lift in the composite square and this is translated to a cohomological problem in $C^{n+1}(\Xn, \An; \pi_n)$ as usual -- Lemma~\ref{lem:lift_ext_one_stage} makes this translation and solves the cohomological problem using effective homology.
+\end{proof}
+
+\begin{lemma} \label{lem:lift_ext_one_stage}
+There is an algorithm that, given a pair $(X,A)$ with effective homology and a commutative square of diagrams
+\[\xymatrix@C=30pt{
+A \ar[r]^-c \ar@{ >->}[d] & \Engen \ar@{->>}[d]^\delta \\
+X  \ar[r]_-z \ar@{-->}[ru] & \Kngen
+}\]
+decides whether an indicated lift exists. If it does, it computes one. If $H^{n+1}(X,A;\pi)=0$, then a lift exists for every $c$ and $z$.
+\end{lemma}
+
+\begin{proof}
+Thinking of $c$ as a cochain in $C^n(A;\pi)$, we extend it to a cochain on $X$ by mapping all $n$-cells not in $A$ to zero. This prescribes a map $\widetilde c \colon X\ra \Engen$ that is a solution of the lifting-extension problem from the statement for $z$ replaced by $\delta\widetilde c$. Since the lifting-extension problems and their solutions are additive, one may subtract this solution from the previous problem and obtain an equivalent lifting-extension problem
+\[\xymatrix@C=30pt{
+A \ar[r]^-{0} \ar@{ >->}[d] & \Engen \ar@{->>}[d]^\delta \\
+X  \ar[r]_-{z-\delta\widetilde c} \ar@{-->}[ru]^-{c_0} & \Kngen
+}\]
+A solution of this problem is a relative cochain $c_0$ whose coboundary is $z_0=z-\delta\widetilde c$ (this $c_0$ yields a solution $\widetilde c+c_0$ of the original problem). If $C_*(X,A)$ is effective, then such a $c_0$ is computable whenever it exists (and it always exists in the case $H^{n+1}(X,A;\pi)=0$).
+
+However, $C_*(X,A)$ itself is not effective in general, it is only strongly equivalent to an effective complex. Thus, we need to check that the computability of a preimage under $\delta$ is preserved under reductions in both directions. Let $(\alpha,\beta,\eta)\col C_*\Ra C'_*$ be a reduction. First, let us suppose that $z_0'\col C'_*\ra\pi$ is a cocycle with $z_0'\alpha=\delta c_0$. Then
+\[z_0'=z_0'\alpha\beta=(\delta c_0)\beta=\delta(c_0\beta),\]
+and we may set $c_0'=c_0\beta$. Next, suppose that $z_0\col C_*\ra\pi$ is a cocycle with $z_0\beta=\delta c_0'$. Then
+\[z_0=z_0(\partial\eta+\eta\partial+\beta\alpha)=z_0\eta\partial+\delta c_0'\alpha=\delta(z_0\eta+c_0'\alpha),\]
+and we may set $c_0=z_0\eta+c_0'\alpha$.
+\end{proof}
+
+In the case that there is a deformation retraction of $C_*(X)$ onto $C_*(A)$, there is an induced retraction of $C_*(\Xn)$ onto $C_*(\An)$, the relative chain complex $C_*(\Xn, \An)$ admits a contraction and its cohomology groups (with arbitrary coefficients) are zero. Thus, in this situation, all possible obstructions are zero and we may proceed inductively to lift through arbitrary number of stages. As special cases, we obtain the following two results.
+
+\begin{proposition}[homotopy lifting] \label{prop:homotopy_lifting}
+Given a diagram
+\[\xymatrix{
+(\vertex 0 \times X)\cup(\stdsimp{1}\times A) \ar[r] \ar@{ >->}[d]_-\sim & \Pnew \ar@{->>}[d] \\
+\stdsimp{1}\times X  \ar[r] \ar@{-->}[ru] & \Polder
+}\]
+in which $(X,A)$ is equipped with effective homology, it is possible to compute a lift. In other words, one may lift homotopies in Postnikov towers algorithmically.
+\end{proposition}
+
+\begin{proof}
+It is possible to equip $(\stdsimp{1}\times X, (\vertex 0\times X)\cup(\stdsimp{1}\times A))$ with effective homology by Proposition~\ref{prop:relative_product}. A deformation retraction is constructed easily. Thus a lift can be constructed by a successive use of Proposition~\ref{prop:lift_ext_one_stage}.
+\end{proof}
+
+The second result concerns algorithmic concatenation of homotopies.
+Let $\horn21$ denote the first horn in the standard $2$-simplex $\stdsimp2$, i.e.\ the simplicial subset of the standard simplex $\stdsimp2$
+spanned by the faces $\face{01}$ and $\face{12}$.
+Given two homotopies $h_1,h_2\col\stdsimp1\times X\to Y$
+that are compatible, in the sense that $h_1$ is a homotopy from $\ell_0$ to $\ell_1$ and $h_2$ is a homotopy from $\ell_1$ to $\ell_2$,
+one may prescribe a map $\horn21\times X\to Y$ as $h_1$ on
+$\face{01} \times X$ and as $h_2$ on $\face{12} \times X$.
+If this map has an extension
+$H\col \stdsimp2\times X\to Y$, then the restriction of $H$ to
+ $\face{02} \times X$ gives a homotopy from $\ell_0$ to $\ell_2$,
+which can be thought of as a \emph{concatenation} of $h_1$ and $h_2$.
+We will need the following effective,
+relative version; the proof is entirely analogous
+to that of the previous proposition and we omit it.
+
+\begin{proposition}[homotopy concatenation] \label{prop:homotopy_concatenation}
+Given a diagram
+\[\xymatrix{
+(\horn{2}{1}\times X)\cup(\stdsimp{2}\times A) \ar[r] \ar@{ >->}[d]_-\sim & \Pnew \ar@{->>}[d] \\
+\stdsimp{2}\times X  \ar[r] \ar@{-->}[ru] & \Polder
+}\]
+in which $(X,A)$ is equuipped with effective homology, it is possible to
+compute a lift. In other words, one may concatenate homotopies
+in Postnikov towers algorithmically.\qed
+\end{proposition}
+\section{The suspension approach}
+
+We are thus left to equip $[X, \Pnew]^A$ with a semi-effective heap structure in such a way that all the maps in~\ref{sec:actual_exact_sequence} are heap homomorphisms. The first approach uses the following theorem:
+
+\begin{theorem} \label{thm:stable_situation_heaps}
+When $\dim X \leq 2 \conn Y$, there are bijections
+\[[X, Y]^A \cong [\Sigma X, \Sigma Y]^{\Sigma A} \cong [\Delta^1 \times X, \Sigma Y]^{(\partial \Delta^1 \times X) \cup (\Delta^1 \times A)}\]
+where the (unreduced) suspension $\Sigma Y$ is the quotient of $\Delta^1 \times Y$ under the identification that squashes each of $0 \times Y$ and $1 \times Y$ separately to a point, i.e.\ it is the diagram of unreduced suspensions. The right hand side admits a canonical structure of an abelian heap.
+\end{theorem}
+
+The heap structure on the set of homotopy classes of maps from $\stdsimp 1 \times X$ will be described in the proof of Theorem~\ref{thm:main_theorem} below.
+
+\begin{proof}
+This is essentially contained in the proof of \cite[Theorem~1.1]{heaps} applied to the category $\mcM = A / [\mcI, \sSet]$ of diagrams under $A$. More precisely, it is proved in that theorem that $[X, Y]^A$ is isomorphic to $[\Sigma X, \Sigma Y]^{\partial I\!\!I}$, where $\partial I\!\!I$ is the suspension of the initial object, i.e.\ of $A$, and is thus $\Sigma A$. Both $\Sigma X$ and $\Sigma Y$ are made into diagrams under $\Sigma A$ in an obvious way by suspending the given maps $A \to X$ and $A \to Y$. Now since $\Sigma X$ is a quotient of $\stdsimp 1 \times X$, it is easy to observe the second isomorphism in the statement.
+\end{proof}
+
+It is not significant for the computability that the target is a suspension $\Sigma Y$. For this reason, we will consider more general $[\Delta^1 \times X, Y]^{(\partial \Delta^1 \times X) \cup (\Delta^1 \times A)}$. As usual, this is isomorphic to $[\Delta^1 \times X, P_n]^{(\partial \Delta^1 \times X) \cup (\Delta^1 \times A)}$ provided that $n \geq \dim(\stdsimp 1 \times X)$. We have thus reduced our task to proving the following theorem.
+%, where, similarly to the case of groups, a semi-effective heap structure is an algorithm that computes a representative for $[\alpha] +_{[\gamma]} [\beta]$, for any given representatives $\alpha$, $\beta$, $\gamma$.
+
+\begin{theorem} \label{thm:main_theorem}
+It is possible to equip $[\Delta^1 \times X, \Pnew]^{(\partial \Delta^1 \times X) \cup (\Delta^1 \times A)}$ with a semi-effective heap structure.
+\end{theorem}
+
+\begin{proof}
+In accordance with Theorem~\ref{t:representing_homotopy_classes}, we will work with maps of towers $\Delta^1 \times X \to \Pnew$ under the appropriate subspaces. However, since the cofibrant replacement preserves weighted colimits, we have
+\[\towercomp{(\Delta^1 \times X)}{\them} \cong \Delta^1 \times \towercomp{X}{\them}\]
+and similarly for the corresponding subspace we have
+\[\towercomp{((\partial\Delta^1 \times X) \cup (\Delta^1 \times A))}{\them} \cong (\partial\Delta^1 \times \towercomp{X}{\them}) \cup (\Delta^1 \times \towercomp{A}{\them}).\]
+We are now ready to explain the algorithmic computation of the heap operation on the homotopy classes. Given three maps of towers $\ell_1 \comma o \comma \ell_2 \colon \stdsimp 1 \times X \to \Pnew$, we organize them into a single map
+\[(\face{13}\times X)\cup(\face{12}\times X)\cup(\face{02}\times X)\xlra{(\ell_1,o,\ell_2)}\Pnew,\]
+where $\face{jk} \cong \stdsimp 1$ denotes the edge in $\stdsimp 3$ with vertices $j$, $k$.
+\[\xy
+<0pc,0pc>;<2pc,0pc>:
+(-2,1)*+{\scriptstyle\bullet}="a0"*++!R{0},"a0";
+(0,2)*+{\scriptstyle\bullet}="a2"*++!D{2},"a2"**\dir{-};?>*\dir{>},?<>(.5)*+!D{\scriptstyle\ell_2},
+(0,0)*+{\scriptstyle\bullet}="a1"*++!U{1},"a1"**\dir{-};?<*\dir{<},?<>(.3)*+!L{\scriptstyle o},
+(2,1)*+{\scriptstyle\bullet}="a3"*++!L{3},"a3"**\dir{-};?>*\dir{>},?<>(.5)*+!U{\scriptstyle\ell_1},
+"a0";"a3"**\dir{},?<>(.35)*+!U{\scriptstyle\ell},?<>(.45)**\dir{--},"a0";"a3"**\dir{};?<>(.55);**\dir{--},?>*\dir{>},
+"a0";"a1"**\dir{.},"a2";"a3"**\dir{.}
+\endxy\]
+Together with the composition $\stdsimp 3\times A\xlra{\pr} A\xlra{\fn}\Pnew$, these describe the top map in the diagram
+\[\xymatrix@C=3pc{
+((\face{13}\cup \face{12}\cup \face{02})\times X)\cup(\stdsimp 3\times A) \ar[r] \ar@{ >->}[d]_-\sim &
+	\Pnew \\
+\stdsimp{3}\times X \ar@{-->}[ru]
+}\]
+An extension can be computed using Proposition~\ref{prop:lift_ext_one_stage} and its restriction to $\face{03}\times X$, denoted by $\ell$ in the above picture, gives a representative of $[\ell_1] +_{[o]} [\ell_2]$. (As a slight simplification, it is enough to extend first to the face $\face{123} \times X$ and then to $\face{023} \times X$ to obtain $\ell$.) It is standard that the resulting map $\ell$ is unique up to homotopy under $A$.
+\end{proof}
+
+
+
+\section{Computing homotopy classes of maps}
+
+In order to compute $[X, Y]^A$, we employ a general ``exact sequence'' that relates the sets of homotopy classes of maps into consecutive stages of a Postnikov tower. In the stable situation $\dim X \leq 2 \conn Y$, it happens to be an exact sequence of abelian heaps -- these are defined properly in~\ref{sec:heaps}, but, intuitively, they are abelian groups without a definite choice of zero; thus, after choosing zeros, we make this sequence into an exact sequence of abelian groups.
+
+\heading{Exact sequences} \label{sec:abstract_exact_sequence}
+
+\newcommand{\setone}{\bbK}
+\newcommand{\settwo}{H}
+\newcommand{\setthree}{D}
+\newcommand{\setfour}{E}
+\newcommand{\setfive}{F}
+\newcommand{\calsetone}{\mcK}
+\newcommand{\calsettwo}{\mcH}
+\newcommand{\calsetthree}{\mcD}
+\newcommand{\calsetfour}{\mcE}
+\newcommand{\calsetfive}{\mcF}
+\newcommand{\eltone}{k}
+\newcommand{\elttwo}{h}
+\newcommand{\eltthree}{d}
+\newcommand{\eltfour}{e}
+\newcommand{\eltfive}{f}
+\newcommand{\caleltthree}{\delta}
+\newcommand{\caleltfour}{\varepsilon}
+
+We will write our basic general exact sequence in the following form
+\[\setone \xlra{\partial} \settwo \acts \setthree \xlra{s} \setfour \xlra{t} \setfive\]
+where $\setthree$, $\setfour$ are semi-effectively represented sets, $\setfive$ a semi-effectively represented pointed set with basepoint $[o] \in \setfive$, $\settwo$ a semi-effective group and $\setone$ a semi-effective collection of groups $\setone_\caleltfour$ indexed by $\caleltfour \in \calsetfour$. The maps $s$ and $t$ are computable maps of sets, represented by $\sigma$ and $\tau$, the arrow at $\setthree$ denotes a computable action of $\settwo$ on $\setthree$  and $\partial$ is a computable collection of group homomorphisms $\partial_\caleltthree \colon \setone_{\sigma(\caleltthree)} \to \settwo$ indexed by $\caleltthree \in \calsetthree$.
+
+\begin{sdefinition}
+We say that the above sequence is \emph{exact} if
+\begin{itemize}[labelindent=.5em,leftmargin=*,label=$\bullet$,itemsep=0pt,parsep=0pt,topsep=0pt]
+\item
+	$\im s = t^{-1}([o])$,
+\item
+	$s(\eltthree) = s(\eltthree')$ if and only if $\eltthree$, $\eltthree'$ lie in the same orbit of the $\settwo$-action, i.e.\ $\eltthree' = \eltthree + \elttwo$ for some $\elttwo \in \settwo$, and
+\item
+	the stabilizer of $[\caleltthree] \in \setthree$ is exactly the image of $\partial_\caleltthree$.
+\end{itemize}
+\end{sdefinition}
+
+We may construct out of this sequence an ordinary exact sequence of pointed sets in the following manner: choose a basepoint $\caleltthree \in \calsetthree$ and then consider
+\[\setone_{\sigma(\caleltthree)} \xlra{\partial_\caleltthree} \settwo \xlra{r} \setthree \xlra{s} \setfour \xlra{t} \setfive\]
+with $r(\elttwo) = [\caleltthree] + \elttwo$, the action of $\settwo$ on the fixed element $[\caleltthree]$. It is easily seen to be really exact, where $\setone_{\sigma(\caleltthree)}$ and $\settwo$ are equipped with the respective zeros as basepoints, $\setthree$ with basepoint $[\caleltthree]$, $\setfour$ with basepoint $[\sigma(\caleltthree)]$ and $\setfive$ with the given element $[o] \in \setfive$.
+
+\begin{lemma} \label{lem:En_contractible}
+For any pair $(X, A)$ of diagrams, we have $[X, \En]^A = *$.
+\end{lemma}
+
+\begin{proof}
+We have $[X, \En]^A \cong [\towercomp{X}{n}, \Enst]^{\towercomp{A}{n}}$. For any cellular $A' \to X'$ the extension problem
+\[\xymatrix{
+A' \ar[r] \ar[d] & \Engen \\
+X' \ar@{-->}[ru]
+}\]
+is solvable -- it just means that any cochain in $C^n(A'; \pi)$ extends to a cochain in $C^n(X'; \pi)$; any such extension is determined by the images of the cells of $X'$ not in $A'$, e.g.\ we may assign them the zero value.
+
+Applying this to $\towercomp{A}{n} \to \towercomp{X}{n}$ and to $(\partial\Delta^1 \times \towercomp{X}{n}) \cup (\Delta^1 \times \towercomp{A}{n}) \to \Delta^1 \times \towercomp{X}{n}$ yields the existence of a map and the existence of a relative homotopy between any two such maps.
+\end{proof}
+
+\heading{Exact sequence relating consecutive stages} \label{sec:actual_exact_sequence}
+
+We denote by $\fn \colon A \to \Pnew$ the composition of the given fixed map $f \colon A \to Y$ with the projection $\varphi_\then \colon Y \to \Pnew$. This map is used to make $\Pnew$ into an object under $A$. Our main exact sequence is
+\[[\stdsimp 1 \times X,\Pold]^{(\partial\stdsimp 1 \times X) \cup (\stdsimp 1 \times A)} \xlra{\partial} [X,\Ln]^A \acts [X,\Pnew]^A \xlra{\pnst} [X,\Pold]^A \xlra{\knst} [X,\Kn]^A,\]
+where the first term is a collection of groups $\setone$, indexed by maps $\ellnmo \colon X \to \Pold$ under $A$, with $\setone_{\ellnmo}$ being the group of homotopy classes of maps $\stdsimp 1 \times X \to \Pold$ whose restriction to both $0 \times X$ and $1 \times X$ is $\ellnmo$ and whose restriction to $\stdsimp 1 \times A$ is the constant homotopy at $\fnmo$. The element $[o] \in [X, \Kn]^A$ is the only homotopy class in the image of $\deltanst \colon [X, \En]^A \to [X, \Kn]^A$, guaranteed by Lemma~\ref{lem:En_contractible}.
+
+The maps $\pnst$ and $\knst$ are induced by $\pn$ and $\kn$, respectively. The action of the homotopy classes is also induced by the action of $\Ln$ on $\Pnew$. Both maps and the action are clearly computable. It remains to describe the homomorphisms $\partial_{\elln} \colon \setone_{\pnst(\elln)} \to [X, \Ln]^A$. Starting with a homotopy $h \colon \stdsimp{1}\times X\ra\Pold$ as above, we lift it to a homotopy $\widetilde h \colon \stdsimp{1}\times X\ra\Pnew$ in such a way that the restriction to $\vertex0\times X$ is the given map $\elln$ and the restriction to $\stdsimp{1}\times A$ is the constant homotopy at $\fn$. The restriction of $\widetilde h$ to $\vertex1\times X$ is then of the form $\elln + \zeta$ for a unique $\zeta \colon X \to \Ln$ and we set $\partial_{\elln}[h] = [\zeta]$, a well defined map according to Proposition~\ref{prop:connecting_homomorphism}. Each map $\partial_{\elln}$ is computable by Proposition~\ref{prop:homotopy_lifting}.
+
+\begin{proposition} \label{prop:connecting_homomorphism}
+The homotopy class $[\zeta]$ does not depend on the choices and $\partial_{\elln}$ is thus well defined. In addition, if $\zeta \sim \zeta'$, then $\zeta'$ may also be obtained as above, i.e.\ there exists a lift $\widetilde h'$ of $h$ with the prescribed values at $(0 \times X) \cup (\Delta^1 \times A)$ and with $\widetilde h'|_{1 \times X} = \elln + \zeta'$.
+\end{proposition}
+
+\begin{proof}
+If $h$ is homotopic to $h'$, by a homotopy relative to $(\partial \Delta^1 \times X) \cup (\Delta^1 \times X)$, and $\widetilde h'$ is any lift of $h'$ then we may lift the homotopy $h \sim h'$ to a homotopy $\widetilde h \sim \widetilde h'$ relative to $(0 \times X) \cup (\Delta^1 \times A)$, that restricts to $1 \times X$ to a fibrewise homotopy $\elln + \zeta \sim \elln + \zeta'$, relative to $A$, implying $\zeta \sim \zeta'$; thus, $\partial_{\elln}$ is well defined.
+
+In the second part, concatenating the homotopy $\widetilde h \colon \elln \sim \elln + \zeta$, with the homotopy $\elln + \zeta \sim \elln + \zeta'$ induced from the given $\zeta \sim \zeta'$, we obtain $\widetilde h' \colon \elln \sim \elln + \zeta'$. If the concatenation of homotopies is computed, as in Proposition~\ref{prop:homotopy_concatenation}, using the lift in
+\[\xymatrix{
+(\horn{2}{1} \times X) \cup (\Delta^2 \times A) \ar[rr] \ar@{ >->}[d] & & \Pnew \ar@{->>}[d]^-\deltan \\
+\stdsimp 2 \times X \ar[r]_-{s^1\times\id} \ar@{-->}[rru] & \stdsimp 1 \times X \ar[r]_-{h} & \Pold
+}\]
+then this concatenation will also be a lift of $h$; here $s^1 \colon \Delta^2 \to \Delta^1$ is the map sending the unique non-degenerate 2-simplex of $\Delta^2$ to the $s_1$-degeneracy of the unique non-degenerate 1-simplex of $\Delta^1$.
+\end{proof}
+
+\heading{Proof of exactness}
+
+The exactness at $[X, \Pold]^A$ means that $\ellnmo \colon X \to \Pold$ lifts to $\Pnew$ if and only if the composition $\kn \ellnmo$ factors (up to homotopy) through $\En$ -- recall that the basepoint of $[X, \Kn]^A$ is the unique such homotopy class -- and is thus clear.
+
+The exactness at $[X, \Pnew]^A$ means that, given two maps $\elln, \elln' \colon X \to \Pnew$, their projections $\ellnmo = \pn \elln$, $\ellnmo' = \pn \elln'$ are homotopic if and only if $\elln + \zeta \sim \elln'$ for some $\zeta \colon X \to \Ln$. By lifting the homotopy $\ellnmo \sim \ellnmo'$, we may replace $\elln'$ by a homotopic map in such a way that $\ellnmo = \ellnmo'$ and then the result is clear.
+
+To prove exactness at $[X, \Ln]^A$, we observe that every homotopy $h \colon \elln \sim \elln + \zeta$ is a lift of its projection $\pn h$; therefore, the image of $\partial_{\elln}$ consists exactly of homotopy classes of maps $\zeta \colon X \to \Ln$ such that $\elln \sim \elln + \zeta$ and this is exactly the claimed exactness.
+
+\heading{Heaps} \label{sec:heaps}
+
+In the stable situation $\dim X \leq 2 \conn Y$, and possibly also in different situations, the set $[X, Y]^A$ is an abelian heap (for the stable situation, this is proved in Theorem~\ref{thm:stable_situation_heaps}) and we will exploit the structure for the computations. Intuitively, a heap is a group without a definite choice of zero.
+
+\begin{sdefinition}
+A \emph{heap} is a set $S$ with a ternary operation, denoted by $x +_p y$ in this paper, that satisfies the identity law
+\[x +_p p = x = p +_p x\]
+together with a ``partial para-associative law,'' or just associative law,
+\[(x +_p y) +_q z = x +_p (y +_q z).\]
+It is said to be \emph{abelian} if
+\[x +_p y = y +_p x.\]
+\end{sdefinition}
+
+Given $p \in S$, we obtain a group structure on $S$ with zero $p$, addition given by $x + y = x +_p y$ and inverse $-x = p +_x p$; we denote this group by $S_p$. It is abelian if and only if the heap $S$ is abelian. A different choice of the zero element leads to an isomorphic group, the isomorphism being the translation map $S_p \to S_q$, $x \mapsto x +_p q$. We will not work with heaps directly, but rather we will choose a zero and work with the induced group.
+
+\heading{Exact sequences of heaps}
+
+Thus, if an exact sequence in the sense of~\ref{sec:abstract_exact_sequence} consists of heaps and heap homomorphisms, by choosing basepoints as in~\ref{sec:abstract_exact_sequence}, we obtain an ordinary exact sequence of groups. This will be used in the following section to compute $[X,\Pnew]^A$.
+
+
+\section{Reduction to semi-effectivity}
+
+In this section, we isolate a general inductive argument that allows us to compute $[X, \Pnew]^A$ when these happen to be abelian groups. The computability is summarized in the notion of a fully effective abelian group, that will be defined next; an important feature of this structure is that it allows to describe the isomorphism type of the abelian group. First, we state the main theorem of this section.
+
+\begin{theorem}\label{thm:inductive_step}
+If the exact sequence~\ref{sec:actual_exact_sequence} consists of semi-effective abelian heaps and heap homomorphisms and if $[X, \Pold]^A$ is equipped with a fully effective abelian group structure, then it is possible to equip also $[X, \Pnew]^A$ with a fully effective abelian group.
+\end{theorem}
+
+Now we define fully effective abelian groups and then proceed to give a proof of Theorem~\ref{thm:inductive_step}.
+
+%\heading{Computational models for abelian groups}
+
+%We will now explain our computational model for abelian groups.
+%There are two levels of these computational models: 
+%\emph{semi-effective} and \emph{fully effective} abelian groups.
+%They are roughly analogous  to locally effective chain complexes and effective ones. There is, however, one significant difference: while an element
+%of a chain complex is assumed to have a unique computer representation,
+%a single element of a semi-effective abelian group may have many
+%different representatives. We can perform the group operations
+%in terms of the representatives, but in general, we cannot decide whether
+%two representatives represent the same group element.
+%This setting is natural
+%when working with elements of $[X,\Pnew]^A$, i.e.\ with homotopy classes. The representatives are simplicial maps
+%$X\to\Pnew$, and at first, we will not be able to decide whether
+%two such given maps are homotopic. 
+%
+%Given a semi-effective abelian group, it is not possible to compute its isomorphism type (even when it is finitely generated); for this we need additional information, summarized in the notion of a fully effective abelian group. 
+%A semi-effective abelian group can be made fully effective provided
+%that it is a part of a suitable exact sequence, additionally provided
+%with set-theoretic sections; this is described in Lemma~\ref{l:ses}.
+
+%This suggests a computation of $[X, \Pnew]^A$ in two steps. First, we endow it with a structure of a semi-effective abelian group. Next, we will promote it to a fully effective abelian group by relating it to $[X, \Pold]^A$ through the long exact sequence \ref{sec:actual_exact_sequence}. However, since this is general and independent of the first part, we will first synthetize this procedure and only then turn to the question of endowing $[X, \Pnew]^A$ with a semi-effective representation.
+
+%\heading{Operations with abelian groups}\label{s:abelops}
+
+%This subsection is a short summary of a detailed discussion found in \cite{CKMSVW11}.
+
+%In our setting, an abelian group $A$ is represented by a set $\mcA$, whose elements are called \emph{representatives}; we also assume that the representatives can be stored in a computer.\footnote{We do not assume that $\mcA$ is computable -- this will not be the case e.g.\ for $[X,\Pnew]$ when $X$ is infinite.} For $\alpha\in\mcA$, let $[\alpha]$ denote the element of $A$ represented by $\alpha$. The representation is generally non-unique; we may have $[\alpha]=[\beta]$ for $\alpha\ne\beta$.
+%
+%We call $A$ represented in this way \emph{semi-effective}, if algorithms for the following three tasks are available: provide an element $o\in\mcA$ with $[o]=0$ (the neutral element); given $\alpha\comma\beta\in\mcA$, compute $\gamma\in\mcA$ with $[\gamma]=[\alpha]+[\beta]$; given $\alpha\in\mcA$, compute $\beta \in\mcA$ with $[\beta]=-[\alpha]$.
+%
+%For semi-effective abelian groups $A$, $B$, with sets $\mcA$, $\mcB$ of representatives, respectively, we call a mapping $f\col A\to B$ \emph{computable} if there is a computable mapping $\varphi\col\mcA\to\mcB$ such that $f([\alpha])=[\varphi(\alpha)]$ for all $\alpha\in \mcA$.
+%
+%Similar notions can be easily introduced for heaps, we will not mention these explicitly.
+
+
+
+\heading{Translating zero}
+
+Let $S$ be a group and $p \in S$ an element. We define on $S$ a new group structure, denoted by $S_p$, by declaring the right translation $S \to S_p$, $x \mapsto x + p$, to be an isomorphism. Consequently, $S_p$ has zero $p$, addition $x +_p y = x - p + y$ and inverse $-_p x = p - x + p$.
+
+\begin{sproposition}
+If the group $S$ is semi-effective (fully effective), then so is $S_p$.
+\end{sproposition}
+
+\begin{proof}
+The semi-effectivity is obvious from the formulas. If $S$ is fully effective with generators $a_i$ of orders $q_i$, then $S_p$ is fully effective with generators the translates $a_i + p$ of the same orders $q_i$. An expression of $a$ as an integral combination in $S_p$ is obtained by translating to $S$, i.e.\ by computing the coefficients of $a - p$ as an integral combination of the $a_i$ in $S$.
+\end{proof}
+
+\heading{Full effectivity of cohomology groups}
+
+Before starting the proof of Theorem~\ref{thm:inductive_step}, we prove the full effectivity of the cohomology groups of a pair $(X, A)$ that is equipped with effective homology. This will be the basic building stone.
+
+\begin{slemma}\label{lem:fully_eff_cohlgy}
+Let $(X,A)$ be equipped with effective homology. Let $c \colon A \to \Engen$ be a fixed computable map and make $\Kngen$ into a diagram under $A$ via $\delta c$. Then it is possible to equip $[X,\Kngen]^A$ with a structure of a fully effective abelian group; the elements are represented by algorithms that compute maps $X \to \Kngen	$ whose restriction to $A$ equals $\delta c$.
+\end{slemma}
+
+\begin{proof}
+According to Lemma~\ref{lem:En_contractible}, the set $[X, \Engen]^A$ has a single element, obtained by extending $c$ to a map $\widetilde c \colon X \to E(\pi, n)$ and, thus, there is a well defined element $[\delta \widetilde c] \in [X, \Kngen]^A$; it will serve as the zero of the group. Denoting the group from the statement temporarily by $[X, \Kngen]^{A, c}$ to stress the chosen map $c$, we have an isomorphism
+\[[X, \Kngen]^{A, c} \cong [X, \Kngen]^{A, 0} ,\, [z] \mapsto [z - \delta \widetilde c],\]computable together with its inverse. We will thus assume from now on that $c=0$ and drop it again from the notation.
+
+In this situation we have isomorphisms
+\[[X, \Kngen]^A \cong H^{n+1}(X,A;\pi) \cong H^{n+1}_\ef(X,A;\pi)\]
+where the group on the right is the cohomology group of the complex of cochains $C_*^\ef(X,A)\to\pi$ on the effective chain complex of $(X,A)$ and the last isomorphism comes from the effective homology of $(X,A)$.
+
+We will represent elements of these groups by algorithms that compute the respective maps or cocycles. Since it is possible to transform a representing algorithm for one of the above terms into a representing algorithm for any another term, and since every element of $H^{n+1}_\ef(X,A;\pi)$ is clearly represented by an algorithm, it follows that the same is true for all three terms.
+
+The set of homotopy classes can thus be computed as the cohomology group of
+\[C^*_\ef(X,A;\pi)=\operatorname{Hom}(C_*^\ef(X,A),\pi)\]
+using a Smith normal form algorithm -- it is a cochain complex of finitely generated abelian groups. The algorithm also gives the required generators. In order to express a homotopy class in $[X, \Kngen]^A$ as a combination of the chosen generators, we translate this homotopy class to an element of $H^{n+1}(X, A; \pi)^\ef$ using the above computable isomorphisms and express it as a combination of the generators there using the output of the Smith normal form algorithm in the effective cochain complex.
+\end{proof}
+
+\heading{Computing the basepoint of $\boldsymbol{[X, \Pnew]^{A}}$}
+
+Since the group $[X, \Pold]^A$ is fully effective, it is equipped with a zero $[o_{n-1}]$. We first solve the problem of choosing a zero $[o_n] \in [X, \Pnew]^A$.
+\[\xymatrix{
+A \ar[r]^-{\fn} \ar[d]_-{i} & \Pnew \ar[r]^-{\qn} \ar[d]^-{\pn} & \En \ar[d]^-{\deltan} \\
+X \ar[r]_-{\onmo} & \Pold \ar[r]_-{\kn} & \Kn
+}\]
+Considering the set $[X, \Kn]^A$ of homotopy classes of maps whose restriction to $A$ equals $\deltan \qn \fn$, and equipping it with zero $[\kn\onmo]$, the map $\knst \colon [X, \Pold]^A \to [X, \Kn]^A$ becomes a computable homomorphism between fully effective abelian groups. We remark that the zero $[\kn\onmo]$ is generally different from the natural zero exhibited in the proof of Lemma~\ref{lem:fully_eff_cohlgy} -- we will denote this natural zero by $0$.
+
+According to Lemma~\ref{l:preimage}, it is possible to decide whether $0$ lies in the image of $\knst$ and compute some $o_{n-1}'$ such that $\knst [o_{n-1}'] = 0$. Then, using Proposition~\ref{prop:lift_ext_one_stage}, it is possible to lift $o_{n-1}' \colon X \to \Pold$ to a map $o_n \colon X \to \Pnew$ that will represent our new basepoint $[o_n] \in [X, \Pnew]^A$. If $0$ does not lie in the image of $\knst$ then $[X, \Pnew]^A$ is empty.
+
+\heading{Full effectivity of $\boldsymbol{[X, \Pnew]^{A}}$}
+
+Having computed $[o_n]$, our general exact sequence \ref{sec:actual_exact_sequence} becomes, under our assumptions, an exact sequence of abelian groups, that can be easily transformed into a short exact sequence
+\[\xymatrix{
+0 \ar[r] & \coker\partial \ar[r]_-{\jnst} & [X,\Pnew]^A \ar[r]_-{\pnst} \POS[l]+R*{\vphantom{|}}="a";[]+L*{\vphantom{|}} \ar@<-5pt>@/_2pt/"a"_-\rho & \ker\knst \ar[r] \POS[l]+R*{\vphantom{|}}="a";[]+L*{\vphantom{|}} \ar@<-5pt>@/_2pt/"a"_-\sigma & 0.
+}\]
+By Lemma~\ref{l:ker_coker}, both $\coker\partial$ and $\ker\knst$ are fully effective. In order to apply Lemma~\ref{l:ses}, it thus suffices to construct the indicated set-theoretic sections $\rho$ and $\sigma$.
+
+The section $\sigma$ maps each $X \to \Pold$ to its arbitrary lift to $\Pnew$; since $\ker \knst = \im \pnst$, such a lift exists and thus can be computed using Proposition~\ref{prop:lift_ext_one_stage}.
+
+Finally, we describe $\rho$. Given $\elln \colon X \to \Pnew$, we define $\ell_\them$ to be the composition of $\elln$ with the canonical projection $\Pnew \to \Pm$. Similarly, we define $o_\them$ to be the projection of the zero map. When $[\elln] \in \im \jnst = \ker \pnst$, i.e.\ when $\ellnmo$ is homotopic to $o_{n-1}$, we compute inductively such a homotopy $h_{n-1} \colon o_{n-1} \sim \ell_{n-1}$ in the following paragraph. This homotopy is then lifted to a homotopy $\ell'_n \sim \ell_n$. Since $\pn\ell'_n = o_{n-1}$, we must have $\ell'_n = o_n + \zeta_n$ for some $\zeta_n \colon X \to \Ln$ and we set $\rho(\ell) = \zeta_n$.
+
+\heading{Computing nullhomotopy}
+Thus, it remains to compute the nullhomotopy $h_{n-1}$. We proceed by induction on the height $\them$ of the Postnikov tower to compute a nullhomotopy $h_{\them}$ of $\ell_{\them}$. When a homotopy $h_{\them-1} \colon o_{\them-1} \sim \ell_{\them-1}$ has been computed, we lift it, using Proposition~\ref{prop:homotopy_lifting}, to a homotopy $\widetilde h_{\them-1}\col\ell'_\them\sim\ell_\them$ from some map $\ell'_\them$ lying over $o_{\them-1}$. Then $\ell'_\them = o_\them + \zeta_\them$ for a unique $\zeta_\them \colon X \to \Lm$.
+
+Since Proposition~\ref{prop:homotopy_concatenation} provides algorithmic means for concatenating homotopies, it remains to construct a nullhomotopy $h'_\them$ of $\ell'_\them$. Consider the connecting homomorphism in \ref{sec:actual_exact_sequence} for stages $\Pmmo$ and $\Pm$, i.e.
+\[\partial_{o_\them}\col[\stdsimp{1}\times X,\Pmmo]^{(\partial\stdsimp{1}\times X)\cup(\stdsimp{1}\times A)}\lra[X,\Lm]^A.\]
+From the exactness of \ref{sec:actual_exact_sequence} and from $o_\them + \zeta_\them = \ell'_\them\sim\ell_\them\sim o_\them$, it follows that $[\zeta_\them]$ lies in the image of $\partial_{o_\them}$. Lemma~\ref{l:preimage} then computes some $h_{\them-1}'$ such that $\partial[h_{\them-1}']=[\zeta_\them]$.
+
+By Proposition~\ref{prop:connecting_homomorphism}, the required nullhomotopy $h'_\them$ of $\ell'_\them$ can be computed as a diagonal in the following lifting-extension problem with the top map null on $(0\times X)\cup(\stdsimp{1}\times A)$ and equal to $\ell'_\them$ on $1\times X$:
+\[\xymatrix{
+(\partial\stdsimp{1}\times X)\cup(\stdsimp{1}\times A) \ar[r] \ar[d] & \Pm \ar[d] \\
+\stdsimp{1}\times X \ar[r]_-{h_{\them-1}'} \ar@{-->}[ru]_-{h'_\them} & \Pmmo
+}\]
+Proposition~\ref{prop:lift_ext_one_stage} provides an algorithm for the computation of $h_\them'$ and the proof is finished.
+
+
+\section{Effective homological algebra}\label{sec:effective}
+
+
+\heading{Homotopy and homology}
+
+%The model structures (in particular the projective one) on the diagrams of CW complexes and therefore, in essence, for diagrams of simplicial sets have been described in \cite{alaska}[section VI] or \cite{dwykan}. 
+
+
+%We now define the version of Bredon cohomology and homology \cite{bredon} for diagrams of simplicial sets and we describe the homotopy groups of a diagram. All these definitions can be seen as generalizations of the same notions given for $G$--simplicial sets. Details can be seen \cite{alaska}[sections I, II and VI].
+
+We aim to define homotopy groups of diagrams $\dX \: \icat \to \sSet$ in such a way they can be seen as functors $\dpi_\thedimm (-)\:\sSet^\icat \to \Grp^\icat$. To do so, we will assume that $\dX(i)$ are simply connected and thus  $\pi_\thedimm (\dX(i))$ do not depend on  basepoints.
+To define homotopy groups for diagrams of simplicial sets that are not simply connected, basepoints have to be introduced, possibly as a subdiagram  $\pt$ of $\dX$. However in this situation, $\dpi_k$  in general does not appear as a  functor $\sSet^\icat \to \Grp^\icat$. 
+
+\begin{Def}
+Let  $\dX \colon \icat \to \sSet$ be a diagram of simply connected simplicial sets. We define the $\thedimm$-th  homotopy group $\dpi_\thedimm (\dX) $ of $\dX$ as a diagram $\icat \to \Set$ satisfying
+\[
+\dpi_\thedimm (\dX) (i) = \pi_\thedimm (\dX(i)), \qquad i\in \icat
+\]
+and the maps in the diagram $\dpi_* (\dX)$ are given as follows: for any $f\: i\to j$, $i,j \in \icat$ we have 
+\[
+\dpi_* (\dX) (f) = \dX(f)_* \:  \pi_* (\dX(i)) \to  \pi_* (\dX(j)).
+\]
+\end{Def}
+Later in the text, we will work with relative homotopy groups for a pair $(\dX, \dA)$. Here $\dA$ is a subdiagram of $\dX$, i.e for any $i\in \icat$ we have $\dA (i) \subseteq \dX (i)$ and for arbitrary $f\: i \to j$ we have $\dA(f) = \dX(f)|_{\dA}$. Given that both $\dX$ and $\dA$ are $1$-connected, the homotopy group $\dpi_*(\dX, \dA)$ appears as a functor $\mathrm{Pair}( \sSet^\icat) \to \Grp^\icat$.
+
+\begin{Def}
+For a diagram $\dX\: \icat \to \sSet$, we define a diagram of chain complexes $\dC_*(\dX)$ by setting $\dC_*(\dX)(i) = C_*(\dX(i))$. Similarly, we define the homology groups $\dH_* (\dX)$ of $\dC_*(\dX)$ as diagrams of abelian groups.
+\end{Def}
+There is another version of homology (and cohomology), namely the \emph{Bredon cohomology and homology}. It was originally defined for $G$--simplicial sets (
+%or, in effect for $\OgsSet$, 
+see \cite{bredon}), but it can be easily generalized to any diagrams of simplicial sets:
+\begin{Def}\label{def:Bredon}
+Let $\dX \colon \icat \to \sSet$ be a diagram of simplicial sets and let $\drho\colon \icat \to \Ab$ be a diagram of abelian groups. 
+
+We define the cochain complex $C^* _\icat (\dX;\drho) \coloneqq$ $\Hom(\dC_*( \dX), \drho)$. Its $n$-th cohomology group $H^n _\icat (\dX; \drho)$ is called the $n$-th cohomology group of $\dX$ with coefficients in $\drho$.
+\end{Def}
+As our notation suggests,  $C^* _\icat(\dX;\drho)$ is not a diagram, but a chain complex only. In the literature \cite{alaska, bredon} the diagrams $\drho$ are sometimes called \emph{coefficient systems}.
+
+To give the Bredon homology with coefficients, we need the coefficient system to be a contravariant functor, so we assume $\drho \: \icat^\op \to \Ab$. We define chain complex $C_* ^\icat (\dX;\drho)$ as a tensor product $\dC_\thedimm(\dX) \otimes_\icat \drho$. For details see \cite{alaska}, Chapter~1 or \eqref{eq:coend} in Section~\ref{sec:effabgrp}.
+
+It follows, that $C_\thedimm ^\icat (\dX ; \drho)$ is an abelian group. The homology group $H_\thedimm ^\icat (\dX ; \drho)$ is defined as the $\thedimm$-th homology of the chain complex $C_* ^\icat (\dX ; \drho)$ where the differential $\bo$ is given by $\bo = d \otimes 1$.
+
+\heading{Cofibrant replacement model}
+
+Our model of cofibrant replacement $X^\cofr$ of a simplicial set $X\: \icat \to \sSet$ is derived from the Bousfield--Kan model of a homotopy left Kan extension  (\cite[chapter~8]{riehl},  \cite{isac}) and can be presented as
+\[
+\dX^{\cofr} (-) = \bigsqcup_{n} \bigsqcup_{i_0, \cdots , i_n} \stdsimp{n} \times \dX(i_0) \times \icat (i_0, i_1) \times \cdots \times \icat (i_{n-1}, i_n) \times \icat (i_n,  - ) / {\sim} \, \in \sSet^\icat.
+\]
+
+where the relation $\sim$ is given as 
+\begin{align*}
+(d^k t, x, f_1, f_2, \ldots f_n, f) \sim {} & (t, x, f_1, f_2, \ldots ,f_{k+1}  f_{k}  , \ldots, f_{n-1}, f_n, f),  & & 0< k< n; \\
+(d^k t, x, f_1, f_2, \ldots f_{n}, f) \sim {} & (t, x, f_1, f_2, \ldots, f_{n-2}, f_{n-1}, f f_n), & & k= {n};\\
+(d^k t, x, f_1, f_2, \ldots f_{n}, f)\sim {} & (t, f_1(x), f_2,  \ldots , f_{n-1}, f_{n}, f),  &  &k= 0;\\
+(s^{k}t, x, f_1, f_2, \ldots f_{n}, f)\sim {} & ( t, x, f_1,  \ldots, f_{k}, \id , f_{k+1},\ldots, f_{n-1}, f_{n}, f),  &  & 0\leq k\leq n.
+\end{align*}
+where $d^k\colon \stdsimp{n-1} \to \stdsimp{n}$ is the inclusion into the $k$-th face and $s^k\:\stdsimp{n} \to \stdsimp{n-1}$ is the $k$-th degeneracy.
+\marek{rewrite this part}
+A $q$-simplex $y \in \dX^\cofr (i) _q$ corresponds to a $q$-simplex $z \in (\stdsimp{n} \times \dX(i_0))_q$ and a collection of maps $f_\thedimm \: i_{\thedimm-1} \to i_{\thedimm}$ and $f\: i_n \to i$. The morphisms $\dX^{\cofr} (i_\alpha) \to \dX^{\cofr} (i_{\alpha'})$ are induced by maps $\icat( i_n, i_\alpha)$ $\to$ $\icat(i_n, i_{\alpha'})$. From this description, one can deduce the following:
+\begin{lemma}\hfill
+\begin{enumerate}
+\item Let $X$ be a finite diagram of simplicial sets. Then $(X^\cofr, \emptyset)$ is a cellular pair.
+\item Let $X,A$ be finite diagrams and let $(X,A)$ be a cellular pair. Then $(X^\cofr, A^\cofr)$ is a cellular pair.
+\end{enumerate}
+\end{lemma}
+\begin{proof}\hfill
+\begin{enumerate}
+\item This follows directly from the description of simplicies of $X^\cofr$ given above.
+
+\item Let $J$ be the indexing set as in Defintion~\ref{d:cellulardiagrams} and Let $\{e_\alpha \mid \alpha \in J \}$ be the basis. Then the basis for the pair $(X^\cofr, A^\cofr)$ consists of elements 
+\[
+\{(t, e_\alpha,f_1,f_2,\ldots, f_n \mid \alpha \in J, f_1\: i_\alpha \to i_1, f_k\:i_{k-1} \to i_{k}, 1<k\leq n \}
+\]
+\end{enumerate}
+\end{proof}
+
+The description of the model above can be further simplified (see \cite{dugger}), which gives us
+\[
+\dX^{\cofr} (i) = \bigsqcup_{n} \bigsqcup_{f\:i_0\to \cdots \to i_n\to i} \stdsimp{n} \times \dX(i_0)  / {\approx}.
+\]
+We will not specify the relation $\approx$ here. However, we remark that each $\dX^{\cofr} (i)$ is glued from simplicial sets of the form $\stdsimp{n} \times \dX(i_0)$, for some $i_0 \in \icat$ and $n \geq 0$. 
+
+To describe the weak equivalence $\repl^{\dX}\:\dX^\cofr \to \dX$, it thus suffices to give  $\repl^{\dX}\:\dX^\cofr \to \dX$ on such cells, which will further be indexed by $(n, f)$, where $f\:i_0\to \cdots \to i_n\to i$. Let $\widehat{f}\: i_0 \to i $ denote the composition of maps in the chain $f$.
+
+For any standard $n$-simplex $\stdsimp{n}$, there is a unique simplicial map $0\colon\stdsimp{n} \to \stdsimp{0}$ given by mapping the unique $n$-cell $e_n$ of $\stdsimp{n}$ to $n$-fold degeneracy $(s_0)^n e_0$. Further, one can see that simplicial sets $\dX(i)$ and $\stdsimp{0} \times \dX(i)$ are isomorphic. We  then define
+\[
+{\repl}^{\dX} (n,f) (e_n, x) = (0(e_n), \widehat{f}(x)).
+\]
+\marek{end rewrite}
+
+
+
+\subsection{Effective homology for diagrams}\label{sec:effdiagrams}
+In this section, we define effective homology for diagrams of simplicial sets, introduced originally in the article \cite{filak}, and describe several constructions with such diagrams. We begin by introducing reduction and strong equivalence of diagrams:
+
+\begin{Def}
+Let $\dC,\dC' \colon \icat \to \Ch_+$ be diagrams of chain complexes. A \emph{reduction} $\dC \Redu \dC'$  is a triple of natural transformations  $(\alpha,\beta,\eta)$ 
+
+\[(\alpha,\beta,\eta)\: \dC\Redu \dC'\quad\equiv\quad\xymatrix@C=30pt{
+\dC \ar@(ul,dl)[]_{\eta} \ar@/^/[r]^\alpha & \dC' \ar@/^/[l]^{\beta}
+}\]
+which satisfy the following conditions:
+\begin{equation}\label{eq:reduction}
+\begin{array}{lll}
+ \eta\beta = 0 & \alpha \eta = 0&  \eta\eta = 0  \\
+\alpha \beta  = \id & \bo\eta + \eta \bo = \id - \beta\alpha&
+\end{array}
+\end{equation}
+
+One of the most important and well known examples of a simple reduction is the following example, first given in  \cite{eml1, eml2}:
+\begin{ex}[Eilenberg--Zilber reduction]\label{p:EZred}
+Let $X,Y$ be simplicial sets. Then there is a reduction
+\[
+(\AW, \EML, \SH)\: C_*(X \times Y) \Redu C_*(X) \otimes C_*(Y)
+\]
+\end{ex}
+
+The operators in the reduction data are called Alexander--Whitney, Eilenberg--MacLane and Shih respectively. They can be computed using the acyclic models theorem as e.g. in \cite{may}, §~28 and they are not unique. We will further use the reduction data presented in Theorem~2.1a, \cite{eml1}. An important observation is that the operators of the reduction data are based on the face and degeneracy maps which means that the reduction is functorial (in simplicial sets). 
+
+
+
+The strong equivalence $\dC \steq \dC'$ of diagrams of chain complexes is defined as a span of reductions $\dC\lredu \widehat{\dC}\Redu \dC'$.
+\end{Def}
+The strong equivalences can be composed as in the case of strong equivalences of chain complexes. We now define effective diagrams and introduce diagrams that have effective homology.
+
+\begin{Def}\label{def:pointw-effective}
+\begin{itemize}
+\item We call a chain complex $C_*$ \emph{locally effective} if the elements $c\in C_*$ have finite (agreed upon) encoding and there are algorithms computing the addition, zero, inverse and differential for the elements of $C_*$. 
+
+\item We call a diagram $\dC \colon\icat \to \Ch_+$ of nonnegatively graded chain complexes \emph{locally effective} if $\dC (i)$ is locally effective for every $i \in \icat$ and if $\dC(f)$ is a computable morphism for every morphism $f$ in the category $\icat$.
+
+\item We call a diagram of simplicial sets $\dX \: \icat \to \sSet$ \emph{locally effective} if $\dX (i)$ is locally effective simplicial set for every $i \in \icat$ and if $\dX(f)$ is a computable morphism for every morphism $f$ in the category $\icat$.
+\end{itemize}
+\end{Def}
+
+\begin{Def}
+Let $\dC\colon \icat \to \Ch_{+}$. We say $\dC$ is \emph{cellular} if there exists an indexing set $A$ and for every $\alpha \in A$ there is \item $i_\alpha \in \icat$ and a chain $c_\alpha \in \dC(i_\alpha)$
+such that the set
+\[
+\{f_{\alpha*} c_\alpha \mid \alpha \in A, f_{\alpha} \in  \icat(i_\alpha, i) \}
+\]
+forms a basis for each $C(i)$, i.e.
+\begin{equation*}%\label{eq:cell}
+\dC = \bigoplus\limits_{\alpha, c_\alpha} \bbZ \icat(i_\alpha, -),
+\end{equation*}
+where $\bbZ \icat(i_\alpha, i)$ is the free abelian group generated by the set of all maps $f\: i_\alpha \to i$.
+\end{Def}
+
+
+We can formulate the cellularity also in a different way: given an element $c \in \dC (i)$ there is a unique description of $c$ as 
+\begin{equation}\label{eq:cell}
+c= \sum\limits_{\alpha, f_{\alpha}\: i_\alpha \to i} k_{f_{\alpha}} f_{\alpha*} (c_\alpha)
+\end{equation}
+where  $k_{f_\alpha} \in \mathbb{Z}$.
+
+
+\begin{ex}\label{ex:celluaction}
+Let $X$ be a simplicial set with an action of a finite group $G$. Then $C_*(X)$ is a chain complex with an action of $G$ induced by the action of $G$ on $X$. Further,  $C_*(X)$ can be interpreted as a diagram of $\dC\: \Ocat_G ^\op \to \Ch_+$, where $\dC(G/H) = C_*(X) ^H = C_*(X^H)$, see \cite{elemndorf}. We will show, that  $\dC$ is a cellular diagram. To do so, we will describe a process that obtains the set $A$ of generators of $\dC$. We remark that the idea is to choose the appropriate generators in every  chain complex $C_*(X) ^H$. 
+
+Let $\S = \{ H \mid H\leq G\}$ and let $\prec$ be a total order on $\S$ that satisfies the condition $H\prec K$ if $|H| < |K|$. We use  $\prec$ to label the elements of $\S$ by nonnegative integers and we obtain a sequence
+$\{e\} = H_0 \prec H_1 \prec \cdots \prec H_{\thedim-1} \prec H_\thedim = G$.
+
+Let $B_\thedimmm$ be the set of generators (the basis) of $\dC(G/H_{\thedimmm})$. 
+We now construct the set $A$ using the following iterative process:
+
+First set $A  \coloneqq B_\thedim$. Next, if an element $c_\beta$ in $B_{\thedim -1}$ cannot be expressed as
+\begin{equation*}
+c_\beta= \sum\limits_{\alpha, f_{\alpha}\: G/H_{\thedim} \to G/H_{\thedim -1}} k_{f_{\alpha}} f_{\alpha*} (c_\alpha)
+\end{equation*}
+where $c_\alpha \in A$, $\thedimmm \geq {\thedim -1}$ and  $k_{f_\alpha} \in \mathbb{Z}$, we add $c_\beta$ to $A$ by setting $A \coloneqq A \cup \{ c_\beta \}$. 
+We repeat the process until we exhaust all elements in $B_{\thedim -1}$ and then we continue on with elements in $B_{\thedim- 2}, B_{\thedim -3}, \ldots,  B_0$.
+\end{ex}
+
+It remains to give a definition of effective diagram of chain complexes. In the definition, we will use the following notation:
+given a category $\icat$, the symbol $\widetilde{\icat}$ denotes the category that has the same objects as $\icat$ but all nonidentity arrows are removed. There is an obvious a natural transformation (inclusion) $\widetilde{\icat} \to \icat$ and therefore any diagram $X \: \icat \to \ccat$ induces a diagram $\widetilde{X} \:  \widehat{\icat}\to \ccat$.
+
+
+\begin{Def}\label{def:effective}
+\begin{itemize}
+\item We call a locally effective diagram $\dC$ \emph{effective} if it is cellular  and there is an algorithm that generates for given $n$ a finite list of all basis elements $c_\alpha \in \dC (i_\alpha)_n$ and an algorithm computing \eqref{eq:cell} for every input $c \in \dC(i)$.
+
+\item We say that a locally effective diagram of simplicial sets $\dX\:\icat \to \sSet$ has \emph{effective homology} if there is a strong equivalence  $\dC(\dX)_* \steq \dC^\ef _*$ between the diagram of chain complexes for $\dX$ and some effective diagram of chain complexes $\dC^\ef _*$.
+
+\item We say that a locally effective diagram of chain complexes $\dC$ has \emph{pointwise effective homology} (or $\dC$ is a diagram with \emph{pointwise effective homology}) if for every $i\in \icat$ there exists an effective chain complex $C ^{\ef} \: \widetilde{\icat} \to \Ch_+$ and a strong equivalence of chain complexes ${\widetilde{\dC} \steq C  ^{\ef}}$. 
+
+\item A locally effective diagram of simplicial sets $\dX\:\icat \to \sSet$ is \emph{pointwise effective} (or has \emph{pointwise effective homology}) if $\dC (\dX)$ has pointwise effective homology.
+\end{itemize}
+\end{Def}
+
+\begin{ex}
+Let $X$ be a finite simplicial set with an action of a finite group $G$. We can view $C_*(X)$ as a diagram of $\dC\: \Ocat_G ^\op \to \Ch_+$ as in Example~\ref{ex:celluaction}. Then the finiteness of $X$ implies that $\dC$ is effective.
+\end{ex}
+
+\heading{Constructions with effective homology}
+
+%algoritmicka kontrakce
+The following Proposition will be used in the construction of the Postnikov tower of a diagram $\dY$ to compute homotopy groups $\pi_n(Y)$ and to define correctly the Postnikov invariants. 
+
+Before the statement itself, we define the diagram of cycles $\dZ$: Given an effective diagram of chain complexes $\dC\colon \icat \to \Ch_+$, there is a diagram of cycles $\dZ_\thedimm \colon \icat \to \Ch_+$ such that $\dZ_\thedimm (i)$ is the subgroup of cycles in $\dC_\thedimm(i)$.
+
+\begin{prop}\label{prop:gen}
+Let $\dC\colon \icat \to \Ch_+$ be an effective diagram of chain complexes such that $\dH_\thedimm (\dC) = 0$ for $\thedimm \leq n, i\in \icat$. Then there is a (computable) retraction $r \colon \dC_{\thedimm+1} \to \dZ_{\thedimm+1}$ i.e. a homomorphism that restricts to the identity on $\dZ_{\thedimm+1}$.
+\end{prop}
+\begin{proof}
+The proof is a straightforward generalization of the proof of Proposition 2.12 in~\cite{aslep}. We define a contraction $\s\: \dC_{\thedimm} \to \dC_{\thedimm+1}$ i.e.\ a map satisfying $\bo\s + \s \bo = \id$ and we use it to split off the cycles.  We proceed by induction with respect to the dimension. 
+
+Basic step of induction: For every chain $x \in \dC(i)_0 $, we have $\bo x = 0$ and because $\dH_0(\dC)(i) = 0$, we conclude that $x$ is a boundary and hence there exists $y \in \dC_1$ such that $\bo y = x$. We want to compute such $y$ and set $\s(x) = y$.
+
+Diagram $\dC$ is effective, so we have a  finite set of generators $x_{\alpha} \in \dC(i_{\alpha})_{\alpha \in A}$ and it suffices to compute $\s(x_\alpha) = y_\alpha$ as any $x \in \dC_0$ can be expressed using the formula
+\[
+x= \sum\limits_{\alpha, f_{\alpha}\: i_\alpha \to i} k_{f_{\alpha}} f_{\alpha*} (x_\alpha)
+\]
+and it follows that
+\[
+\s(x)= \sum\limits_{\alpha, f_{\alpha}\: i_\alpha \to i} k_{f_{\alpha}} f_{\alpha*} (\s(x_\alpha)) = \sum\limits_{\alpha, f_{\alpha}\: i_\alpha \to i} k_{f_{\alpha}} f_{\alpha*} (y_\alpha) 
+\]
+
+It remains to show how to compute $y_\alpha$ for some $x_\alpha \in \dC (i_\alpha)_0$. Because $\dC$ is effective, one can compute the finite basis $\{y_\beta \}_{ \beta \in B}$ of $\dC_1(i_\alpha)$. We can interpret $\bo\: \dC(i_{\alpha})_1 \to \dC(i_{\alpha})_0$ as a $\bbZ$-linear map and use Smith normal form algorithm to compute $y_\alpha$ as a linear combination of basis elements $y_\beta$.
+
+Inductive step is similar: Suppose we have successfully constructed $\s_{\thedimm-1}$ and we want to construct $\s_{\thedimm}$: Let again $x_{\alpha}$ be a basis element, $\alpha \in A_{\thedimm}$. Then $x_{\alpha} - \s_{\thedimm-1}\bo(x_{\alpha})$ is a cycle. Because $\dH_\thedimm(\dC) = 0$, we can compute $y_\alpha$ such that $\bo(y_\alpha) = x_{\alpha} - \s_{\thedimm-1} \bo(x_{\alpha})$ and we set $\s_\thedimm(x_{\alpha}) = y_{\alpha}$. Similarly as above we compute $\s_k (x)$ for $x \in \dZ_k (i)$. Finally, we set $r = \id - \s\bo$. This completes the proof. 
+\end{proof}
+
+
+\heading{Perturbation lemmas}
+
+
+Consider a reduction $C_* \Redu D_*$. Assume we change the differential of one of the complexes, i.e. we replace either $C_*$ with some $C'_*$ or $D_*$ with $D'_*$. Then the Perturbation Lemmas provide us with new reductions $C'_* \Redu  \widehat{D}_*$ and $\widehat{C}_* \Redu  D'_*$ where the $\widehat{C}_*$, $\widehat{D}_*$ are again the original chain complexes with changed (perturbed) differential.
+
+Further on, we will use the following notation: For any diagram of chain complexes, $\dC \: \icat \to \Ch_+$, the diagram $\dC[k], k\in \mathbb{N}$ is diagram of chain complexes $\dC$ with all the chain complexes moved up by dimension $k$, i.e. $\dC[k]_n = \dC_{n-k}$.
+
+\begin{Def}
+Let $\dC \colon \icat \to \Ch_+$. Notice that the differential $\bo$ on $\dC$ can be seen as a natural transformation $\dC \to \dC [1]$ satisfying $\bo\bo = 0$. We call homomorphism $\delta : \dC \to \dC[1] $ \emph{perturbation} of $\bo$ if the sum $\bo + \delta$ is also a differential.
+\end{Def}
+
+The following results are straigtforward generalizations of well--known perturbation lemmas,  that constitute one of the basic tools in homological perturbation theory. Their genesis can be traced back to \cite{eml1, rbrown, shih} and their full proofs can be found e.g. in \cite{serg}. The generalizations were introduced in \cite{filak}, where the proofs of the following results can be found.
+
+
+
+\begin{lem}[Easy Perturbation Lemma] \label{lem:epl}
+Let $(\alpha,\beta,\eta) \colon (\dC, \bo)\Redu  (\dC',\bo')$ be a reduction of diagrams of chain complexes. Let $\delta'$ be a perturbation of the differential $\bo'$. Then there is a reduction $(\alpha,\beta,\eta) \colon (\dC, \bo + \beta \delta' \alpha) \Redu  (\dC',\bo' + \delta)$.
+\end{lem}
+\begin{lem}[Basic Perturbation Lemma] \label{lem:bpl}
+Let $(\alpha,\beta,\eta) \colon (\dC, \bo)\Redu  (\dC,\bo')$ be a reduction of diagrams of chain complexes. Let $\delta$ be a perturbation of the differential $\bo$ such that for every $i\in \icat$ and every $c \in \dC (i)$ there is some $k \in \mathbb{N}$ satisfying $(\eta\delta)^{k} (c) = 0$. Then there is a perturbation $\delta'$ of the differential $\bo'$ and a reduction of diagrams of chain complexes
+ $(\alpha',\beta',\eta') \colon (\dC, \bo + \delta) \Redu  (\dC' ,\bo' + \delta')$.
+\end{lem}
+ We remark that one gets the original Perturbation Lemmas by setting $\icat$ to be a trivial diagram.
+ 
+ 
+As a first application, we will utilize the Perturbation Lemmas to give an effective homology to the algebraic mapping cone. We first define the object itself:
+\begin{Def} 
+Suppose that we have diagrams  of chain complexes $\dC$, $\dD \:\icat \to \Ch_+$ and a natural transformation $\varphi\: \dC \to \dD$. As a graded abelian group, the algebraic mapping cone $\dCone_\varphi$ is identical to the direct sum $\dC[1] \oplus \dD$ and these two diagrams differ in the differential only:
+\[
+\bo_{\dC[1] \oplus \dD} = 
+\begin{pmatrix}
+-\bo_{\dC} & 0\\
+0 & \bo_{\dD}\\
+\end{pmatrix}
+\quad
+\bo_{\dCone_\varphi} = 
+\begin{pmatrix}
+- \bo_{\dC} & 0 \\
+\varphi & \bo_{\dD}\\
+\end{pmatrix}
+\]
+\end{Def} 
+We remark that choosing $\icat = *$, we get a standard algebraic mapping cone.
+
+\begin{lem}\label{l:cone}
+Let $\dC,\dD \:\icat \to \Ch_+$ be diagrams that have effective homology and let $\varphi \colon \dC \to \dD$ be a homomorphism. Then the mapping cone $\dCone_\varphi \: \icat \to \Ch_+$ is a diagram with effective homology.
+\end{lem}
+\begin{proof}
+This is obtained using perturbation Lemmas~\ref{lem:epl} and \ref{lem:bpl} on the strong equivalence of diagrams 
+\[
+\dC[1] \oplus \dD \steq \dC^\ef[1] \oplus \dD^\ef.
+\]
+In more detail, there is a span of reductions
+$\dC[1] \oplus \dD \lredu \widehat{\dC}[1] \oplus \widehat{\dD} \Redu \dC^\ef[1] \oplus \dD^\ef$.
+
+From the definition of the mapping cone, we can see that  $\dCone_\varphi$ differs from $\dC[1] \oplus \dD$ by the perturbation of the differential $\bo_{\dC}  \oplus \bo_{\dD}$ which can described as 
+ \[
+\delta = 
+\begin{pmatrix}
+0 & 0 \\
+ \varphi& 0\\
+\end{pmatrix}.
+\]
+
+We now use the Easy Perturbation Lemma~\ref{lem:epl} on the reduction $\dC[1] \oplus \dD \lredu \widehat{\dC}[1] \oplus \widehat{\dD} \colon (f,g,h)$ and we end up with a new differential which can de described as the differential of the direct product plus the perturbation
+ \[
+\widehat{\delta} = 
+\begin{pmatrix}
+0 & 0 \\
+g \co \varphi \co f & 0\\
+\end{pmatrix}.
+\]
+It remains to use the Basic Perturbation Lemma for $\widehat{\delta}$ on the reduction $(f^\ef, g^\ef, h^\ef): \widehat{\dC}[1] \oplus \widehat{\dD} \Redu \dC^\ef[1] \oplus \dD^\ef$ so we need to check the nilpotency condition, but this easily holds as the homotopy operator $h^\ef$ is given by
+ \[
+h^\ef = 
+\begin{pmatrix}
+h^\ef_{\dC[1]} &0\\
+0 & h^\ef_{\dD}\\
+\end{pmatrix}
+\]
+and we obtain $\widehat{\delta} h^\ef \widehat{\delta} = 0$.
+
+\end{proof}
+If we restrict the resulting strong equivalence ${\dCone_\varphi \steq \dCone^\ef _\varphi}$ to the second summand, we get the original strong equivalence $\dD \steq \dD^\ef$.
+
+\begin{rem}[Mapping cylinder]~\label{rem:mapcylinder}
+Given a map  $\varphi\: \dX \to \dY$ of diagrams, we can construct a diagram \[\MCyl{\varphi} =  (\Delta^1 \times \dX \cup \dY)/\sim,\]
+ where $\sim$ is the equivalence identifying $(1,x)$ with $\varphi(x)$,
+$x\in X$. One can see $\MCyl{\varphi}$ as a particular case of homotopy colimit. We call the resulting diagram a \emph{mapping cylinder}. In this construction, we can identify  $\dX$ with $\{0\} \times \dX$,
+the ``top copy'' of $\dX$ in~$\MCyl{\varphi}$ and if we contract this copy of $\dX$, we obtain the mapping cone $\dCone{\varphi}$.
+
+Using the Eilenberg--Zilber reduction, one can check that the diagram of chain complexes of the pair $(\MCyl\varphi,\dX)$
+has a reduction to $\dCone_{\varphi*}$. Details can be found in \cite{weibel}, p. 20--22.
+\end{rem}
+
+
+
+
+
+\heading{Evaluation maps}
+
+Assume that $\thedim\geq1$ and $\pi \in \Ab$. As $\Engen_\thedim =  C^\thedim (\stdsimp{\thedim}; \pi)$, the $\thedim$-simplices of $\Engen$ can be seen as labellings of the unique $\thedim$--simplex $\stdsimp{\thedim}$ by an element of $\pi$. 
+%Using the definition of the model of $E(\pi, \thedimm)$, we have 
+%\[
+%C^\thedimm (\stdsimp{\thedimm}; \pi) \cong \Hom(C_\thedimm (\stdsimp{\thedimm};\bbZ), \pi) \cong \Hom(\bbZ, \pi) \cong \pi.
+%\]
+
+This gives us a bijection $\ev\colon \Engen_\thedim =  C^\thedim (\stdsimp{\thedim}; \pi) \cong \pi$, where
+ $\ev$ is defined by reading the value on the unique $\thedim$--simplex. This is why we will call this map \emph{evaluation}. We remark that $\Engen_\thedim = \Kpin_\thedim$, which follows form the definition of the models.
+
+Next, we define a map $C_\thedim(\Engen) \to \pi$ as the unique extension of $\ev$ to the free abelian group generated by $\Engen_\thedim$. 
+
+
+Abusing the notation, we will call this homomorphism $\ev$. Similarly, we get homomorphism $C_\thedim(\Kpin) \to \pi$ and we again denote this homomorphism by $\ev$. 
+
+Homomorphism $\ev$ is functorial, hence we can extend its definition to diagrams. %To emphasise the difference, we denote the resulting homomorphisms of diagrams $\dev$, i.e. $\dev\: \dC_\thedimm(\dE(\dpi, \thedimm)) \to \dpi $ and $\dev\: \dC_\thedimm(\dK(\dpi, \thedimm)) \to \dpi$.
+
+The following two lemmas will be used in proving corectenss of the Postnikov tower construcion.
+\begin{lem}[Lemma~4.3 in ~\cite{polypost}]\label{l:eval1}
+The homomorphism $\dev \colon \dC_\thedim(\Kpin) \to~\dpi $ induces an isomorphism of diagrams \[\dH_\thedim(\Kpin) \to~\dpi.\]
+\end{lem}
+
+Given $\dev \colon \dC_\thedim(\Engen) \to \dpi$ and $\dev \colon \dC_{\thedim+1}(\Kngen)\to \dpi$, we define a homomorphism
+\[
+h \coloneqq \dev + \dev \colon \dC_\thedim(\Engen) \oplus \dC_{\thedim+1}(\Kngen) \to \dpi \oplus \dpi \to \dpi
+\]
+where the last arrow is the standard addition. Using the map $\delta \: \Engen \to \Kngen$, which is a fibration pointwise, we can construct the algebraic mapping cone
+\[
+\dCone_{\thedim+1}(\delta_*) = \dC_\thedim(\Engen) \oplus \dC_{\thedim+1}(\Kngen),
+\] 
+and we in fact have a homomorphism $h \colon \dCone_{\thedim+1}(\delta_*) \to \dpi$. This homomorphism has a nice property:
+\begin{lem}[Lemma 4.4 in \cite{polypost}]\label{l:ev-cone}
+The homomorphism $h$ sending $(\s, \t)$ to $\dev \s + \dev \t$ induces an isomorphism \[\dH_{\thedim+1}(\dCone_* (\delta_*) ) \to \dpi.\]
+\end{lem}
+
+\heading{Simplicial maps to $E(\pi, \thedimm)$ and $K(\pi, \thedimm)$}
+
+Now we can describe the how (relative) simplicial maps to $\Engen$ and $\Kpin$ correspond to chain maps. 
+\begin{lem}[Lemma~24.2 in \cite{may}]\label{l:ev*}
+Let $(X,A)$ be a simplicial set and its subset.
+The simplicial maps $f\: X\to \Engen$, such that $f\mid_A = 0$ are in bijection with relative cochains $\kappa\:C_\thedim (X,A)\to \pi$.
+\end{lem}
+\begin{lem}[Lemma~24.3 in \cite{may}]\label{l:ev2*}
+Let $(X,A)$ be a simplicial set and its subset Then simplicial maps $f\: X\to \Kpin$ such that $f\mid_A = 0$ are in bijection with relative cocycles $\kappa\in Z^\thedim (X,A;\pi)$.
+\end{lem}
+%We omit the proof (it can be found in \cite{may}) and remark that the correspondence between simplicial maps $f\: X \to K(\pi, \thedimm)$ and cochains $\kappa \in Z^\thedimm (X;\pi)$ is the same as described in the proof of Lemma~\ref{l:ev*}. Here, one has to prove that for a given $f\:X \to K(\pi, \thedimm)$ the corresponding cochain $\kappa$ is a cocycle and, in the opposite direction, to show that for a given cocycle $\kappa$ the image of the map $f\:X \to E(\pi, \thedimm)$ lies in $K(\pi, \thedimm)$. 
+
+When we generalize the previous results to diagrams, we obtain.
+\begin{lem}\label{l:ev3*}
+Let $\dA, \dX \colon \icat \to \sSet$, $\dA\subseteq \dX$ and let $\dpi \colon \icat \to \Ab$. The maps $f\: \dX\to \dE(\dpi,\thedimm)$ of diagrams of simplicial sets  are in bijection with cochains $\kappa \in C_\icat ^\thedimm (\dX; \dpi)$.
+\end{lem}
+As above, we have a version for Eilenberg--MacLane spaces.
+\begin{lem}\label{l:ev4*}
+Let $\dX \colon \icat \to \sSet$ and let $\dpi \colon \icat \to \Ab$. The maps $f\: \dX\to \dK(\dpi,\thedimm)$ of diagrams of simplicial sets  are in bijection with cocycles $\kappa \in Z_\icat ^\thedimm (\dX; \dpi)$.
+\end{lem}
+Finally, we have the following result that can be seen as a generalization of Theorem~24.4 in \cite{may}.
+\begin{prop}\label{l:ev5*}
+Let $\dX \colon \icat \to \sSet$ be cofibrant and let $\dpi \colon \icat \to \Ab$. Then homotopy classes of maps of diagrams $[\dX, \dK(\dpi,\thedimm)]_\icat$ are in bijection with Bredon cohomology groups $H^\thedimm _\icat (\dX ; \dpi)$.
+\end{prop}
+In case $\dX$ is not cofibrant, we get the bijection between  $[\dX, \dK(\dpi,\thedimm)]_\icat$ and the cohomology group $H^\thedimm _\icat (\dX^\cofr ; \dpi)$.
+
+\heading{Representing a map of diagrams by an effective cocycle}
+In the Postnikov system algorithm, we will encounter the
+following situation: We consider a finite diagram $\dX\:\icat \to \sSet$ with effective homology and an effective diagram $\dC_* ^{\ef}(\dX)$ of chain complexes such that $\dC_*(\dX)$ \mbox{$\steq$} $\dC_* ^{\ef}  (\dX)$. Let  $f\: \dC_*(\dX) \to \dC_* ^{\ef}  (\dX)$ be the composite (natural) map from the strong equivalence.
+
+Let us also consider a $(\thedimm+1)$-cocycle 
+\[
+\psi^{\ef}\in Z^{\thedimm+1}(\Hom (\dC^{\ef} _*  (\dX), \dpi)) = {Z^{\thedimm+1}_{\icat, \ef}}(\dX; \dpi)\]
+for some diagram of fully effective Abelian groups $\dpi$. The superscript ``ef'' emphasise that the cocycle belongs
+to the ``effective'' cochain complex ${C^{*} _{\icat,\ef}}  (\dX; \dpi)$ obtained from the effective diagram $\dC_* ^{\ef} (\dX)$ associated to~$\dX$. Then $\psi^\ef$ can be represented by
+a system of finite matrices, since it can be seen as a collection of maps from chain groups $ \dC_{\thedimm+1} ^{\ef}(\dX)$ of finite rank into~$\dpi(i)$, $i\in \icat$, as was described in Lemma \ref{l:ev3*}.
+
+\begin{lem}\label{lem:efcococyleeml}
+The cocycle $\psi^\ef$ defines a simplicial map $\dX \to \dK(\dpi, \thedimm+1)$.
+\end{lem}
+\begin{proof}
+Take the chain map $f \: \dC (\dX) \to \dC^{\ef} (\dX)$. We define
+a cocycle $\psi\in Z^{\thedimm+1} _\icat  (\dX; \dpi)$ as
+$\psi=f \psi^\ef$. We have seen in Lemma \ref{l:ev4*} that such a $\psi$ canonically defines a simplicial map
+$\widehat\psi\:\dX\to \dK(\dpi,\thedimm+1)$.
+\end{proof}
+\subsection{A pullback from a fibration of Eilenberg--MacLane diagrams}
+\label{s:pullb}
+In the construction of Postnikov systems, we will encounter the following situation: We are given
+a diagram of simplicial sets $\dP\in \sSet^\icat$, plus a mapping
+$f\:\dP\to \dK(\dpi,\thedim+1)$, for some diagram of abelian groups $\dpi \in \sSet^\icat$
+and a fixed~$\thedim\ge 1$.
+
+Now we define a diagram $\dQ\in \sSet^\icat$ as the \emph{pullback}
+according to the following commutative diagram:
+\[
+\xymatrix{
+\dQ \ar[r] \ar[d] & \dE(\dpi,\thedim) \ar[d]^{\cobo}\\
+\dP\ar[r]^-{f} & \dK(\dpi,\thedim+1)
+}
+\]
+
+
+A result from~\cite{polypost}, then gives the following
+\begin{corollary}[Corollary~3.18 in \cite{polypost}]\label{c:pullback} Given $\dpi, \thedim, \dP, f$ as above, where $\dpi$ is a fully effective diagram of abelian groups, the diagram $\dP$ has pointwise effective homology, and $f$ is computable, the pullback diagram $\dQ$ has pointwise effective homology.
+\end{corollary}
+
+
+
+\subsection{Postnikov tower for simplicial sets}
+
+The algorithm that constructs the Postnikov tower for a $1$-connected simplicial set $Y$ as seen in \cite{polypost, aslep} is based on repeating one construction step iteratively: 
+\begin{itemize}
+\item Given a map $\varphinmo \colon Y \to \Poldst$ of simplicial sets with effective homology, the algorithm outputs simplicial sets with effective homology $\Pnewst, \Enst, \Knst$ and computable maps $\varphi_{n},p_n, \ell_n, k_n$. In particular, we compute $\varphin \colon Y \to \Pnewst$.
+\end{itemize}
+\begin{equation}\label{eq:sset_pullback}
+\xymatrix@C=50pt{
+ &\Pnewst \ar@{->>}[d]^{p_n} \ar[r] & \Enst \ar@{->>}[d] \\
+Y \ar[r]^{\varphinmo}  \ar[ur]^{\varphin}  \ar@/^50pt/[urr]^{\ell_n}& \Poldst \ar[r]^-{\kkk_{\thedim-1}} & \Knst
+} 
+\end{equation}
+Here, the space $\Pnewst$ is computed as a pullback in the previous diagram.
+\heading{Postnikov tower for diagrams}
+
+Our aim is to generalize the previous construction to diagrams. The generalization is, however not straightforward due to the following facts:
+\begin{enumerate}
+\item Suppose that we have computed $\varphinmo\:Y \to\Poldst$. In order to compute the map $\kkk_{\thedim-1}\:\Poldst \to \Knst$, it is required that $\Poldst$ is cofibrant.
+\item Diagrams $\KnstY$ and $\EnstY$ are fibrant. If we compute $\Pnewst$ as a pullback, similar to~\eqref{eq:sset_pullback}, we get $\Pnewst$ that is not cofibrant and a map $\varphin\: Y \to \Pnewst$.
+\end{enumerate}
+
+The point is somewhat clearer from the homotopy point of view - the homotopy class of $\kkk_{\thedim-1}$  exists but is not represented by an actual map from $\Poldst$ since that is not cofibrant. The diagram $\Pnewst$ is the next Postnikov stage, but our construction cannot be iterated due to the first step. To overcome this, we utilize Proposition~\label{p:cofibrep} and compute a cofibrant replacement  $\varphin^{\cofr}\: Y^\cofr \to \Pnewst ^\cofr$. 
+
+
+Using a notation $\dY(0) = \dY$ and $\Ynnewst = \Ynewst ^\cofr$, we sum up the algorithmic iterative step of the construction as a succession of the following two computations:
+
+\begin{itemize}
+\item Given $\varphist{\thedim}^\cofr \colon \Ynewst \to {\Poldst}^\cofr$ as a map of diagrams that have effective homology, one algorithmically constructs a Postnikov stage $\Pnewst$ as a diagram  which has \emph{pointwise} effective homology and a computable map $\varphist{n} \colon \Ynewst \to \Pnewst$. 
+
+\item Given a map of diagrams $\varphist{\thedim} \colon \Ynewst  \to \Pnewst$ that have pointwise effective homology, one algorithmically constructs the map $\varphin^\cofr \colon \Yst{\thedim+1} \to \Pnewst^\cofr$ between diagrams which have effective homology.
+
+\end{itemize}
+We picture the whole construction as follows:
+\begin{equation}\label{eq:Postnikov_iterative}
+\xymatrix@C=40pt{
+{} & {\Pnewst^\cofr }\ar@{-->}[d]&{} \\
+ \rightbox{\Ynnewst}{{}={\Ynewst^\cofr}} \ar@{-->}[ur]^{\varphin^\cofr}   \ar@{-->}[d] & \Pnewst \ar@{->>}[d]^{p_n} \ar[r] & \EnstY \ar@{->>}[d] \\
+\Ynewst \ar[r]^{\varphinmo^\cofr}  \ar[ur]^{\varphin}& {\Poldst}^\cofr\ar[r]^-{\kkk_{\thedim-1}} & \KnstY
+} 
+\end{equation}
+
+We define the \emph{Postnikov system} or \emph{Postnikov tower} $P$ for diagram $Y$ as a collection of diagrams $\Pnewst $ for $\thedim \geq 0$ together with maps $p_n\: \Pnewst \to {\Poldst}^\cofr$ such that
+\begin{enumerate}
+\item[(i)] $\Pzerost$ is the trivial diagram of points.
+\item[(ii)] For each $\thedim\ge 0$,
+the map $\varphin: \Ynewst \to \Pnewst$
+induces isomorphisms  $\dpi_j (\varphin):\dpi_j(\Ynewst)\to \dpi_j(\Pnewst)$
+of homotopy groups for $0\le j\le\thedim$,
+while $\dpi_j(\Pnewst)=0$ for $j\ge \thedim+1$.
+\item[(iii)] Diagram $\Pnewst$ is constructed as a pullback in \eqref{eq:Postnikov_iterative}.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Postnikov tower for diagrams}\label{sec:postnikov-proof}
+
+In this first section, we present a precise statement of Theorem~\ref{t:postnikov} on an algorithmic construction of the Postnikov tower for diagrams and describe the objects that are computed during the run of the algorithm. In further sections, the algorithm itself is explained and its correctness is proved.
+
+We begin by describing formally what the \emph{Postnikov tower} for a diagram means for us:
+Let $\dY\colon \icat \to \sSet$ be a pointwise effective diagram of $1$-connected simplicial sets, where the category $\icat$ is assumed to be finite. We remark that the $1$-connectedness of $\dY$ is needed for the proof of correctness of the algorithm, as the algorithm itself does not make use of any certificate of this fact and in particular, we do not assume that spaces $\dY(i)$ are even $1$-reduced.
+
+For our purposes, we define a $n$-stage \emph{Postnikov system} of $\dY$ as map of truncated  towers $\varphi_n\:\dY_n \to \dP_n$, satisfying the following conditions:
+
+
+\begin{enumerate}
+\item[(i)]  $\Pzerost$ is the trivial diagram of points and the following conditions hold:
+\item[(ii)] For each $\thedim\ge 0$,
+the map $\varphin: \Ynewst \to \Pnewst$
+induces isomorphisms  $\dpi_j (\varphin):\dpi_j(\Ynewst)\to \dpi_j(\Pnewst)$
+of homotopy groups for $0\le j\le\thedim$,
+while $\dpi_j(\Pnewst)=0$ for $j\ge \thedim+1$.
+\item[(iii)] Diagram $\Pnewst$ is constructed as a pullback in the following diagram
+\[
+\xymatrix@C=40pt{
+{} & {\Pnewst^\cofr }\ar@{-->}[d]&{} \\
+ \rightbox{\Ynnewst}{{}={\Ynewst^\cofr}} \ar@{-->}[ur]^{\varphin^\cofr}   \ar@{-->}[d] & \Pnewst \ar@{->>}[d]^{p_n} \ar[r] & \dE(\dpi_n (\dY), n ) \ar@{->>}[d] \\
+\Ynewst \ar[r]^{\varphinmo^\cofr}  \ar[ur]^{\varphin}& {\Poldst}^\cofr\ar[r]^-{\kkk_{\thedim-1}} & \dK(\dpi_n (\dY), n+1)
+} 
+\]
+\end{enumerate}
+
+Diagrams  $\Pist$ are called \emph{stages}
+of the Postnikov system, and
+ maps $\kkk_{i}$ are called
+\emph{Postnikov classes}  (the terms \emph{Postnikov factors}
+or \emph{Postnikov invariants} are also used in the literature).
+
+We now describe in full detail which objects will be constructed during the run of the algorithm:
+{\renewcommand{\thethm}{A}\addtocounter{thm}{-1}
+\begin{thm}[Precise formulation]\label{t:postnikov-restat}
+Let $\thedim\geq 2$ be fixed, let $\dY\:\icat \to \sSet$
+be a finite diagram that has pointwise effective homology and let us suppose that every $\dY(i)$ is
+$1$-connected. Then there is an algorithm that computes the $n$-stage Postnikov system for $\dY$. In detail, we get the following objects:
+\begin{itemize}
+\item Diagram $\dpi_\thedimmm(\dY)$ of homotopy groups as a diagram of fully effective abelian groups, $0\leq \thedimmm\le\thedim$.
+\item
+Diagrams $\Pst{0}, \Pst{1},\ldots,\Pnewst$ that have pointwise effective homology.
+\item Diagrams  $\Pst{0}^\cofr, \Pst{1}^\cofr, \ldots,\Pnewst^\cofr$ and $\Yst{0}, \Yst{1},\ldots,\Ynewst$ that have effective homology.
+\item Computable maps (natural transformations) $\varphist{\thedimmm} \:\Yst{\thedimmm} \to \Pst{\thedimmm}$, $\varphist{\thedimmm}^\cofr \:\Yst{\thedimmm+1} \to \Pst{\thedimmm}^\cofr$ and maps from the cofibrant replacement $\repl^{\Pst{\thedimmm}}\: \Pst{\thedimmm}^\cofr \to \Pst{\thedimmm}$, $\repl^{\Yst{\thedimmm}} \:\Yst{\thedimmm+1} \to \dY_{\thedimmm}$, $1\leq\thedimmm \le\thedim$.
+\item
+Computable maps representing Postnikov classes $\kkk_{\thedimmm-1}\:\Pst{\thedimmm-1}^\cofr \to \dK(\dpi_\thedimmm(\dY),\thedimmm+1)$,
+$1<\thedimmm\le\thedim$.
+\end{itemize}
+\end{thm}}
+
+In case $\icat =\Ocat_G^\op$, we can use Theorem~\ref{t:postnikov} to derive the following result
+\begin{thm}
+Let $\thedim\geq 2$ be fixed, let $Y$ be a finite simplicial set with an action of a finite group $G$. Further, let $Y^H$ be a $1$-connected for all $H\leq G$. Then there is an algorithm that computes the $n$-stage Postnikov system for the diagram of fixed points $\Phi(Y)\:\Ocat_G^\op \to \sSet$.
+\end{thm}
+
+\heading{Description of the algorithm}
+
+The algorithm we present here is in fact a modification of an algorithm that constructs a Postnikov tower for 1--connected simplicial sets presented in \cite{polypost}. The main difference can be seen in the application of Proposition \ref{prop:gen}, which will be stressed later. Further, we have to make sure that the constructions work for diagrams as well.
+
+The following is a pseudo-code for the algorithm in Theorem~\ref{t:postnikov-restat}:
+
+\begin{enumerate}
+[topsep=2pt,labelsep=1em,labelindent=0.5em,leftmargin=*,label=\textbf{(\arabic*)},align=left]
+\item\label{bas:s} Set $\Yst{0} = \dY$, set $\Pst{0} = \{ * \}$  and construct the (obvious) map $\varphist{0}\: \Yst{0} \to\Pst{0}$.
+\item For $\thedimm = 1$ to $\thedim$ do:
+\item\label{iter:f} Compute the cofibrant replacement of $\varphist{\thedimm -1}$ using Proposition~\ref{p:cofibrep}. We thus obtain
+\[
+\varphist{\thedimm -1}^\cofr\: \Yst{\thedimm}  = \Yst{\thedimm -1} ^\cofr \longrightarrow \Pst{\thedimm -1}^\cofr
+\]
+and $\repl^{\Yst{\thedimm -1}}, \repl^{\Pst{\thedimm -1}}$.
+
+
+\item\label{iter:s} Take the chain map $C_* (\varphist{\thedimm-1}^\cofr)\:\dC_*(\Yst{\thedimm})\to \dC_*(\Pst{\thedimm-1}^\cofr)$ and using Lemma~\ref{l:cone} construct the algebraic mapping cone $\dM\coloneqq\dCone(\varphist{\thedimm-1}^\cofr)$ together with a strong equivalence $\dM \steq \dM^\ef$, where $\dM^\ef$ is an effective diagram of chain complexes.
+\item\label{step:retraction} Compute a retraction $r\: \dM^\ef _{\thedimm+1} \to \dZ_{\thedimm+1}  (\dM^\ef)$ using Proposition~\ref{prop:gen}. 
+\item Compute the homology group $\dH_{\thedimm+1}(\dM^\ef)$ and the composite morphism \[\rho\:\dM^\ef _{\thedimm+1}\stackrel{r}{\longrightarrow}\dZ_{\thedimm+1}  (\dM^\ef) \to \dH_{\thedimm+1}(\dM^\ef).\]
+\item Set $\dpi_\thedimm \coloneqq \dH_{\thedimm+1}(\dM^\ef)$.
+\item Take the composite chain homomorphism $f\:{\dM}_{\thedimm+1} \to {\dM}_{\thedimm+1}^\ef$ and compute $\lambda_\thedimm\:\dC_\thedimm(\Yst{\thedimm})\to \dpi_\thedimm$ as the restriction of $\rho f$ to the summand $\dC_\thedimm(\Yst{\thedimm})$. Compute the simplicial map $\ell_\thedimm:\Yst{\thedimm} \to \dE(\dpi_\thedimm,\thedimm)$  corresponding to $\lambda_\thedimm$ using Lemma~\ref{l:ev3*}.
+
+Similarly, we obtain $\kappa_{\thedimm-1} \: \dC_{\thedimm+1} ({\Pst{\thedimm-1}^\cofr})\to \dpi_{\thedimm}$ as the restriction  of $\rho f$ to the second summand and we get a computable map $\kkk_{\thedimm-1}\:\Pst{\thedimm-1}^\cofr \to \dK(\dpi_\thedimm,\thedimm+1)$ via Lemma~\ref{l:ev4*}.
+
+\item\label{step:pullback}Apply Corollary~\ref{c:pullback} to obtain $\Pst{\thedimm}$ as a pullback in the diagram
+\begin{equation}\label{eq:towerpullback}
+\xymatrix@C=40pt{
+{} & \Pst{\thedimm} \ar@{->>}[d] \ar[r] & \dE(\dpi_\thedimm,\thedimm) \ar@{->>}[d]^{\cobo} \\
+\Yst{\thedimm} \ar[r]^{\varphist{\thedimm-1}^\cofr}  \ar@/^45pt/[urr]^{\ell_{\thedimm}} \ar[ur]^{\varphist{\thedimm}}& \Pst{\thedimm-1}^\cofr \ar[r]^-{\kkk_{\thedimm-1}} & \dK(\dpi_\thedimm,\thedimm+1)
+} 
+\end{equation}
+and set $\varphist{\thedimm} = (\varphist{\thedimm -1}^\cofr,\ell_\thedimm)$ as the map to the pullback $\Pst{\thedimm}$.
+\end{enumerate}
+\section{Correctness of the algorithm}\label{sec:correctness}
+
+In this section, we prove the correctness of the algorithm presented above. The proof is by induction with respect to $\thedimm$.
+
+The basic step of the induction is in the pseudocode covered by \ref{bas:s}. Because $\dY$ is $1$-connected,   $\varphist{0}$ and $\Pst{0}$ satisfy the properties in the Postnikov tower.
+
+
+In the induction step,  we first compute the map $\varphist{\thedimm-1}^\cofr\: \Yst{\thedimm} \to \Pst{\thedimm -1}^\cofr$ between diagrams that have effective homology.
+
+Next, we aim to compute the map $\varphist{\thedimm}\: \Yst{\thedimm} \to \Pst{\thedimm}$. Therefore we need to verify the following claims:
+\begin{itemize}
+\item In step \ref{step:retraction} we have to make sure that $\dH^\ef _{j} (\dM) = 0$  for $\thedimmm\leq \thedimm$ in order to use Proposition~\ref{prop:gen}.
+\item There is an isomorphism $\dpi_\thedimm\cong\dpi_\thedimm(\Yst{\thedimm-1}) \cong \dpi_\thedimm(\dY)$.
+\item The cochain $\kappa_{\thedimm-1}$ is a cocycle, thus we can define the Postnikov classes  $\kkk_{\thedimm-1}\: \Pst{\thedimm-1}^\cofr \to \dK(\dpi_\thedimm, \thedimm +1)$ using Lemma~\ref{l:ev4*}.
+\item The image of the induced map
+$\varphist{\thedimm}=(\varphist{\thedimm-1}^\cofr,\ell_\thedimm)\: \Yst{\thedimm} \times \dE(\dpi_\thedimm, \thedimm)$ lies in $\Pst{\thedimm}$.
+\item The diagram $\Pst{\thedimm}$ is a Postnikov stage and $\varphist{\thedimm}$ satisfies the properties in the definition of the Postnikov system.
+\end{itemize}
+
+The proof of most of these claims follows from proof of Theorem~4.1 in~\cite{polypost}, the main difference is that we make sure that all statements are true for diagrams, because they are clearly true pointwise. 
+
+We will further frequently use the simple observation already mentioned in the definition of a weak equivalence in the projective model structure: given two diagrams of groups $\dA, \dB \: \icat \to \Grp$ and a morphism $f\: \dA\to \dB$, to verify that  $f\: \dA \to \dB$ is an isomorphism, it is enough to show that it is an isomorphism pointwise.
+
+For brevity we further write $\dK=\dK(\dpi_{\thedimm},\thedimm+1)$ and $\dE=\dE(\dpi_{\thedimm},\thedimm)$.
+
+%$\dY = \Yst{\thedimm -1}$,$\dP=\Pst{\thedimm-1}$,
+\heading{Homology of the mapping cone $\dM$}
+Let $\MCyl{\varphist{\thedimm-1}^\cofr}$ be the mapping cylinder
+of $\varphist{\thedimm-1}^\cofr\:\Yst{\thedimm}\to \Pst{\thedimm -1}^\cofr$. Clearly $\dpi_*(\MCyl{\varphist{\thedimm-1}^\cofr}) = \dpi_*(\Pst{\thedimm -1}^\cofr) = \dpi_*(\Pst{\thedimm -1}^\cofr)$ because these diagrams are pointwise homotopy equivalent. Further $\Yst{\thedimm}$ is a subdiagram of $\MCyl{\varphist{\thedimm-1}^\cofr}$. The chain complex of the pair \mbox{$(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm})$} has a reduction to $\dM=\dCone_*({\varphist{\thedimm-1}^\cofr})$, see Remark~\ref{rem:mapcylinder}. Hence
+\[
+\dH_{*}(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm})\cong \dH_{*}(\dM)\cong \dH_{*}(\dM^\ef).\]
+
+For the pair $(\MCyl{\varphist{\thedimm-1}^\cofr}, \Yst{\thedimm})$, we consider the long exact sequence of homotopy groups. Using the fact that $\varphist{\thedimm-1}$ induces isomorphism $\dpi_{j}(\Yst{\thedimm}) \cong \dpi_{j}(\Pst{\thedimm-1})$ for $j\leq {k-1}$ and that $\dpi_{\thedimmm}(\Pst{\thedimm-1}) = 0$ for $j\geq \thedimm$, we get that the pair $(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm})$ is $\thedimm$-connected and it follows that $\dH_\thedimmm (\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm}) = 0$ for $\thedimmm \leq \thedimm$, so one can apply Proposition~\ref{prop:gen} on $\dM^\ef$, where $\dM^\ef \steq \dM=\dCone_*({\varphist{\thedimm-1}^\cofr})$.
+
+\heading{Checking that $\dpi_\thedimm \cong \dpi_\thedimm(\dY)$}
+We recall that the algorithm sets $\dpi_\thedimm$ to be equal to $\dH_{\thedimm+1}(\dM^\ef)$, so we need to verify that $\dH_{\thedimm+1}(\dM^\ef)\cong\dpi_{\thedimm}(\dY)$.
+In the previous section, we have seen that the long exact sequence  of homotopy groups for the pair
+$(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm})(i)$ yields that this pair is $\thedimm$-connected
+and thus 
+\[
+\dpi_{\thedimm}(\Yst{\thedimm})\cong \dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm}).
+\]
+
+Due to the $\thedimm$-connectedness of $(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm})$ and the simple connectivity of $\dY$,  the
+Hurewicz isomorphism produces an isomorphism 
+\[
+\dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm})
+\cong \dH_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm}).
+\]
+To sum up, we have a sequence of isomorphisms
+\begin{align*}
+\dpi_{\thedimm}  = \dH_{\thedimm}(\dM^\ef) &\cong \dH_{\thedimm}(\dM) \cong \dH_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr}, \Yst{\thedimm})\\
+&\cong \dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm}) \cong \dpi_{\thedimm}(\Yst{\thedimm})\cong \dpi_{\thedimm}(\dY).
+\end{align*}
+Hence we obtain
+$\dpi_{\thedimm}(\dY)\cong\dpi_{\thedimm}$,
+as desired.
+
+\heading{The cochain $\kappa_{\thedimm-1}$ is a cocycle}
+
+We aim to show that the following composition
+\[\kappa_{\thedimm-1}\:\dC_{\thedimm+1}(\Pst{\thedimm-1}^\cofr)\hookrightarrow \dC_\thedimm (\Yst{\thedimm})\oplus \dC_{\thedimm+1}(\Pst{\thedimm-1}^\cofr)=\dM_{\thedimm+1} \xrightarrow{\ f \ } \dM^\ef _{\thedimm+1} \xrightarrow{\ \rho\ }\dpi_\thedimm\]
+is a cocycle. The inclusion and $f$ are chain maps, and preserve boundaries. By definition, $\rho$ vanishes on them. Thus the composite $\kappa_{\thedimm-1}$ also vanishes on boundaries and is indeed a cocycle.
+
+
+\heading{The map $\varphist{\thedimm}$ takes values in $\Pst{\thedimm}$}
+
+
+Denote the inclusion $\dC_{\thedimm+1}(\Pst{\thedimm-1}^\cofr)\hookrightarrow \dM_{\thedimm+1}$ as $i$ and the inclusion $\dC_\thedimm (\Yst{\thedimm})\hookrightarrow \dM_{\thedimm+1}$ as $j$. Note that $j$ is not a chain map. We can write $\kappa_{\thedimm-1}=\rho f i$ and $\lambda_\thedimm=\rho f j$.
+
+Now, we will verify that the image of the map $\varphist{\thedimm}=(\varphist{\thedimm-1},\ell_\thedimm)\:\Yst{\thedimm}\to \Pst{\thedimm-1} \times \dE$ lies in the pullback~$\Pst{\thedimm}$. According to~\eqref{eq:towerpullback}, this translates to showing that
+$\kkk_{\thedimm-1}\varphist{\thedimm-1}=\cobo\ell_\thedimm$.
+
+Using Lemma~\ref{l:ev*} and~\ref{l:ev3*}, we find that
+\[\kappa_{\thedimm-1}\varphist{\thedimm-1}_*=(\dev (\kkk_{\thedimm-1})_*)\varphist{\thedimm-1}_*=
+\dev(\kkk_{\thedimm-1}\varphist{\thedimm-1})_*.\]
+It is easy to verify from the definitions
+that $\dev(\delta\ell_\thedimm)_*= \lambda_\thedimm\diff^{\Yst{\thedimm}}$, where $\diff^{\Yst{\thedimm}}$
+is the differential in $\dC_*(\Yst{\thedimm})$. Therefore the desired equality $\kkk_{\thedimm-1}\varphist{\thedimm-1}=\cobo\ell_\thedimm$
+of simplicial maps can be rewritten in terms of cochains in $C_\icat ^{\thedimm+1} (\Yst{\thedimm}, \dpi_\thedimm)$ as
+\begin{equation}\label{e:cocha-level}
+\kappa_{\thedimm-1}\varphist{\thedimm-1}_*=\lambda_\thedimm\diff^{\Yst{\thedimm}},
+\end{equation}
+By the definitions of $\kappa_{\thedimm-1}$ and $\lambda_\thedimm$, we have
+\[\kappa_{\thedimm-1}\varphist{\thedimm-1}_* - \lambda_\thedimm\diff^{\Yst{\thedimm}}=\rho f(i\varphist{\thedimm-1}_*-j\diff^{\Yst{\thedimm}}).\]
+
+The composition $\rho f$ maps boundaries
+in $\dM$ to $0$, because $\rho$ does, so it suffices to show that the images
+of $i\varphi_{{\thedimm-1}*}-j\diff^{\Yst{\thedimm}}$ are boundaries. This follows from the fact that the formula for the differential in the algebraic mapping cone says that we have
+\[ 
+(i\varphist{\thedimm-1}_* - j\diff^{\Yst{\thedimm}})(\sigma)=\diff^{\dM}(\sigma,0)\]
+for every $\sigma\in \dC_{\thedimm+1}(\Yst{\thedimm})$.
+
+
+\heading{$\Pst{\thedimm}$ and $\varphist{\thedimm}$ satisfy properties of the Postnikov system}
+
+It is enough to show that $\varphist{\thedimm}_*\: \dpi_{\thedimmm} (\Yst{\thedimm}) \to\ \dpi_{\thedimmm}(\Pst{\thedimm})$ induces isomorphism for $\thedimmm \leq \thedimm$ and that $\dpi_{\thedimmm}(\Pst{\thedimm}) = 0$ for $\thedimmm > \thedimm$.
+
+We remark that that $\Pst{\thedimm}$ has pointwise effective homology because it is a pullback (twisted product) of diagrams that have pointwise effective homology as in Corollary~\ref{c:pullback}.
+
+Because $\delta\: \dE \to \dK$ is a pointwise (principal and minimal) fibration with fibre $\dK(\dpi_{\thedimm},\thedimm)$, the definition of $\Pst{\thedimm}$ as a pullback, gives us a pointwise fibration
+\[
+\dK(\dpi_{\thedimm},\thedimm)\to \Pst{\thedimm} \to \Pst{\thedimm-1}^\cofr.
+\]
+By the induction assumption, $\dpi_\thedimmm(\Pst{\thedimm -1})=0$ for $\thedimmm\ge\thedimm$, it is straightforward to check that $\dpi_\thedimmm(\Pst{\thedimm})=0$
+for $\thedimmm\ge\thedimm+1$, and that the maps $\dpi_\thedimmm(\Yst{\thedimm})\to\dpi_\thedimmm(\Pst{\thedimm})$
+induced by $\varphist{\thedimm}$ are isomorphisms for $\thedimmm\le \thedimm-1$.
+To show that $\Pst{\thedimm}$ is up to homotopy the $k$-th Postnikov stage, it remains to verify that
+$\varphist{\thedimm}_*\:\dpi_\thedimm(\Yst{\thedimm})\to\dpi_\thedimm(\Pst{\thedimm})$
+is an isomorphism as well.
+
+We will do this using the diagram
+\[\xymatrix{
+\Yst{\thedimm} \ar[d]_{\varphist{\thedimm -1}^\cofr} \ar[r]^{\varphist{\thedimm}} & \Pst{\thedimm} \ar[r] \ar[d]^{p_{\thedimm}}
+& \dE \ar[d]^\delta \\
+\Pst{\thedimm-1}^\cofr \ar@{=}[r] & \Pst{\thedimm-1}^\cofr \ar[r] & \dK
+}
+ \]
+where the right square is the pullback diagram defining $\Pst{\thedimm}$.
+
+We will now make all the vertical maps into inclusions by replacing the spaces in the bottom row with the mapping cylinder of the respective vertical map. This construction also induces the horizontal maps between cylinders. We obtain the diagram.
+
+\begin{equation}\label{e:two_squares}
+\xy *!C\xybox{\xymatrix{
+\Yst{\thedimm -1} \ar[d] \ar[r]^{\varphist{\thedimm}}
+ & \Pst{\thedimm} \ar[r] \ar[d] & \dE \ar[d]\\
+\MCyl{\varphist{\thedimm -1}^\cofr} \ar[r] & \MCyl{p_\thedimm} \ar[r] & \MCyl \cobo
+}}\endxy
+\end{equation}
+
+Now we consider the long exact sequences for pairs
+$(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm -1})$ and $(\MCyl{p_{\thedimm}},\Pst{\thedimm})$:
+\[\xymatrix@C=6pt{
+0=\dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr})\ar[r]
+\ar[d]^{\cong}
+& \dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm}) \ar[d]^{\cong} \ar[r]
+& \dpi_{\thedimm}(\Yst{\thedimm}) \ar[d]^{\varphist{\thedimm}_*} \ar[r]
+& \dpi_{\thedimm}(\MCyl{\varphist{\thedimm-1}^\cofr})=0 \ar[d]^{\cong}\\
+0=\dpi_{\thedimm+1}(\MCyl{p_{\thedimm}})
+\ar[r] & \dpi_{\thedimm+1}(\MCyl{p_{\thedimm}},\Pst{\thedimm}) \ar[r]
+& \dpi_{\thedimm}(\Pst{\thedimm}) \ar[r] & \pi_{\thedimm}(\MCyl{p_{\thedimm}})=0
+ }\]
+The first and the last vertical arrows are isomorphisms due to the fact that we have $\dpi_\thedimmm(\Pst{\thedimm-1})=0$ for $\thedimmm\ge \thedimm$ and that both of the mapping cylinders deform onto the base space $\Pst{\thedimm-1}$, i.e. 
+\[
+\dpi_{\thedimmm}(\MCyl{\varphist{\thedimm-1}^\cofr}) \cong \dpi_{\thedimmm}(\Pst{\thedimm-1}) \cong \dpi_{\thedimmm}(\MCyl{p_{\thedimm}}). 
+\]
+The exactness of the rows further implies isomorphisms
+$\dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm-1}^\cofr},\Yst{\thedimm}) 
+\cong$ $\dpi_{\thedimm}(\Yst{\thedimm})$ and  $\dpi_{\thedimm+1}(\MCyl{p_{\thedimm}},\Pst{\thedimm}) \cong \dpi_{\thedimm}(\Pst{\thedimm})$. If we prove that the second vertical homomorphism is an isomorphism, then  $\varphist{\thedimm}_*$ has to be an isomorphism on $\dpi_{\thedimm}$. We formulate the required claim as
+\begin{lemma}[Lemma 4.5 in \cite{polypost}]\label{l:cylindrak}
+The map \[\dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm -1}^\cofr} ,\Yst{\thedimm})\to\dpi_{\thedimm+1}
+(\MCyl{p_{\thedimm}} ,\Pst{\thedimm})
+\]
+induced by the left square of diagram~\eqref{e:two_squares} is an isomorphism.
+\end{lemma}
+\begin{proof}
+The proof of the pointwise version of the Lemma is technical and can be found in \cite{polypost}. We thus have a homomorphism of diagrams of groups 
+\[\dpi_{\thedimm+1}(\MCyl{\varphist{\thedimm -1}^\cofr} ,\Yst{\thedimm})\to\dpi_{\thedimm+1}
+(\MCyl{p_{\thedimm}} ,\Pst{\thedimm})\]
+ which is an isomorphism pointwise. It follows that this is an isomorphism of diagrams. This finishes the proof of the correctness of the algorithm and thus of Theorem~\ref{t:postnikov-restat}.
+\end{proof}
+
+
+
+
+\vskip 20pt
+\vfill
+\vbox{\footnotesize%
+\noindent\begin{minipage}[t]{\textwidth}
+{\scshape Marek Filakovsk\'{y}, Luk\'a\v{s} Vok\v{r}\'inek}\\
+Department of Mathematics and Statistics,\\
+Masaryk University,\\
+Kotl\'a\v{r}sk\'a~2, 611~37~Brno,\\
+Czech Republic
+\end{minipage}}
+
+
+\begin{thebibliography}{99}
+\bibitem{bredon}
+G.~Bredon:
+\emph{Equivariant cohomology theories,} Springer Lecture Notes in Mathematics, 34 (1967).
+
+\bibitem{ehbrown}
+E.~H.~Brown:
+\emph{Finite computability of Postnikov complexes,}
+Ann. of Math. 65 1--20, 1957
+
+\bibitem{rbrown}
+R.~Brown:
+\emph{The twisted Eilenberg-Zilber theorem,}
+Celebrazioni Archimedee del Secolo XX, Simposio di topologia, 1964, (1965).
+
+\bibitem{bous}
+A.~K.~Bousfield, D.~M.~Kan:
+\emph{Homotopy Limits, Completions and Localizations,} 
+Springer Lecture Notes in Mathematics, 304 (1972).
+
+\bibitem{cmk}
+M.~\v{C}adek, M.~Kr\v{c}\'{a}l, J.~Matou\v{s}ek, F.~Sergeraert, L.~Vok\v{r}\'{i}nek, U.~Wagner:
+\emph{Computing all maps into a sphere,} J. ACM,  61 (2014), article no. 17.
+
+\bibitem{extend}
+M.~\v{C}adek, M.~Kr\v{c}\'{a}l, J.~Matou\v{s}ek, L.~Vok\v{r}\'{i}nek, U.~Wagner:
+\emph{Extendabililty of continuous maps in undecidable,} 
+Discrete  Comput. Geom., 51 (1), (2014), 24--66.
+
+\bibitem{polypost}
+M.~\v{C}adek, M.~Kr\v{c}\'{a}l, J.~Matou\v{s}ek, L.~Vok\v{r}\'{i}nek, U.~Wagner:
+\emph{Polynomial time computation of homotopy groups and Postnikov systems in fixed dimensions,} SIAM J. Comput. 43-5 (2014), 1728--1780.
+
+\bibitem{aslep}
+M.~\v{C}adek, M.~Kr\v{c}\'{a}l, L.~Vok\v{r}\'{i}nek:
+\emph{Algorithmic solvability of lifting extension problem,}
+\verb+arXiv:1307.6444+, (2013).
+
+\bibitem{dugger}
+D.~Dugger:
+\emph{A primer on homotopy colimits,}
+\url{http://math.uoregon.edu/~ddugger/hocolim.pdf},  (2008).
+
+\bibitem{dwykan}
+W.~G.~Dwyer, D.~M.~Kan:
+\emph{An obstruction theory for diagrams of simplicial sets,}
+Proc. Kon. Akad. van Wetensch, A87 (1984), 139--146.
+
+\bibitem{dwyspal}
+W.~Dwyer, J.~Spali\'{n}ski:
+\emph{Homotopy Theories and Model Categories,}
+in Handbook of Algebraic topology, Elsevier (1995), 73--126.
+
+\bibitem{eml1}
+S.~Eilenberg, S.~MacLane:
+\emph{On the groups $H(\pi, n)$ I,}
+Ann. of Math.,  58 (1953),  55--106.
+
+\bibitem{eml2}
+S.~Eilenberg, S.~MacLane:
+\emph{On the groups $H(\pi, n)$ II,}
+Ann. of Math., { 60} (1954), 49--139.
+
+\bibitem{elmendorf}
+A.~D.~Elmendorf:
+\emph{Systems of fixed points sets,}
+Trans. Amer. Math. Soc., 277 (1983), 275--284.
+
+\bibitem{fv}
+M.~Filakovsk\'{y}, L.~Vok\v{r}\'{i}nek:
+\emph{Are two maps homotopic? An algorithmic viewpoint,}
+\verb+arXiv:1312.2337+, (2013).
+
+\bibitem{filakovsky-tensor}
+M.~Filakovsk\'{y}:
+\emph{Effective homology for twisted products,} Arch. Math (Brno),  48 (2012), 313--322.
+
+\bibitem{filak}
+M.~Filakovsk\'{y}:
+\emph{Effective homology for homotopy colimit and cofibrant replacement,} Arch. Math (Brno),  50 (2014), 273--286.
+
+\bibitem{discvectorori}
+R.~Forman:
+\emph{Morse theory for cell complexes,} Adv. Math.,  134 (1998), 90--145.
+
+
+\bibitem{franek}
+P.~Franek, M.~Kr\v{c}\'{a}l:
+\emph{Robust satisfiability of systems of equations,}
+Proceedings of the Twenty-Fifth Annual ACM-SIAM Symposium on Discrete Algorithms. SIAM, (2014). p. 193-203.
+
+\bibitem{goja}
+P.~G.~Goerss, J.~F.~Jardine:
+\emph{Simplicial homotopy theory,}
+Boston-Basel-Berlin: Birkhauser, (1999).
+
+
+\bibitem{hirschhorn}
+P.~S.~Hirschhorn:
+\emph{Model Categories and Their Localizations,}
+Mathematical Surveys and Monographs, 99 (2009).
+
+\bibitem{isac}
+S.~B.~Isaacson:
+\emph{Exercises on homotopy colimits,}
+\url{http://math.mit.edu/~mbehrens/TAGS/Isaacson_exer.pdf}.
+
+\bibitem{KannanBachem}
+R.~Kannan, A.~Bachem:
+\emph{Polynomial algorithms for computing the Smith and Hermite normal forms of an integer matrix,} 
+SIAM J. Comput. 8 (1981), 499--507.
+
+\bibitem{krcal}
+M.~Kr\v{c}\'{a}l, J.~Matou\v{s}ek, l, F.~Sergeraert:
+\emph{Polynomial-time homology for simplicial Eilenberg-MacLane spaces,}
+Found. Comput. Math., 13.6, (2013), 935--963.
+
+\bibitem{stasheff}
+L.~Lambe, J.~Stasheff:
+\emph{Applications of Perturbation Theory to Iterated Fibrations,} 
+Manuscripta Math. 58 (1987), 363-376
+
+\bibitem{matousek}
+J.~Matou\v{sek}, M.~Tancer, U.~Wagner:
+\emph{Hardness of embedding simplicial complexes in $\mathbb{R}^d$,} J. Eur. Math. Soc. 13(2), (2011), 259–-295.
+
+\bibitem{may}
+J.~P.~May:
+\emph{Simplicial Objects in Algebraic Topology,} Chicago Lectures in Mathematics. 1992 reprint of 1967 original, (1992).
+
+\bibitem{alaska}
+J.~P.~May, R.~J.~Piacenza, M.~Cole:
+\emph{Equivariant homotopy and cohomology theory : dedicated to the memory of Robert J.~Piacenza,}
+Providence, R.I.: Published for the Conference Board of the Mathematical Sciences by the American Mathematical Society, (1996).
+
+\bibitem{Munkres}
+J.~R.~Munkres:
+\emph{Elements of Algebraic Topology,}
+Addison-Wesley, Reading, MA, (1984).
+
+\bibitem{nabutovsky1}
+A.~Nabutovsky, S.~Weinberger:
+\emph{Algorithmic unsolvability of the triviality problem for multidimensional knots,}
+Comment. Math. Helv., 71(3), (1996), 426–434.
+
+\bibitem{nabutovsky2}
+A.~Nabutovsky, S.~Weinberger:
+\emph{Algorithmic aspects of homeomorphism problems,}
+ In Tel Aviv Topology Conference: Rothenberg Festschrift (1998), volume 231 of Contemp. Math., pages 245–250. Amer. Math. Soc., Providence, RI, (1999).
+
+\bibitem{Novikov}
+P.~S.~Novikov:
+\emph{On the algorithmic unsolvability of the word problem in
+  group theory (in Russian),}
+Trudy Mat.\ Inst.\ im.\ Steklova {\bf 44} (1955), 1--143.
+
+\bibitem{real2}
+P.~Real:
+\emph{Algorithms for computing effective homology of classifying spaces (in Spanish),}
+PhD. Thesis, Facultad de Mathem\'{a}ticas, Univ. de Sevilla, 1993. Available online at \url{http://fondosdigitales.us.es/media/thesis/1426/C_043-139.pdf}.
+
+
+\bibitem{real}
+P.~Real:
+\emph{An algorithm computing homotopy groups,}
+ Mathematics and Computers in Simulation, 42, (1996), 461--465.
+
+\bibitem{riehl}
+E.~Riehl:
+\emph{Categorical Homotopy Theory,} Cambridge University Press,  (2014).
+
+\bibitem{romero}
+A.~Romero, J.~Rubio and F.~Sergeraert:
+\emph{Computing spectral sequences,}
+ J. Symbol. Comput., 41(10), (2006), 1059--1079.
+
+
+\bibitem{vector}
+A.~Romero, F.~Sergeraert:
+  \emph{Discrete Vector Fields and Fundamental Algebraic Topology,}
+\verb+arXiv:1005.5685v1+, (2010).
+
+\bibitem{rubio}
+J.~Rubio, F.~Sergeraert:
+\emph{Constructive algebraic topology,}
+Bull. Sci. Math., 126(5), (2012), 389--412.
+
+
+\bibitem{serg}
+J.~Rubio, F.~Sergeraert:
+\emph{Constructive Homological Algebra and Applications,} Written in 2006 for a MAP Summer School at the University of Genova, \verb+arXiv:1208.3816v2+, (2012).
+
+\bibitem{shih}
+W.~Shih:
+\emph{Homologie des espaces fibrés,}
+Publications Mathematiques del’ I.H.E.S., 13 (1962), 293--312.
+
+\bibitem{schon}
+R.~Schön:
+\emph{Effective algebraic topology,}
+Memoirs of the American Mathematical Society, 451,
+1991.
+
+\bibitem{polycgroup}
+C.~C.~Sims:
+\emph{Computation with Finitely Presented Groups,}
+Cambridge University Press, Cambridge, 1994.
+
+\bibitem{stephan}
+M.~Stephan:
+\emph{On equivariant homotopy theory for model categories,}
+\verb+arXiv:1308.0856+, (2013).
+
+\bibitem{Storjohann:NearOptimalAlgorithmsSmithNormalForm-1996}
+A.~Storjohann:
+\emph{Near optimal algorithms for computing Smith normal forms of integer
+matrices,}
+International Symposium on Symbolic and Algebraic Computation, (1996), 267--274.
+
+
+\bibitem{weibel}
+C.~A.~Weibel:
+\emph{An Introduction to Homological Algebra,}
+Cambridge University Press, Cambridge, 1994.
+
+\end{thebibliography}
+\end{document}
+
+
+\end{document}
